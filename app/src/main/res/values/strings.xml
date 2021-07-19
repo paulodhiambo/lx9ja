@@ -24,4 +24,9 @@
     <string name="info">Info</string>
     <string name="live_stream">Live Stream</string>
     <string name="location">Location</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="groups">Groups</string>
+    <string name="report">Report</string>
+    <string name="google">Google</string>
+    <string name="facebook">facebook</string>
 </resources>

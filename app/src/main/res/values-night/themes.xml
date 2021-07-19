@@ -43,4 +43,8 @@
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="hintTextColor">@color/white</item>
     </style>
+
+    <style name="ButtonTheme" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
