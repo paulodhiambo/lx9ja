@@ -183,8 +183,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:backgroundTint="@color/googleButtonColor"
-        app:layout_anchor="@id/bottom_bar"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
+        app:layout_anchor="@id/bottom_bar" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -25,7 +25,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="51dp"
         android:fontFamily="@font/roboto_black"
-        android:text="Register"
+        android:text="@string/register"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_black"
-        android:text="No long process, it will only take a minute"
+        android:text="@string/no_long_process_it_will_only_take_a_minute"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -70,11 +70,13 @@
                 android:textSize="18sp" />
 
             <Button
+                android:id="@+id/btnEmailRegistration"
                 style="@style/ButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
                 android:drawableLeft="@drawable/ic_baseline_mail_24"
+                android:drawableTint="@color/drawer_button_color"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:text="@string/continue_with_your_email" />
@@ -116,20 +118,20 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="42dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Already have an account?"
+        android:text="@string/already_have_an_account"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/txtLogin"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Login here"
+        android:text="@string/login_here"
         android:textColor="@color/authButtonColor"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
