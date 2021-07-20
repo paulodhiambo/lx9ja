@@ -141,6 +141,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/group_menu"
                     style="@style/Menu.Icon.Image"
+                    android:tint="@color/drawer_button_color"
                     app:layout_constraintBottom_toTopOf="@+id/third_icon_title"
                     app:layout_constraintVertical_chainStyle="packed"
                     app:srcCompat="@drawable/ic_group"
