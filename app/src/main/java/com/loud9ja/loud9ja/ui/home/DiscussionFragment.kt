@@ -18,6 +18,9 @@ class DiscussionFragment : Fragment() {
     private val trendingAdapter by lazy {
         TrendingRecyclerViewAdapter()
     }
+    private val recentAdapter by lazy {
+        RecentRecyclerViewAdapter()
+    }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,6 +44,21 @@ class DiscussionFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = trendingAdapter
             trendingAdapter.addItems(
+                mutableListOf(
+                    Trending("", ""),
+                    Trending("", ""),
+                    Trending("", ""),
+                    Trending("", "")
+                )
+            )
+        }
+        binding.recentRecyclerview.apply {
+            hasFixedSize()
+            isNestedScrollingEnabled = false
+            layoutManager =
+                LinearLayoutManager(requireContext())
+            adapter = recentAdapter
+            recentAdapter.addItems(
                 mutableListOf(
                     Trending("", ""),
                     Trending("", ""),

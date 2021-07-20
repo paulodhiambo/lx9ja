@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="trending"
+            name="recent"
             type="com.loud9ja.loud9ja.domain.Trending" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginBottom="10dp"
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
 
@@ -25,7 +25,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
-                android:src="@drawable/three"
+                android:src="@drawable/two"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="1dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,13 +129,14 @@
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="9dp"
+                android:layout_marginEnd="10dp"
                 android:text="20"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-                app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+                app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageButton3"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -144,6 +145,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
                 app:layout_constraintEnd_toStartOf="@+id/textView23"
                 app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_baseline_thumb_down_24"
                 app:tint="@color/drawer_button_color" />
 
@@ -151,34 +153,37 @@
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="1"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton3"
                 app:layout_constraintTop_toTopOf="@+id/imageButton3"
-                app:layout_constraintVertical_bias="0.51" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageButton4"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintEnd_toStartOf="@+id/textView24"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21"
                 app:srcCompat="@android:drawable/sym_action_chat"
                 app:tint="@color/drawer_button_color" />
 
             <TextView
                 android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="9dp"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="10dp"
                 android:text="20"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton2"
                 app:layout_constraintTop_toTopOf="@+id/imageButton4"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

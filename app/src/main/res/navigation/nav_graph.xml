@@ -8,21 +8,78 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.loud9ja.loud9ja.ui.home.DiscussionFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/action_discussion"
         tools:layout="@layout/fragment_discussion">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.loud9ja.loud9ja.ui.home.ReportFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/action_report"
         tools:layout="@layout/fragment_report">
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/GroupFragment"
+        android:name="com.loud9ja.loud9ja.ui.home.GroupsFragment"
+        android:label="@string/action_groups"
+        tools:layout="@layout/fragment_groups">
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/SOSFragment"
+        android:name="com.loud9ja.loud9ja.ui.home.SosFragment"
+        android:label="@string/action_sos"
+        tools:layout="@layout/fragment_sos">
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+    </fragment>
+
 </navigation>

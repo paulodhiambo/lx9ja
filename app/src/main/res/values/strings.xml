@@ -47,4 +47,9 @@
     <string name="verify_password">Verify password</string>
     <string name="create_post">CREATE POST</string>
     <string name="search_for_topics">Search for topics</string>
+    <string name="filter_by_date">Filter by date</string>
+    <string name="new_report">NEW REPORT</string>
+    <string name="recent_reports">Recent Reports</string>
+    <string name="search_for_locations">Search for locations</string>
+    <string name="create_group">CREATE GROUP</string>
 </resources>

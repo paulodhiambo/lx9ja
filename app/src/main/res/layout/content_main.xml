@@ -11,6 +11,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,7 +63,7 @@
 
             <!--region icon 1-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
+                android:id="@+id/discussion_menuu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -77,11 +78,11 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/roboto_black"
                     android:text="@string/action_discussion"
-                    app:layout_constraintTop_toBottomOf="@id/second_icon_image"
+                    app:layout_constraintTop_toBottomOf="@id/discussion_menu"
                     tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/second_icon_image"
+                    android:id="@+id/discussion_menu"
                     style="@style/Menu.Icon.Image"
                     app:layout_constraintBottom_toTopOf="@+id/first_icon_title"
                     app:srcCompat="@drawable/discussions"
@@ -91,6 +92,7 @@
 
             <!--region icon 2-->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/report_menuu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -105,20 +107,20 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/roboto_black"
                     android:text="@string/action_report"
-                    app:layout_constraintTop_toBottomOf="@id/imageView"
+                    app:layout_constraintTop_toBottomOf="@id/report_menu"
                     tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/report_menu"
                     style="@style/Menu.Icon.Image"
                     app:layout_constraintVertical_chainStyle="packed"
-                    app:srcCompat="@drawable/discussions"
+                    app:srcCompat="@drawable/megaphone"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--endregion-->
             <!--region icon 3-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/group_menuu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -133,21 +135,22 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/roboto_black"
                     android:text="@string/action_groups"
-                    app:layout_constraintTop_toBottomOf="@id/third_icon_image"
+                    app:layout_constraintTop_toBottomOf="@id/group_menu"
                     tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/third_icon_image"
+                    android:id="@+id/group_menu"
                     style="@style/Menu.Icon.Image"
                     app:layout_constraintBottom_toTopOf="@+id/third_icon_title"
                     app:layout_constraintVertical_chainStyle="packed"
-                    app:srcCompat="@drawable/discussions"
+                    app:srcCompat="@drawable/ic_group"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--endregion-->
 
             <!--region icon 4-->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sos_menuu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -162,15 +165,15 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/roboto_black"
                     android:text="@string/action_sos"
-                    app:layout_constraintTop_toBottomOf="@id/last_icon_image"
+                    app:layout_constraintTop_toBottomOf="@id/sos_menu"
                     tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/last_icon_image"
+                    android:id="@+id/sos_menu"
                     style="@style/Menu.Icon.Image"
                     app:layout_constraintBottom_toTopOf="@+id/last_icon_title"
                     app:layout_constraintVertical_chainStyle="packed"
-                    app:srcCompat="@drawable/discussions"
+                    app:srcCompat="@drawable/sos"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--endregion-->
