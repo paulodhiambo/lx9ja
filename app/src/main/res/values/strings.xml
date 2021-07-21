@@ -52,4 +52,9 @@
     <string name="recent_reports">Recent Reports</string>
     <string name="search_for_locations">Search for locations</string>
     <string name="create_group">CREATE GROUP</string>
+    <string name="go_live_now">Go live now?</string>
+    <string name="add_title">Add title</string>
+    <string name="let_people_know_what_your_video_will_be_about">Let people know what your video will be about</string>
+    <string name="continuee">Continue</string>
+    <string name="cancel">Cancel</string>
 </resources>

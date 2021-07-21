@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -184,10 +185,18 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/live_fab"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:backgroundTint="@color/googleButtonColor"
-        app:layout_anchor="@id/bottom_bar" />
-
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="@string/live_stream"
+        android:src="@drawable/ic_live"
+        android:tint="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+        app:fabCustomSize="80dp"
+        app:fabSize="auto"
+        app:layout_anchor="@id/bottom_bar"
+        app:maxImageSize="80dp"
+        app:tint="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

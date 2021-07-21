@@ -15,4 +15,6 @@
     <color name="googleButtonColor">#F14436</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
     <color name="drawer_button_color">#000</color>
+    <color name="txtr">#fff</color>
+
 </resources>
