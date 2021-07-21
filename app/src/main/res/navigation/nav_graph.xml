@@ -22,11 +22,38 @@
         <action
             android:id="@+id/action_to_SOSFragment"
             app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
     </fragment>
 
     <fragment
+        android:id="@+id/ReportDetail"
+        android:name="com.loud9ja.loud9ja.ui.report.ReportDetailFragment"
+        android:label="@string/action_report_detail"
+        tools:layout="@layout/fragment_report_detail">
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
+
+    </fragment>
+
+
+    <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.loud9ja.loud9ja.ui.home.ReportFragment"
+        android:name="com.loud9ja.loud9ja.ui.report.ReportFragment"
         android:label="@string/action_report"
         tools:layout="@layout/fragment_report">
         <action
@@ -41,6 +68,9 @@
         <action
             android:id="@+id/action_to_SOSFragment"
             app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
     </fragment>
 
     <fragment
@@ -61,6 +91,9 @@
         <action
             android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
     </fragment>
 
     <fragment
@@ -80,6 +113,9 @@
         <action
             android:id="@+id/action_to_GroupFragment"
             app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
     </fragment>
 
 </navigation>

@@ -57,4 +57,10 @@
     <string name="let_people_know_what_your_video_will_be_about">Let people know what your video will be about</string>
     <string name="continuee">Continue</string>
     <string name="cancel">Cancel</string>
+    <string name="placeholder_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</string>
+    <string name="short_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</string>
+    <string name="reply_here">Reply here</string>
+    <string name="action_report_detail">Report Detail</string>
+    <string name="report_any_form_of_violence_illegal_activities_to_the_right_authority">Report any form of violence/illegal activities to the right authority.</string>
+    <string name="submit_report">SUBMIT REPORT</string>
 </resources>

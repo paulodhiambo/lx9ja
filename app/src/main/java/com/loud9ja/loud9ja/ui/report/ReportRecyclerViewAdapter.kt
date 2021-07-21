@@ -1,4 +1,4 @@
-package com.loud9ja.loud9ja.ui.home
+package com.loud9ja.loud9ja.ui.report
 
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ReportItemBinding
