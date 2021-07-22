@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.loud9ja.loud9ja.ui.home.DiscussionFragment"
+        android:name="com.loud9ja.loud9ja.ui.discusion.DiscussionFragment"
         android:label="@string/action_discussion"
         tools:layout="@layout/fragment_discussion">
         <action
@@ -75,7 +75,7 @@
 
     <fragment
         android:id="@+id/GroupFragment"
-        android:name="com.loud9ja.loud9ja.ui.home.GroupsFragment"
+        android:name="com.loud9ja.loud9ja.ui.group.GroupsFragment"
         android:label="@string/action_groups"
         tools:layout="@layout/fragment_groups">
         <action

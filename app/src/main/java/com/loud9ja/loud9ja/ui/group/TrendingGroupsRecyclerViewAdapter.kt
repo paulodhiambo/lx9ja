@@ -1,18 +1,18 @@
-package com.loud9ja.loud9ja.ui.home
+package com.loud9ja.loud9ja.ui.group
 
 import com.loud9ja.loud9ja.R
-import com.loud9ja.loud9ja.databinding.PopularGroupsItemBinding
+import com.loud9ja.loud9ja.databinding.TrendingGroupItemBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
 
-class PopularGroupsRecyclerViewAdapter :
-    BaseRecyclerViewAdapter<TrendingGroups, PopularGroupsItemBinding>() {
+class TrendingGroupsRecyclerViewAdapter :
+    BaseRecyclerViewAdapter<TrendingGroups, TrendingGroupItemBinding>() {
     override fun getLayout(): Int {
-        return R.layout.popular_groups_item
+        return R.layout.trending_group_item
     }
 
     override fun onBindViewHolder(
-        holder: BaseRecyclerViewAdapter.Companion.BaseViewHolder<PopularGroupsItemBinding>,
+        holder: Companion.BaseViewHolder<TrendingGroupItemBinding>,
         position: Int
     ) {
         val images: ArrayList<Any> = ArrayList()
@@ -21,7 +21,7 @@ class PopularGroupsRecyclerViewAdapter :
         images.add(R.drawable.two)
 
         holder.binding.stackProfiles.setImageLists(images)
-        holder.binding.groups = items[position]
+        holder.binding.trending = items[position]
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

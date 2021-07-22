@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentReportSuccessBinding
-import com.loud9ja.loud9ja.ui.home.DiscussionFragment
+import com.loud9ja.loud9ja.ui.discusion.DiscussionFragment
 
 
 /**
