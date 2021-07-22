@@ -25,7 +25,7 @@
     <string name="live_stream">Live Stream</string>
     <string name="location">Location</string>
     <string name="get_started">GET STARTED</string>
-    <string name="groups">Groups</string>
+    <string name="group">Groups</string>
     <string name="report">Report</string>
     <string name="google">Google</string>
     <string name="facebook">facebook</string>
@@ -65,4 +65,13 @@
     <string name="submit_report">SUBMIT REPORT</string>
     <string name="your_report_has_been_submitted_for_review">Your report has been submitted for review.</string>
     <string name="add_comment">Add comment</string>
+    <string name="menu">Menu</string>
+    <string name="discussions">Discussions</string>
+    <string name="reports">Reports</string>
+    <string name="groups">Groups</string>
+    <string name="go_live">Go Live</string>
+    <string name="sos">SOS</string>
+    <string name="polls">Polls</string>
+    <string name="my_profile">My Profile</string>
+    <string name="logout">Logout</string>
 </resources>

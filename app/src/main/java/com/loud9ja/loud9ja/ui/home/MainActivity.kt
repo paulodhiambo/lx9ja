@@ -3,6 +3,7 @@ package com.loud9ja.loud9ja.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,10 +13,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
@@ -34,6 +38,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        val navView: NavigationView = binding.navView
+        navView.setupWithNavController(navController)
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+
+        binding.drawerButton.setOnClickListener {
+            drawerLayout.openDrawer(Gravity.LEFT)
+        }
+
         bottomSheetDialog = BottomSheetDialog(this)
         bottomSheetDialog.setContentView(R.layout.go_live_bottom_sheet)
 
