@@ -145,6 +145,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 true
             }
             R.id.nav_polls -> {
+                navController.navigate(R.id.action_to_PollsFragment)
+                drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.nav_profile -> {

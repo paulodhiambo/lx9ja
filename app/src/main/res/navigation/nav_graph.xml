@@ -6,6 +6,31 @@
     app:startDestination="@id/FirstFragment">
 
     <fragment
+        android:id="@+id/PollsFragment"
+        android:name="com.loud9ja.loud9ja.ui.polls.PollsFragment"
+        android:label="@string/action_polls"
+        tools:layout="@layout/fragment_polls">
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
+    </fragment>
+
+    <fragment
         android:id="@+id/FirstFragment"
         android:name="com.loud9ja.loud9ja.ui.discusion.DiscussionFragment"
         android:label="@string/action_discussion"
@@ -25,6 +50,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
     </fragment>
 
     <fragment
@@ -47,6 +75,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
 
     </fragment>
 
@@ -71,6 +102,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
     </fragment>
 
     <fragment
@@ -94,6 +128,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
     </fragment>
 
     <fragment
@@ -116,6 +153,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
     </fragment>
 
 </navigation>

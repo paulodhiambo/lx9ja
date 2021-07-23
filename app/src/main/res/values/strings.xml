@@ -74,4 +74,7 @@
     <string name="polls">Polls</string>
     <string name="my_profile">My Profile</string>
     <string name="logout">Logout</string>
+    <string name="create_poll">CREATE POLL</string>
+    <string name="search_by_title_or_person">Search by title or person</string>
+    <string name="action_polls">PollsFragment</string>
 </resources>
