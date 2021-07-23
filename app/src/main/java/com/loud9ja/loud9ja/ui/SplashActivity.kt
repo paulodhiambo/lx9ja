@@ -1,16 +1,16 @@
 package com.loud9ja.loud9ja.ui
 
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivitySpashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     lateinit var binding: ActivitySpashBinding
     override fun onCreate(savedInstanceState: Bundle?) {

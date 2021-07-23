@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityLiveStreamBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LiveStreamActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLiveStreamBinding
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,9 @@ import android.widget.Button
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityGettingStartedBinding
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GettingStartedActivity : AppCompatActivity() {
     lateinit var binding: ActivityGettingStartedBinding
     override fun onCreate(savedInstanceState: Bundle?) {

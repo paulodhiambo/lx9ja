@@ -9,6 +9,7 @@ import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentSosBinding
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -16,6 +17,7 @@ import com.loud9ja.loud9ja.utils.BindingFragment
  * Use the [SosFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class SosFragment : BindingFragment<FragmentSosBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = FragmentSosBinding::inflate

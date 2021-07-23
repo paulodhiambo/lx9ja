@@ -3,10 +3,11 @@
     package="com.loud9ja.loud9ja">
 
     <application
+        android:name=".Loud9ja"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:hardwareAccelerated="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Loud9ja">

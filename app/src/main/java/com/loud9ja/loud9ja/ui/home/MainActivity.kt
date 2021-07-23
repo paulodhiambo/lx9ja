@@ -23,7 +23,9 @@ import com.google.android.material.navigation.NavigationView
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

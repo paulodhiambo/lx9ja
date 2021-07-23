@@ -10,6 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.databinding.FragmentGroupsBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -17,6 +18,7 @@ import com.loud9ja.loud9ja.utils.BindingFragment
  * Use the [GroupsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
     private val trendingGroupsAdapter by lazy {
         TrendingGroupsRecyclerViewAdapter()

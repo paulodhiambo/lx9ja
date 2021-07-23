@@ -11,6 +11,7 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentNewReportBinding
 import com.loud9ja.loud9ja.databinding.FragmentReportBinding
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -18,6 +19,7 @@ import com.loud9ja.loud9ja.utils.BindingFragment
  * Use the [NewReportFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class NewReportFragment : BindingFragment<FragmentNewReportBinding>() {
     val OPEN_DOCUMENT_REQUEST_CODE = 2
     override val bindingInflater: (LayoutInflater) -> ViewBinding

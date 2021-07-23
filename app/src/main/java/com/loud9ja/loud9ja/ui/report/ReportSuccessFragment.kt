@@ -10,6 +10,7 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentReportSuccessBinding
 import com.loud9ja.loud9ja.ui.discusion.DiscussionFragment
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -17,6 +18,7 @@ import com.loud9ja.loud9ja.utils.BindingFragment
  * Use the [ReportSuccessFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class ReportSuccessFragment : BindingFragment<FragmentReportSuccessBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ViewBinding

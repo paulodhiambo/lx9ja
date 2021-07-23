@@ -13,10 +13,12 @@ import com.loud9ja.loud9ja.domain.Trending
 import com.loud9ja.loud9ja.ui.home.RecentRecyclerViewAdapter
 import com.loud9ja.loud9ja.ui.report.ReportDetailFragment
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
     private val trendingAdapter by lazy {
         TrendingRecyclerViewAdapter()

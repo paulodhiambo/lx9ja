@@ -14,11 +14,13 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentReportBinding
 import com.loud9ja.loud9ja.domain.Report
 import com.loud9ja.loud9ja.utils.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+@AndroidEntryPoint
 class ReportFragment : BindingFragment<FragmentReportBinding>() {
     private val reportAdapter by lazy {
         ReportRecyclerViewAdapter()

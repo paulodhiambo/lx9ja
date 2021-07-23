@@ -6,7 +6,9 @@ import android.os.Bundle
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityRegisterBinding
 import com.loud9ja.loud9ja.ui.home.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
