@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.databinding.FragmentGroupsBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
+import com.loud9ja.loud9ja.utils.BindingFragment
 
 
 /**
@@ -15,9 +17,7 @@ import com.loud9ja.loud9ja.domain.TrendingGroups
  * Use the [GroupsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GroupsFragment : Fragment() {
-    private var _binding: FragmentGroupsBinding? = null
-    private val binding get() = _binding!!
+class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
     private val trendingGroupsAdapter by lazy {
         TrendingGroupsRecyclerViewAdapter()
     }
@@ -26,14 +26,8 @@ class GroupsFragment : Fragment() {
         PopularGroupsRecyclerViewAdapter()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentGroupsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override val bindingInflater: (LayoutInflater) -> ViewBinding
+        get() = FragmentGroupsBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,10 +65,5 @@ class GroupsFragment : Fragment() {
         }
 
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

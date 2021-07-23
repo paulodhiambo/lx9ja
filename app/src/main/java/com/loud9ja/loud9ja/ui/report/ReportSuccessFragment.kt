@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentReportSuccessBinding
 import com.loud9ja.loud9ja.ui.discusion.DiscussionFragment
+import com.loud9ja.loud9ja.utils.BindingFragment
 
 
 /**
@@ -15,17 +17,10 @@ import com.loud9ja.loud9ja.ui.discusion.DiscussionFragment
  * Use the [ReportSuccessFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ReportSuccessFragment : Fragment() {
-    private var _binding: FragmentReportSuccessBinding? = null
-    private val binding get() = _binding!!
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentReportSuccessBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class ReportSuccessFragment : BindingFragment<FragmentReportSuccessBinding>() {
+
+    override val bindingInflater: (LayoutInflater) -> ViewBinding
+        get() = FragmentReportSuccessBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
