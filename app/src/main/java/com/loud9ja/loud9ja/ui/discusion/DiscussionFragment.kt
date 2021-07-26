@@ -3,15 +3,12 @@ package com.loud9ja.loud9ja.ui.discusion
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionBinding
 import com.loud9ja.loud9ja.domain.Trending
-import com.loud9ja.loud9ja.ui.home.RecentRecyclerViewAdapter
-import com.loud9ja.loud9ja.ui.report.ReportDetailFragment
 import com.loud9ja.loud9ja.utils.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 

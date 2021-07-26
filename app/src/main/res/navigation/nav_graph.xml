@@ -28,6 +28,37 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DashboardFragment"
+        android:name="com.loud9ja.loud9ja.ui.dashboard.DashboardFragment"
+        android:label="@string/action_dahboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
     </fragment>
 
     <fragment
@@ -53,6 +84,9 @@
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
@@ -78,6 +112,9 @@
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
 
     </fragment>
 
@@ -105,6 +142,9 @@
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
@@ -131,6 +171,9 @@
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
@@ -156,6 +199,9 @@
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
 </navigation>

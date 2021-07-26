@@ -77,4 +77,9 @@
     <string name="create_poll">CREATE POLL</string>
     <string name="search_by_title_or_person">Search by title or person</string>
     <string name="action_polls">PollsFragment</string>
+
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="action_dahboard">dashbaord</string>
 </resources>

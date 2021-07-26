@@ -34,12 +34,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                style="@style/parent"
                 android:id="@+id/textView18"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/roboto_bold"
                 android:text="Isiah Obasi"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Loud9ja">
         <activity android:name=".ui.livestream.LiveStreamActivity" />
         <activity android:name=".ui.authentication.EmailRegistrationActivity" />
-        <activity android:name=".ui.GettingStartedActivity" />
+        <activity android:name=".ui.onboarding.GettingStartedActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

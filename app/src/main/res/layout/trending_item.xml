@@ -12,11 +12,11 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="20dp"
-        app:cardElevation="2dp"
-        app:cardUseCompatPadding="true"
         android:layout_margin="5dp"
-        app:cardCornerRadius="10dp">
+        android:elevation="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="350dp"
@@ -35,14 +35,14 @@
 
             <TextView
                 android:id="@+id/textView18"
+                style="@style/parent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:fontFamily="@font/roboto_bold"
                 android:text="Isiah Obasi"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,9 +96,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_bold"
                 android:text="2023 Presidential Election"
                 android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +106,7 @@
 
             <TextView
                 android:id="@+id/textView21"
+                style="@style/viewParent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

@@ -8,6 +8,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.loud9ja.loud9ja.databinding.ActivitySpashBinding
+import com.loud9ja.loud9ja.ui.onboarding.GettingStartedActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,13 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            startActivity(Intent(this, GettingStartedActivity::class.java))
+            val intent = Intent(this, GettingStartedActivity::class.java)
+            intent.apply {
+                this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
+            finish()
         }, 3000)
 
     }

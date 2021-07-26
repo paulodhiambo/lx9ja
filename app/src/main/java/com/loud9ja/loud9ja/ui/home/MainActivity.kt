@@ -119,6 +119,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.nav_dashboard -> {
+                navController.navigate(R.id.action_to_DashboardFragment)
+                drawerLayout.closeDrawer(GravityCompat.START)
+                true
+            }
             R.id.nav_discussions -> {
                 navController.navigate(R.id.action_to_FirstFragment)
                 drawerLayout.closeDrawer(GravityCompat.START)
