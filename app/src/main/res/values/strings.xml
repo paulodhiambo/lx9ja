@@ -82,4 +82,6 @@
     <string name="login_password_hint">Password</string>
     <string name="dashboard">Dashboard</string>
     <string name="action_dahboard">dashbaord</string>
+    <string name="about_us">About Us</string>
+    <string name="themes_key">APP_THEME</string>
 </resources>

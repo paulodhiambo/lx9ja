@@ -11,10 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Loud9ja">
+        <activity
+            android:name=".ui.about.AboutUsActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.home.MainActivity" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:parentActivityName=".ui.home.MainActivity" />
         <activity android:name=".ui.livestream.LiveStreamActivity" />
         <activity android:name=".ui.authentication.EmailRegistrationActivity" />
         <activity android:name=".ui.onboarding.GettingStartedActivity" />
-        <activity android:name=".ui.SplashActivity">
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

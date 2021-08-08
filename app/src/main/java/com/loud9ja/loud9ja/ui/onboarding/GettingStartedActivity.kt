@@ -131,8 +131,8 @@ class GettingStartedActivity : AppCompatActivity() {
         itemEatTogether.description =
             "Aggression from Law Enforcement? Bribery in progress or just plain  civil disobedience? report now on Loud9ja and let your voice be heard."
         itemEatTogether.image = R.drawable.onboarding_announce
-        onBoardingItems.add(itemFastFood)
         onBoardingItems.add(itemPayOnline)
+        onBoardingItems.add(itemFastFood)
         onBoardingItems.add(itemEatTogether)
         onboardingAdapter =
             OnboardingAdapter(onBoardingItems)

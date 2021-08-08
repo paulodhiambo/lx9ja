@@ -33,10 +33,10 @@
 
             <TextView
                 android:id="@+id/textView10"
+                style="@style/viewParent.headerText.NoMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/roboto_bold"
                 android:text="2023 Presidential Election."
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView11"

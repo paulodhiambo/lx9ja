@@ -1,5 +1,6 @@
 package com.loud9ja.loud9ja.utils
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ abstract class BaseRecyclerViewAdapter<T : Any, VB : ViewDataBinding>
     : RecyclerView.Adapter<BaseRecyclerViewAdapter.Companion.BaseViewHolder<VB>>() {
     var items = mutableListOf<T>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addItems(items: List<T>) {
         this.items = items as MutableList<T>
         notifyDataSetChanged()

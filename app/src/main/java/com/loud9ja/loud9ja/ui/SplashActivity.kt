@@ -1,8 +1,6 @@
 package com.loud9ja.loud9ja.ui
 
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -18,18 +16,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySpashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        when (isDarkThemeOn()) {
-            false -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                delegate.applyDayNight()
-            }
-
-            true -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                delegate.applyDayNight()
-            }
-        }
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         Handler().postDelayed({
             val intent = Intent(this, GettingStartedActivity::class.java)
@@ -41,10 +28,5 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }, 3000)
 
-    }
-
-    private fun isDarkThemeOn(): Boolean {
-        return resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
     }
 }

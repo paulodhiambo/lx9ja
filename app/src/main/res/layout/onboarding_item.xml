@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textTitle"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/onboarding_text"
         android:textAllCaps="true"
         android:fontFamily="@font/product_sans_bold"
         android:textSize="20sp"

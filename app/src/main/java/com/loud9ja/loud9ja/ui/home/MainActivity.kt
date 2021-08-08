@@ -4,34 +4,38 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
+import android.view.KeyEvent
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
+import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
-import com.loud9ja.loud9ja.ui.discusion.DiscussionDetailFragment
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
+import com.loud9ja.loud9ja.ui.profile.ProfileActivity
+import com.loud9ja.loud9ja.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.system.exitProcess
+
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -51,6 +55,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView = binding.navView
         navView.setupWithNavController(navController)
         drawerLayout = binding.drawerLayout
+
+        val theme = PreferenceHelper(this).getTheme()
+        Log.d("Theme=======>", "onCreate: $theme")
+
+        val navHeader = navView.getHeaderView(0)
+        val themeSwitch = navHeader.findViewById<SwitchMaterial>(R.id.toggle_theme)
+
+        themeSwitch.isChecked = theme != 1
+
+        if (theme == 0) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        themeSwitch.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                true -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    PreferenceHelper(this).saveTheme(1)
+                    Log.d("Theme Change=======>", "onCreate: 1")
+                }
+                false -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    PreferenceHelper(this).saveTheme(0)
+                    Log.d("Theme Change=======>", "onCreate: 0")
+                }
+            }
+        }
 
 
         navView.setNavigationItemSelectedListener(this)
@@ -85,6 +118,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.root.findViewById<FloatingActionButton>(R.id.live_fab).setOnClickListener {
             showBottomDialog()
         }
+
         cancelLiveSession()
         proceedLiveSession()
 
@@ -155,6 +189,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 true
             }
             R.id.nav_profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
+                drawerLayout.closeDrawer(GravityCompat.START)
+                true
+            }
+            R.id.nav_about_us -> {
+                startActivity(Intent(this, AboutUsActivity::class.java))
+                drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.nav_logout -> {
@@ -169,5 +210,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             else -> false
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun exitByBackKey() {
+        val alertBox = AlertDialog.Builder(this)
+            .setMessage("Do you want to exit application?")
+            .setPositiveButton("Yes") { _, _ ->
+                finishAffinity()
+                exitProcess(0)
+            }
+            .setNegativeButton(
+                "No"
+            ) // do something when the button is clicked
+            { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 }

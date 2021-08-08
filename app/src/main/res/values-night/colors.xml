@@ -4,4 +4,5 @@
     <color name="txtr">#000</color>
     <color name="drawer">#fff</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="onboarding_text">#ffffff</color>
 </resources>
