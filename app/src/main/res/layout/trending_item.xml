@@ -84,6 +84,7 @@
                 android:backgroundTint="@color/googleButtonColor"
                 android:padding="5dp"
                 android:text="READ"
+                android:visibility="gone"
                 android:textColor="@color/drawer_button_color"
                 android:textSize="10sp"
                 app:cornerRadius="15dp"

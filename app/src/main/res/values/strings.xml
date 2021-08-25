@@ -84,4 +84,6 @@
     <string name="action_dahboard">dashbaord</string>
     <string name="about_us">About Us</string>
     <string name="themes_key">APP_THEME</string>
+    <string name="action_post">post</string>
+    <string name="action_new_group">new group</string>
 </resources>

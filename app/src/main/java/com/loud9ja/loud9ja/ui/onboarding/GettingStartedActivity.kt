@@ -129,7 +129,7 @@ class GettingStartedActivity : AppCompatActivity() {
         val itemEatTogether = OnBoardingItem()
         itemEatTogether.title = "Report"
         itemEatTogether.description =
-            "Aggression from Law Enforcement? Bribery in progress or just plain  civil disobedience? report now on Loud9ja and let your voice be heard."
+            "Aggression from Law Enforcement? Bribery in progress or just plain  civil disobedience? Report now on Loud9ja and let your voice be heard."
         itemEatTogether.image = R.drawable.onboarding_announce
         onBoardingItems.add(itemPayOnline)
         onBoardingItems.add(itemFastFood)

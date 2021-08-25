@@ -74,5 +74,13 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
                 fragmentTransaction?.commit()
             }
         }
+
+        binding.btnNewPost.setOnClickListener {
+            val fragment = PostFragment()
+            val fragmentManager = fragmentManager
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+            fragmentTransaction?.commit()
+        }
     }
 }

@@ -80,6 +80,7 @@
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="5dp"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/googleButtonColor"
                 android:padding="5dp"

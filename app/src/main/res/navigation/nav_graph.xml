@@ -6,10 +6,13 @@
     app:startDestination="@id/FirstFragment">
 
     <fragment
-        android:id="@+id/PollsFragment"
-        android:name="com.loud9ja.loud9ja.ui.polls.PollsFragment"
-        android:label="@string/action_polls"
-        tools:layout="@layout/fragment_polls">
+        android:id="@+id/PostFragment"
+        android:name="com.loud9ja.loud9ja.ui.discusion.PostFragment"
+        android:label="@string/action_post"
+        tools:layout="@layout/fragment_post">
+        <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
         <action
             android:id="@+id/action_to_PollsFragment"
             app:destination="@id/PollsFragment" />
@@ -31,6 +34,43 @@
         <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PollsFragment"
+        android:name="com.loud9ja.loud9ja.ui.polls.PollsFragment"
+        android:label="@string/action_polls"
+        tools:layout="@layout/fragment_polls">
+        <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
     </fragment>
 
     <fragment
@@ -39,6 +79,9 @@
         android:label="@string/action_dahboard"
         tools:layout="@layout/fragment_dashboard">
         <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
         <action
@@ -59,6 +102,9 @@
         <action
             android:id="@+id/action_to_ReportDetail"
             app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
     </fragment>
 
     <fragment
@@ -67,6 +113,9 @@
         android:label="@string/action_discussion"
         tools:layout="@layout/fragment_discussion">
         <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
             android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />
         <action
@@ -87,6 +136,9 @@
         <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
     </fragment>
 
     <fragment
@@ -95,6 +147,9 @@
         android:label="@string/action_report_detail"
         tools:layout="@layout/fragment_report_detail">
         <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
             android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />
         <action
@@ -115,6 +170,9 @@
         <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
 
     </fragment>
 
@@ -125,6 +183,9 @@
         android:label="@string/action_report"
         tools:layout="@layout/fragment_report">
         <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
             android:id="@+id/action_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
@@ -145,6 +206,9 @@
         <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
     </fragment>
 
     <fragment
@@ -153,6 +217,9 @@
         android:label="@string/action_groups"
         tools:layout="@layout/fragment_groups">
         <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
             android:id="@+id/action_to_GroupFragment"
             app:destination="@id/GroupFragment" />
 
@@ -174,6 +241,9 @@
         <action
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
     </fragment>
 
     <fragment
@@ -181,6 +251,46 @@
         android:name="com.loud9ja.loud9ja.ui.home.SosFragment"
         android:label="@string/action_sos"
         tools:layout="@layout/fragment_sos">
+        <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/NewGroupFragment"
+        android:name="com.loud9ja.loud9ja.ui.group.NewGroupFragment"
+        android:label="@string/action_new_group"
+        tools:layout="@layout/fragment_new_group">
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
+        <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
         <action
             android:id="@+id/action_to_SOSFragment"
             app:destination="@id/SOSFragment" />

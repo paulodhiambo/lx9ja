@@ -76,14 +76,14 @@
         <item name="android:textColor">@color/darkTextColor</item>
     </style>
 
-    <style name="parent">
+    <style name="parent" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="loginButton" parent="viewParent">

@@ -186,14 +186,14 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/live_fab"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/live_stream"
         android:src="@drawable/ic_live"
         android:tint="@android:color/transparent"
         app:backgroundTint="@android:color/transparent"
-        app:fabCustomSize="80dp"
+        app:fabCustomSize="50dp"
         app:fabSize="auto"
         app:layout_anchor="@id/bottom_bar"
         app:maxImageSize="80dp"

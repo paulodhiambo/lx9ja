@@ -1,12 +1,12 @@
 package com.loud9ja.loud9ja.ui.group
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
+import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentGroupsBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
 import com.loud9ja.loud9ja.utils.BindingFragment
@@ -64,6 +64,14 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
                 )
             )
 
+        }
+
+        binding.btnNewGroup.setOnClickListener {
+            val fragment = NewGroupFragment()
+            val fragmentManager = fragmentManager
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+            fragmentTransaction?.commit()
         }
 
 

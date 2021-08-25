@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/login_bk_color"
     android:focusableInTouchMode="true"
     android:gravity="center"
     tools:context="com.loud9ja.loud9ja.ui.authentication.LoginActivity">
@@ -34,12 +33,13 @@
                     android:layout_centerVertical="true"
                     android:text="Already \nhave an \nAccount?" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_register_hero" />
+                    android:src="@drawable/round"
+                    app:civ_border_width="0.5dp" />
             </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -150,20 +150,12 @@
         </LinearLayout>
     </ScrollView>
 
-    <View
-        android:layout_width="11dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_side_bg" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="11dp"
         android:layout_marginBottom="30dp"
         android:onClick="onLoginClick"
         android:src="@drawable/ic_add_img" />

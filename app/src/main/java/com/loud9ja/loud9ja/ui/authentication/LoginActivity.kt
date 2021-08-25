@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityLoginBinding
 import com.loud9ja.loud9ja.ui.home.MainActivity
@@ -21,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
         setContentView(binding.root)
+        changeStatusBarColor()
     }
 
     fun onLoginClick(view: View?) {
@@ -36,5 +39,13 @@ class LoginActivity : AppCompatActivity() {
         }
         startActivity(intent)
         finish()
+    }
+    private fun changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            //            window.setStatusBarColor(Color.TRANSPARENT);
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
+        }
     }
 }

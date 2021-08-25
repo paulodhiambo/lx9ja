@@ -27,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             //            window.setStatusBarColor(Color.TRANSPARENT);
-            window.statusBarColor = resources.getColor(R.color.register_bk_color)
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
         }
     }
 
