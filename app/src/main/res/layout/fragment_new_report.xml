@@ -23,68 +23,65 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout12"
-        style="@style/TextInputLayoutStyle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/state"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/stateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-            android:drawableTint="@color/drawer_button_color"
-            android:editable="false"
-            android:focusable="false"
-            android:hint="State" />
+            android:clickable="true"
+            tools:ignore="KeyboardInaccessibleWidget" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout13"
-        style="@style/TextInputLayoutStyle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/lga"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/lgaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-            android:drawableTint="@color/drawer_button_color"
-            android:editable="false"
-            android:focusable="false"
-            android:hint="LGA" />
+            android:clickable="true"
+            tools:ignore="KeyboardInaccessibleWidget" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout14"
-        style="@style/TextInputLayoutStyle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/categoryTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-            android:drawableTint="@color/drawer_button_color"
-            android:editable="false"
-            android:focusable="false"
-            android:hint="Select Category" />
+            android:clickable="true"
+            tools:ignore="KeyboardInaccessibleWidget" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

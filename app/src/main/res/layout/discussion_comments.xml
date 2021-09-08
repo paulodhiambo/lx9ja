@@ -132,7 +132,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView8"
+                                android:id="@+id/txt_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"
@@ -146,7 +146,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView9"
+                                android:id="@+id/txt_location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"

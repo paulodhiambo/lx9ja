@@ -12,8 +12,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.button.MaterialButton
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityGettingStartedBinding
-import com.loud9ja.loud9ja.ui.authentication.LoginActivity
-import com.loud9ja.loud9ja.ui.authentication.RegisterActivity
+import com.loud9ja.loud9ja.ui.authentication.LandingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -30,7 +29,6 @@ class GettingStartedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGettingStartedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         layoutOnboardingIndicator = binding.layoutOnboardingIndicators
         buttonOnboardingAction = binding.buttonOnBoardingAction
 
@@ -48,12 +46,11 @@ class GettingStartedActivity : AppCompatActivity() {
                 setCurrentOnboardingIndicators(position)
             }
         })
-
+        val intent = Intent(applicationContext, LandingActivity::class.java)
         binding.buttonOnBoardingAction.setOnClickListener {
             if (onboardingViewPager.currentItem + 1 < onboardingAdapter!!.itemCount) {
                 onboardingViewPager.currentItem = onboardingViewPager.currentItem + 1
             } else {
-                val intent = Intent(applicationContext, RegisterActivity::class.java)
                 intent.apply {
                     this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK

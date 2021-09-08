@@ -19,6 +19,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -26,6 +27,7 @@
                 android:src="@drawable/p" />
 
             <TextView
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -67,6 +69,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/profile_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
@@ -159,6 +162,7 @@
                     android:src="@drawable/ic_baseline_mail_outline_24" />
 
                 <TextView
+                    android:id="@+id/profile_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -181,8 +185,9 @@
                     android:src="@drawable/ic_baseline_call_24" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/profile_phone"
 
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"

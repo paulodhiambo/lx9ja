@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.MenuItem
+import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -17,26 +19,29 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.firebase.auth.FirebaseAuth
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
 import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
 import com.loud9ja.loud9ja.ui.profile.ProfileActivity
+import com.loud9ja.loud9ja.utils.DataState
 import com.loud9ja.loud9ja.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.system.exitProcess
 
 
 @AndroidEntryPoint
 open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomAppBar: BottomAppBar
@@ -44,11 +49,14 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var navController: NavController
+    private lateinit var mAuth: FirebaseAuth
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mAuth = FirebaseAuth.getInstance()
         navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
@@ -61,6 +69,14 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         val navHeader = navView.getHeaderView(0)
         val themeSwitch = navHeader.findViewById<SwitchMaterial>(R.id.toggle_theme)
+        val profile = navHeader.findViewById<CircleImageView>(R.id.profile_imag)
+        val name = navHeader.findViewById<TextView>(R.id.txt_name)
+        val location = navHeader.findViewById<TextView>(R.id.txt_location)
+        name.text = mAuth.currentUser?.displayName
+        Glide.with(this)
+            .load(mAuth.currentUser?.photoUrl)
+            .placeholder(R.drawable.user)
+            .into(profile)
 
         themeSwitch.isChecked = theme != 1
 
@@ -121,10 +137,34 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         cancelLiveSession()
         proceedLiveSession()
+        homeViewModel.getUserProfile()
+        observeProfileDataState(profile, name, location)
 
     }
 
     //
+    private fun observeProfileDataState(
+        profile: CircleImageView,
+        name: TextView,
+        location: TextView
+    ) {
+        homeViewModel.profileDataState.observe(this, { data ->
+            when (data) {
+                is DataState.Success -> {
+                    Glide.with(this)
+                        .load(data.data.profilePicture)
+                        .placeholder(R.drawable.user)
+                        .into(profile)
+                    name.text = data.data.name
+                    location.text = "${data.data.city}"
+                }
+                is DataState.Loading -> {
+                }
+                is DataState.Error -> {
+                }
+            }
+        })
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -199,6 +239,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 true
             }
             R.id.nav_logout -> {
+                mAuth.signOut()
                 drawerLayout.closeDrawer(GravityCompat.START)
                 val intent = Intent(this, LoginActivity::class.java)
                     .apply {
@@ -232,5 +273,19 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             ) // do something when the button is clicked
             { dialog, _ -> dialog.dismiss() }
             .show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user = mAuth.currentUser
+        if (user == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.apply {
+                this.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                this.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            }
+            startActivity(intent)
+            finish()
+        }
     }
 }

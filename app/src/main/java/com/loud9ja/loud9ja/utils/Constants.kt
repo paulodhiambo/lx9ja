@@ -1,5 +1,5 @@
 package com.loud9ja.loud9ja.utils
 
 object Constants {
-    val BASE_URL = ""
+    val BASE_URL = "https://backend.loud9ja.com/api/"
 }

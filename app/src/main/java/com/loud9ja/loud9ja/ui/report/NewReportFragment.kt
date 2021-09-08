@@ -2,26 +2,27 @@ package com.loud9ja.loud9ja.ui.report
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.google.gson.GsonBuilder
 import com.loud9ja.loud9ja.R
+import com.loud9ja.loud9ja.data.State
 import com.loud9ja.loud9ja.databinding.FragmentNewReportBinding
-import com.loud9ja.loud9ja.databinding.FragmentReportBinding
 import com.loud9ja.loud9ja.utils.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.IOException
+import java.io.InputStream
+import java.nio.charset.StandardCharsets
+import java.util.*
+import kotlin.collections.ArrayList
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewReportFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 @AndroidEntryPoint
 class NewReportFragment : BindingFragment<FragmentNewReportBinding>() {
     val OPEN_DOCUMENT_REQUEST_CODE = 2
+    private val statesList = ArrayList<String>()
+    private val lgaList = ArrayList<String>()
+
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = FragmentNewReportBinding::inflate
 
@@ -49,4 +50,29 @@ class NewReportFragment : BindingFragment<FragmentNewReportBinding>() {
         startActivityForResult(openDocumentIntent, OPEN_DOCUMENT_REQUEST_CODE)
     }
 
+    private fun loadJSONFromAsset(): String? {
+        val json: String = try {
+            val `is`: InputStream =
+                Objects.requireNonNull(requireActivity()).assets.open("cars.json")
+            val size: Int = `is`.available()
+            val buffer = ByteArray(size)
+            `is`.read(buffer)
+            `is`.close()
+            String(buffer, StandardCharsets.UTF_8)
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+            return null
+        }
+        return json
+    }
+
+    fun jsonToPojo(): Array<State>? {
+        val gsonBuilder = GsonBuilder()
+        val gson = gsonBuilder.create()
+        val states = gson.fromJson(loadJSONFromAsset(), Array<State>::class.java)
+        for (state in states) {
+            statesList.add(state.state)
+        }
+        return states
+    }
 }

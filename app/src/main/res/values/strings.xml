@@ -86,4 +86,20 @@
     <string name="themes_key">APP_THEME</string>
     <string name="action_post">post</string>
     <string name="action_new_group">new group</string>
+
+    <string name="facebook_app_id">395329627812796</string>
+    <string name="fb_login_protocol_scheme">fb395329627812796</string>
+    <string name="default_web_client">610685200798-qniohar2sn55qgkgsfdk2o5gq2chd4nk.apps.googleusercontent.com</string>
+
+    <string name="granted_permissions">Granted: %s</string>
+    <string name="permanently_denied_permissions">Permanently denied: %s</string>
+    <string name="permissions_required">Permissions required</string>
+    <string name="rationale_permissions">Rationale: %s</string>
+    <string name="request_again">Request again</string>
+    <string name="opned_key">is_first_start</string>
+    <string name="state">State</string>
+    <string name="lga">LGA</string>
+    <string name="category">Category</string>
+
+
 </resources>

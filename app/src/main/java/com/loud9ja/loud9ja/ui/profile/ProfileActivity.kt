@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -14,15 +15,18 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
     private var AUTOCOMPLETE_REQUEST_CODE = 1
     private var TAG = "ProfileActivity"
     private lateinit var dialog: Dialog
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,7 @@ class ProfileActivity : AppCompatActivity() {
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
+        mAuth = FirebaseAuth.getInstance()
 
         val apiKey = "AIzaSyBr12zGXHf-2HjBjGhg8PUlv5ZawbNRvSE"
         if (!Places.isInitialized()) {
@@ -52,6 +57,12 @@ class ProfileActivity : AppCompatActivity() {
         address.setText(locationText)
         val saveButton = dialog.findViewById(R.id.save_btn) as Button
         val cancelButton = dialog.findViewById(R.id.cancel_btn) as Button
+        Glide.with(this)
+            .load(mAuth.currentUser?.photoUrl)
+            .into(binding.profileImage)
+        binding.profileName.text = mAuth.currentUser?.displayName
+        binding.profileEmail.text = mAuth.currentUser?.email
+        binding.profilePhone.text = mAuth.currentUser?.phoneNumber
 
         address.setOnClickListener {
             onPlaceSearched()

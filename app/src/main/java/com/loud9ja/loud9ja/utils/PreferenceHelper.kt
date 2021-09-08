@@ -16,11 +16,18 @@ class PreferenceHelper(val activity: Activity) {
     }
 
     fun getTheme(): Int {
-        Log.d(
-            "Them get========>",
-            "getTheme: " + sharedPref.getInt(activity.resources.getString(R.string.themes_key), 1)
-        )
         return sharedPref.getInt(activity.resources.getString(R.string.themes_key), 1)
+    }
+
+    fun saveFlow(opened: Int) {
+        with(sharedPref.edit()) {
+            putInt(activity.resources.getString(R.string.opned_key), opened)
+            apply()
+        }
+    }
+
+    fun getFlow(): Int {
+        return sharedPref.getInt(activity.resources.getString(R.string.opned_key), 1)
     }
 
 }

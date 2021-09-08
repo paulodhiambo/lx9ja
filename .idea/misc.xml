@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/round.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/activity_getting_started.xml" value="0.2463768115942029" />
+        <entry key="app/src/main/res/layout/activity_landing.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.24682971014492755" />
@@ -26,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_discussion_detail.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_new_group.xml" value="0.26313405797101447" />
+        <entry key="app/src/main/res/layout/fragment_new_report.xml" value="0.3111413043478261" />
         <entry key="app/src/main/res/layout/fragment_polls.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.26313405797101447" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.28940217391304346" />
@@ -35,14 +37,16 @@
         <entry key="app/src/main/res/layout/police_bottom_sheet_dialog.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/popular_groups_item.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/layout/recent_item.xml" value="0.24365942028985507" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/layout/trending_dashboard_discussions.xml" value="0.2463768115942029" />
         <entry key="app/src/main/res/layout/trending_group_item.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/layout/trending_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.3302083333333333" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.23333333333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
