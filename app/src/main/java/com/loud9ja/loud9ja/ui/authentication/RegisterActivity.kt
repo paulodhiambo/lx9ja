@@ -3,7 +3,9 @@ package com.loud9ja.loud9ja.ui.authentication
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.PatternMatcher
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -34,11 +36,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.cirRegisterButton.setOnClickListener {
-            if (validateInput()) {
-                //authViewModel.register(registerUserData(), this)
+            if (Patterns.EMAIL_ADDRESS.matcher(binding.editTextEmail.text.toString().trim())
+                    .matches() && binding.editTextPassword.text.toString().trim().length >= 8
+            ) {
                 authViewModel.registerUser(registerUserData())
                 observeRegistration()
             }
+
         }
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, gender)
         binding.genderTextView.setAdapter(adapter)
@@ -51,9 +55,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun observeRegistration() {
         val loadingBar: ProgressDialog = ProgressDialog(this)
-        loadingBar.setTitle("Please wait")
+        loadingBar.setTitle("Please wait...")
         loadingBar.show()
-        authViewModel.registrationResponse.observe(this, { data ->
+        authViewModel.registrationResponse.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
                     mAuth.createUserWithEmailAndPassword(
@@ -73,17 +77,11 @@ class RegisterActivity : AppCompatActivity() {
                 is DataState.Loading -> {
                 }
                 is DataState.Error -> {
-                    Log.e(TAG, "observeRegistration: ", data.exception)
+                    //  Log.e(TAG, "observeRegistration: ", data.exception)
                     loadingBar.hide()
-                    Toast.makeText(
-                        this,
-                        "An error occurred ${data.exception.message}",
-                        Toast.LENGTH_LONG
-                    )
-                        .show()
                 }
             }
-        })
+        }
     }
 
     private fun onSignUpSuccess() {

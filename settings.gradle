@@ -1,2 +1,3 @@
 rootProject.name = "Loud9ja"
 include ':app'
+include ':streaming'

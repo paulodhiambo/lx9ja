@@ -2,8 +2,8 @@ package com.loud9ja.loud9ja.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.loud9ja.loud9ja.network.api.response.ProfileResponse
-import com.loud9ja.loud9ja.repository.ProfileRepository
+import com.loud9ja.loud9ja.domain.network.api.response.ProfileResponse
+import com.loud9ja.loud9ja.domain.repository.ProfileRepository
 import com.loud9ja.loud9ja.utils.BaseViewModel
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,13 +19,13 @@ class HomeViewModel @Inject constructor(private val profileRepository: ProfileRe
         get() = _profileDataState
 
     fun getUserProfile() {
-        compositeDisposable.add(
-            profileRepository.getUserProfile()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { data -> _profileDataState.value = DataState.Success(data) },
-                    { e -> DataState.Error(e as Exception) })
-        )
+//        compositeDisposable.add(
+//            profileRepository.getUserProfile()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                    { data -> _profileDataState.value = DataState.Success(data) },
+//                    { e -> DataState.Error(e as Exception) })
+//        )
     }
 }

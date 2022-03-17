@@ -1,0 +1,2535 @@
+{
+  "info": {
+    "_postman_id": "e0bce2e8-d9e9-4ec9-a6ae-2119004245a1",
+    "name": "LOUD9JA V2",
+    "description": "This is the official Loud9ja APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"USER_TOKEN\", jsonData.token);"
+                ]
+              }
+            }
+          ],
+          "id": "d86d599a-d8e5-417e-9fc2-b9e977745965",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"thenjagua@gmail.com\",\n    \"password\": \"qwertyui\"\n}"
+            },
+            "url": "{{baseUrl}}api/v2/auth/login"
+          },
+          "response": [
+            {
+              "id": "b71bbf5a-3f83-4853-b235-345c97a10549",
+              "name": "Login user",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"thenjagua@gmail.com\",\n    \"password\": \"qwertyui\"\n}"
+                },
+                "url": "http://{{baseUrl}}/api/v2/auth/login"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 24 Jan 2022 21:13:32 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "58"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"We're glad to see you back on Loud9ja,Diddy\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": {\n        \"id\": 1,\n        \"provider_name\": null,\n        \"provider_id\": null,\n        \"name\": \"Diddy\",\n        \"email\": \"thenjagua@gmail.com\",\n        \"role\": \"CUSTOMER\",\n        \"phone\": null,\n        \"gender\": \"MALE\",\n        \"age\": 59,\n        \"profile_picture\": null,\n        \"otp\": null,\n        \"otp_sent_on\": null,\n        \"country\": null,\n        \"state\": null,\n        \"city\": null,\n        \"lga\": null,\n        \"platform\": \"LOUD\",\n        \"deleted_at\": null,\n        \"created_at\": \"2022-01-24T21:10:16.000000Z\",\n        \"updated_at\": \"2022-01-24T21:10:16.000000Z\"\n    },\n    \"meta\": \"valid\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGYxOWU5NWQ1ZmU2NDBmZGUxZGEyMTVkNTY2ZjNmODViYWM5OWY2YjU5ZDVhMWNmYjNjYzQ5ZmY4YmEwZTUwNmYwNDVkMzVkZTQzNzA4MjAiLCJpYXQiOjE2NDMwNTg4MTIuMTM2MzI2LCJuYmYiOjE2NDMwNTg4MTIuMTM2MzI5LCJleHAiOjE2NzQ1OTQ4MTIuMTMyMzY5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bmSgTxoiRgNatxSweuus6L9fSxt6mB8qX141XbBL5AEBByLAVyviuWDcLpgJlq6kh5D_90tBbffYIkD6rmOIYlNWQOhcD-TJTPqdEuSmEEbyNLqj9gfgonoatL5jkQaVpkNI61xtTl7LpVjdxPUf2Ny15a8_YLCWIbC5599fabzbK5LV_wh8b_te1FaLAf3rjgOfQj3lQQCJYSZNoxW2r_aNLw9ZVHZATQcEzM7fQY83y2GL42N5OppAz5FiGizsyoef6dDN5jxWJtFBW5wBj47aIO2i-QsuroG2QyklJTJfU922NiRdXgFuM9X70tJTo-1XzjBzIUYIocaJkn5SgiGmSug7Qs8Shk44qHVpXk4c73NUe1TlQsYsFrA47FlzHc-OpP4RzfHglLDDXzg1mYtYd3ruoZsDOaD4OXXLeuwsxG0TgkNXE26dMePKX_Qga7iug7Ct1lpw9YtZlkVlWsGlJ49rAT8KLmPkm4756Ih7kMjULdtEEX7Rfg-jIv8gJnAf-Qp1QyWfLAgVkpR2iqUFRGX3UCuuBqPQcl4-Nbu2OhEcfI76q5Qw25BZXVcgbm2dc4GNcUlEQ3f2wsv9Tyio64EOEd3R83jR0U0HontTDsflINT_CZq3PB5IYjX8b3DLHGL6Fy15pB8hWRcRP71jK5h6jdd13hgw4Wwz5iM\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create new User",
+          "id": "055c4958-b416-4d1b-9d51-c8067dacc746",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Diddy\",\n    \"email\": \"thenjagua@gmail.com\",\n    \"password_confirmation\": \"qwertyui\",\n    \"password\": \"qwertyui\",\n    \"gender\": \"male\",\n    \"platform\":\"LOUD\",\n    \"age\": 59\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://{{baseUrl}}/api/v2/auth/register",
+              "protocol": "http",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "auth",
+                "register"
+              ],
+              "query": [
+                {
+                  "key": "gg",
+                  "value": "hh",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97e12f1a-1af1-45a1-9c39-f1f9e7202913",
+              "name": "Create new User",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Diddy\",\n    \"email\": \"thenjagua@gmail.com\",\n    \"password_confirmation\": \"qwertyui\",\n    \"password\": \"qwertyui\",\n    \"gender\": \"male\",\n    \"platform\":\"LOUD\",\n    \"age\": 59\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{baseUrl}}/api/v2/auth/register",
+                  "protocol": "http",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v2",
+                    "auth",
+                    "register"
+                  ],
+                  "query": [
+                    {
+                      "key": "gg",
+                      "value": "hh",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 24 Jan 2022 21:10:20 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "58"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully registered on Loud9ja!\",\n    \"data\": {\n        \"name\": \"Diddy\",\n        \"email\": \"thenjagua@gmail.com\",\n        \"role\": \"CUSTOMER\",\n        \"gender\": \"male\",\n        \"age\": 59,\n        \"platform\": \"LOUD\",\n        \"updated_at\": \"2022-01-24T21:10:16.000000Z\",\n        \"created_at\": \"2022-01-24T21:10:16.000000Z\",\n        \"id\": 1\n    },\n    \"meta\": \"valid\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "User Forgot password",
+          "id": "29076b7c-9f0b-44f0-9699-0b8b07bc5ed4",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"thenjagua@gmail.com\"}"
+            },
+            "url": "http://{{baseUrl}}/api/v2/auth/auth/forgotPassword"
+          },
+          "response": [
+            {
+              "id": "9b3c6667-0815-47ac-803f-3f2d26e36cbd",
+              "name": "User Forgot password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"email\":\"thenjagua@gmail.com\"}"
+                },
+                "url": "http://{{baseUrl}}/api/v2/auth/auth/forgotPassword"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 24 Jan 2022 21:14:25 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "59"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Your OTP has been successfully sent to your email\",\n    \"data\": {\n        \"id\": 1,\n        \"provider_name\": null,\n        \"provider_id\": null,\n        \"name\": \"Diddy\",\n        \"email\": \"thenjagua@gmail.com\",\n        \"role\": \"CUSTOMER\",\n        \"phone\": null,\n        \"gender\": \"MALE\",\n        \"age\": 59,\n        \"profile_picture\": null,\n        \"otp\": 1126,\n        \"otp_sent_on\": \"2022-01-24 09:14:25\",\n        \"country\": null,\n        \"state\": null,\n        \"city\": null,\n        \"lga\": null,\n        \"platform\": \"LOUD\",\n        \"deleted_at\": null,\n        \"created_at\": \"2022-01-24T21:10:16.000000Z\",\n        \"updated_at\": \"2022-01-24T21:14:25.000000Z\"\n    },\n    \"errors\": [\n        \"\"\n    ],\n    \"meta\": \"password OTP sent\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Password",
+          "id": "429e80b3-64c6-4404-8d53-8ba1b8c67285",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"1126\",\n    \"email\": \"thenjagua@gmail.com\",\n    \"password\": \"qwertyui\",\n    \"password_confirmation\":\"qwertyui\"\n}"
+            },
+            "url": "http://{{baseUrl}}/api/v2/auth/auth/resetPassword"
+          },
+          "response": [
+            {
+              "id": "8dcd5ae5-d25a-4e2c-8308-2fb7fab9d84a",
+              "name": "Reset Password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"otp\": \"1126\",\n    \"email\": \"thenjagua@gmail.com\",\n    \"password\": \"qwertyui\",\n    \"password_confirmation\":\"qwertyui\"\n}"
+                },
+                "url": "http://{{baseUrl}}/api/v2/auth/auth/resetPassword"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 24 Jan 2022 21:19:19 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "60"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully updated your password\",\n    \"data\": [\n        \"\"\n    ],\n    \"errors\": [\n        \"\"\n    ],\n    \"meta\": \"password updated\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Social authentications",
+          "id": "164a509e-49a8-4837-8a70-4ff5550e4121",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"access_token\":\"est\"}"
+            },
+            "url": "http://{{baseUrl}}/api/v2/auth/social/login"
+          },
+          "response": []
+        }
+      ],
+      "id": "d1a018cd-6681-48b7-8fc6-c6707087076f"
+    },
+    {
+      "name": "Endpoints",
+      "item": [
+        {
+          "name": "Display a listing of the resource.",
+          "id": "35de0d20-6631-440e-9bad-ba6e2a37918f",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/group/search"
+          },
+          "response": [
+            {
+              "id": "94cbcb77-7cf2-43f6-8cb2-39cef68ce5a0",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/group/search"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Store a newly created resource in storage.",
+          "id": "7b79ca5b-3b4a-483a-917e-a29241f1dc4e",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"from\":\"enim\",\"email\":\"vbepfxqoyvvkiilsellixsochqogmutxqpurqrpmyyzrfyuvp\",\"subject\":\"pmicyizpesessfpcdwajdialezanaqachbpctxmotezhmisozhxriaknchbhbnfiaxsokioiwewsncexjertzaiyneosuibh\"}"
+            },
+            "url": "http://{{baseUrl}}/api/v2/contacts"
+          },
+          "response": []
+        },
+        {
+          "name": "api/v2/groups/list",
+          "id": "71841718-1c59-4716-9c3c-05cd74429099",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://{{baseUrl}}/api/v2/groups/list"
+          },
+          "response": [
+            {
+              "id": "3065579b-94b0-4d5b-9100-8eef17b6443a",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://{{baseUrl}}/api/v2/groups/list"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Display the specified resource.",
+          "id": "37b6418f-28c6-4b02-a34a-4ad39ae3a3e9",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://{{baseUrl}}/api/v2/groups/list/:id",
+              "protocol": "http",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "groups",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "id": "c891d5d6-ef25-406c-a7a5-fa6ea7c56f16",
+                  "key": "id",
+                  "value": "sed",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b5216d71-217f-4d91-bb38-b455f94a4a27",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "http://{{baseUrl}}/api/v2/groups/list/:id",
+                  "protocol": "http",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v2",
+                    "groups",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c891d5d6-ef25-406c-a7a5-fa6ea7c56f16",
+                      "key": "id",
+                      "value": "sed",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Store a newly created resource in storage.",
+          "id": "66890a40-d7fe-4403-a67c-ad817cfc5616",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://{{baseUrl}}/api/v2/groups/list"
+          },
+          "response": []
+        },
+        {
+          "name": "Update the specified resource in storage.",
+          "id": "1771d5ce-1423-41ff-8c20-57f250891ec6",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://{{baseUrl}}/api/v2/groups/list"
+          },
+          "response": []
+        },
+        {
+          "name": "Remove the specified resource from storage.",
+          "id": "40e13c8f-9679-4858-bcc0-5ba8f2a7f023",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://{{baseUrl}}/api/v2/groups/list/:id",
+              "protocol": "http",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "groups",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "id": "c9a12c15-88fc-45ae-8002-458368a2114c",
+                  "key": "id",
+                  "value": "20",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Display the specified resource.",
+          "id": "e95034d2-4cdd-481b-9f5b-8c9c42f18ada",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://{{baseUrl}}/api/v2/users/my-profile"
+          },
+          "response": [
+            {
+              "id": "ae9aacb0-a8de-4d59-8f93-f50c39ad6aa9",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://{{baseUrl}}/api/v2/users/my-profile"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Update the specified resource in storage.",
+          "id": "50f438f1-44f3-4132-af2c-27e558179180",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://{{baseUrl}}/api/v2/users/edit-profile"
+          },
+          "response": []
+        },
+        {
+          "name": "api/v2/admin/add-project",
+          "id": "020e4f24-cf4a-455a-a99e-d6758a3a8282",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"dolores\"}"
+            },
+            "url": "http://{{baseUrl}}/api/v2/admin/add-project"
+          },
+          "response": []
+        }
+      ],
+      "id": "df690892-1a10-44f5-9450-02f4ff9a1bcb",
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "{{USER_TOKEN}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1d345ba4-4115-4745-9c12-104e21fadb2d",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "dc47009a-8332-4991-8b50-59a3b8e05e66",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Polls",
+      "item": [
+        {
+          "name": "Retrieve list of polls",
+          "id": "2eeec3f7-c6ab-49ed-a714-190941fe206f",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/polls/list"
+          },
+          "response": [
+            {
+              "id": "ee60ed57-4e5e-42ee-8ae3-21cb995f0fd6",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/polls/list"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Create a new poll",
+          "id": "d457df75-60cd-4e3e-a7e0-62243b0d7366",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"question\": \"What is your favourite meal?\",\n    \"ends_in\": 1,\n    \"options\": [\"option 1\",\"option 2\"],\n    \"is_people_share\":0,\n    \"hide_creator_detail\":1\n}"
+            },
+            "url": "{{baseUrl}}api/v2/polls/create"
+          },
+          "response": []
+        },
+        {
+          "name": "Search polls",
+          "id": "3666ee8b-d698-4e8c-8a89-2c8339b0b491",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"q\":\"favourite meal\"}"
+            },
+            "url": "{{baseUrl}}api/v2/polls/search"
+          },
+          "response": []
+        }
+      ],
+      "id": "ca802893-d76d-458c-95bf-bb9e86e5ab0f",
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "{{USER_TOKEN}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a11219e9-c1ee-4d99-9209-f207d31ed3b4",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "296994b8-8bb3-490c-9949-c589f9fb8aac",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Get all posts\nDisplay a listing of the resource.",
+          "id": "5a781d01-46e0-48ca-96db-1b264d74cd90",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/posts/list"
+          },
+          "response": [
+            {
+              "id": "7225c84f-b813-41cf-9270-ca5432874d35",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/posts/list"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            },
+            {
+              "id": "232bb71f-efd3-4082-8de2-d65f3c5860e9",
+              "name": "Get all posts\nDisplay a listing of the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/posts/list"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 18:00:47 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "58"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Posts retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"group_id\": null,\n                \"user_id\": 1,\n                \"title\": \"JUST A FILE UPLOAD\",\n                \"description\": \"This is my test loud9ja test file upload\",\n                \"media\": \"posts/1643060087.png\",\n                \"view_count\": 0,\n                \"is_free\": \"NO\",\n                \"deleted_at\": null,\n                \"created_at\": \"2022-01-24T21:34:47.000000Z\",\n                \"updated_at\": \"2022-01-24T21:34:47.000000Z\",\n                \"likes\": [],\n                \"comments\": [],\n                \"dislikes\": [],\n                \"group\": null,\n                \"user\": {\n                    \"id\": 1,\n                    \"provider_name\": null,\n                    \"provider_id\": null,\n                    \"name\": \"Diddy\",\n                    \"email\": \"thenjagua@gmail.com\",\n                    \"role\": \"CUSTOMER\",\n                    \"phone\": null,\n                    \"gender\": \"MALE\",\n                    \"age\": 59,\n                    \"profile_picture\": null,\n                    \"otp\": \"1126\",\n                    \"otp_sent_on\": \"2022-01-24 09:14:25\",\n                    \"country\": null,\n                    \"state\": null,\n                    \"city\": null,\n                    \"lga\": null,\n                    \"platform\": \"LOUD\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2022-01-24T21:10:16.000000Z\",\n                    \"updated_at\": \"2022-01-24T21:19:15.000000Z\"\n                }\n            },\n            {\n                \"id\": 2,\n                \"group_id\": null,\n                \"user_id\": 1,\n                \"title\": \"JUST A FILE UPLOAD\",\n                \"description\": \"This is my test loud9ja test file upload\",\n                \"media\": \"posts/1644307173.png\",\n                \"view_count\": 0,\n                \"is_free\": \"NO\",\n                \"deleted_at\": null,\n                \"created_at\": \"2022-02-08T07:59:33.000000Z\",\n                \"updated_at\": \"2022-02-08T07:59:33.000000Z\",\n                \"likes\": [],\n                \"comments\": [],\n                \"dislikes\": [],\n                \"group\": null,\n                \"user\": {\n                    \"id\": 1,\n                    \"provider_name\": null,\n                    \"provider_id\": null,\n                    \"name\": \"Diddy\",\n                    \"email\": \"thenjagua@gmail.com\",\n                    \"role\": \"CUSTOMER\",\n                    \"phone\": null,\n                    \"gender\": \"MALE\",\n                    \"age\": 59,\n                    \"profile_picture\": null,\n                    \"otp\": \"1126\",\n                    \"otp_sent_on\": \"2022-01-24 09:14:25\",\n                    \"country\": null,\n                    \"state\": null,\n                    \"city\": null,\n                    \"lga\": null,\n                    \"platform\": \"LOUD\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2022-01-24T21:10:16.000000Z\",\n                    \"updated_at\": \"2022-01-24T21:19:15.000000Z\"\n                }\n            }\n        ],\n        \"first_page_url\": \"http://localhost:86/api/v2/posts/list?page=1\",\n        \"from\": 1,\n        \"last_page\": 2,\n        \"last_page_url\": \"http://localhost:86/api/v2/posts/list?page=2\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:86/api/v2/posts/list?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:86/api/v2/posts/list?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:86/api/v2/posts/list?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://localhost:86/api/v2/posts/list?page=2\",\n        \"path\": \"http://localhost:86/api/v2/posts/list\",\n        \"per_page\": 2,\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 3\n    },\n    \"errors\": [],\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Show single posts",
+          "id": "bcf97de3-df15-4a31-a936-5fea2b486d7b",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://{{baseUrl}}/api/v2/posts/list/:id",
+              "protocol": "http",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "posts",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "id": "e8784621-f23b-4ae5-8cdc-a900647ec835",
+                  "key": "id",
+                  "value": "accusantium",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f8c405a4-799b-4898-aeac-54014f4747f2",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "http://{{baseUrl}}/api/v2/posts/list/:id",
+                  "protocol": "http",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v2",
+                    "posts",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e8784621-f23b-4ae5-8cdc-a900647ec835",
+                      "key": "id",
+                      "value": "accusantium",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Create new Post",
+          "id": "51bc2c33-620f-47ef-a899-28fedfe576fc",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "JUST A FILE UPLOAD",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is my test loud9ja test file upload",
+                  "type": "text"
+                },
+                {
+                  "key": "media",
+                  "type": "file",
+                  "src": "/home/master/old/Videos/contact.png"
+                }
+              ]
+            },
+            "url": "{{baseUrl}}api/v2/posts/create"
+          },
+          "response": [
+            {
+              "id": "3fa2cdcb-a731-4fa1-8637-15a093662dd6",
+              "name": "Create new Post",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "title",
+                      "value": "JUST A FILE UPLOAD",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "This is my test loud9ja test file upload",
+                      "type": "text"
+                    },
+                    {
+                      "key": "media",
+                      "type": "file",
+                      "src": "/home/master/Pictures/logo.png"
+                    }
+                  ]
+                },
+                "url": "http://{{baseUrl}}/api/v2/posts/create"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 24 Jan 2022 21:34:47 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "57"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": false,\n    \"message\": \"You have successfully created a new post\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": {\n        \"user_id\": 1,\n        \"group_id\": null,\n        \"title\": \"JUST A FILE UPLOAD\",\n        \"description\": \"This is my test loud9ja test file upload\",\n        \"media\": \"posts/1643060087.png\",\n        \"updated_at\": \"2022-01-24T21:34:47.000000Z\",\n        \"created_at\": \"2022-01-24T21:34:47.000000Z\",\n        \"id\": 1\n    },\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Filter existing Posts",
+          "id": "fb7955f5-e6c4-47e2-9e38-dfa0e38dee26",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/posts/filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Search for posts",
+          "id": "92451e00-7029-46dd-8693-457b1672ff8d",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"q\":\"kagjnlmghirmacztilbaxeswlznmyrlvyzkctalqokhjqodgxgdmtrjhxjycereazjzampkfmupwfppkbxzrn\"}"
+            },
+            "url": "{{baseUrl}}api/v2/posts/search"
+          },
+          "response": []
+        },
+        {
+          "name": "Post Comment",
+          "id": "6dfa803d-e716-48fa-8c55-7b14ff7dbf3c",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"post_id\":4,\n    \"comment\":\"That podcast was lit yesterday. I wanna attend again.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{baseUrl}}api/v2/posts/comment"
+          },
+          "response": [
+            {
+              "id": "43ffc6fb-de44-46b8-b4c2-1960914d4978",
+              "name": "Post Comment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"post_id\":1,\n    \"comment\":\"That podcast was lit yesterday. I wanna attend again.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{baseUrl}}api/v2/posts/comment"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 11 Feb 2022 12:39:11 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "59"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Post comment created successfully.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Post Like",
+          "id": "8dbd1596-416e-42ae-9c92-31610c5ec67c",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"post_id\":4,\n    \"status\":1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{baseUrl}}api/v2/posts/like"
+          },
+          "response": []
+        }
+      ],
+      "id": "c136378b-cdf8-43ca-94fa-036513019046",
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "{{USER_TOKEN}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4613d028-f8e8-435d-b2f3-0d6c13796294",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "b224b616-11ba-48f9-811a-c61f68b82f49",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Display a listing of the resource.",
+          "id": "c30e51c2-473a-4521-ac6b-8fd63b14d6d8",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/reports/list"
+          },
+          "response": [
+            {
+              "id": "52ca145e-4119-4d6b-b8f8-75297502a117",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/reports/list"
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            },
+            {
+              "id": "0eb2914c-c7a0-4cc7-94c7-6596b5adad63",
+              "name": "Display a listing of the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}api/v2/reports/list"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 18:00:04 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "59"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully retrieved reports\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"state\": \"NA\",\n            \"lga\": \"LGA\",\n            \"category\": \"MEDICAL\",\n            \"title\": \"Blood Needed\",\n            \"media\": \"reports/1644331399.png\",\n            \"message\": null,\n            \"is_anonymous\": \"YES\",\n            \"status\": \"PENDING_VERIFICATION\",\n            \"view_count\": 0,\n            \"is_free\": \"NO\",\n            \"deleted_at\": null,\n            \"created_at\": \"2022-02-08T14:43:19.000000Z\",\n            \"updated_at\": \"2022-02-08T14:43:19.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"state\": \"NA\",\n            \"lga\": \"LGA\",\n            \"category\": \"MEDICAL\",\n            \"title\": \"Blood Needed\",\n            \"media\": \"reports/1644341455.png\",\n            \"message\": null,\n            \"is_anonymous\": \"YES\",\n            \"status\": \"PENDING_VERIFICATION\",\n            \"view_count\": 0,\n            \"is_free\": \"NO\",\n            \"deleted_at\": null,\n            \"created_at\": \"2022-02-08T17:30:55.000000Z\",\n            \"updated_at\": \"2022-02-08T17:30:55.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"state\": \"NA\",\n            \"lga\": \"LGA\",\n            \"category\": \"MEDICAL\",\n            \"title\": \"Blood Needed here\",\n            \"media\": \"reports/1644341463.png\",\n            \"message\": null,\n            \"is_anonymous\": \"YES\",\n            \"status\": \"PENDING_VERIFICATION\",\n            \"view_count\": 0,\n            \"is_free\": \"NO\",\n            \"deleted_at\": null,\n            \"created_at\": \"2022-02-08T17:31:03.000000Z\",\n            \"updated_at\": \"2022-02-08T17:58:47.000000Z\"\n        }\n    ],\n    \"errors\": [\n        \"\"\n    ],\n    \"meta\": \"reports\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create new report",
+          "id": "5ecad787-4ea2-41a7-b54e-cac744ab9a0e",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "state",
+                  "value": "NA",
+                  "type": "text"
+                },
+                {
+                  "key": "lga",
+                  "value": "LGA",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "MEDICAL",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Blood Needed",
+                  "type": "text"
+                },
+                {
+                  "key": "is_anonymous",
+                  "value": "YES",
+                  "type": "text"
+                },
+                {
+                  "key": "media",
+                  "type": "file",
+                  "src": "/home/master/old/Videos/contact.png"
+                }
+              ]
+            },
+            "url": "{{baseUrl}}api/v2/reports/create"
+          },
+          "response": [
+            {
+              "id": "e066c593-c082-449e-9d8d-37009f2bcd5f",
+              "name": "Create new report",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "state",
+                      "value": "NA",
+                      "type": "text"
+                    },
+                    {
+                      "key": "lga",
+                      "value": "LGA",
+                      "type": "text"
+                    },
+                    {
+                      "key": "category",
+                      "value": "MEDICAL",
+                      "type": "text"
+                    },
+                    {
+                      "key": "title",
+                      "value": "Blood Needed",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_anonymous",
+                      "value": "YES",
+                      "type": "text"
+                    },
+                    {
+                      "key": "media",
+                      "type": "file",
+                      "src": "/home/master/old/Videos/contact.png"
+                    }
+                  ]
+                },
+                "url": "{{baseUrl}}api/v2/reports/create"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 09:03:21 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "59"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully added a new report\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": {\n        \"user_id\": 1,\n        \"state\": \"NA\",\n        \"lga\": \"LGA\",\n        \"category\": \"MEDICAL\",\n        \"title\": \"Blood Needed\",\n        \"media\": \"reports/1644311001.png\",\n        \"message\": null,\n        \"is_anonymous\": \"YES\",\n        \"status\": \"PENDING_VERIFICATION\",\n        \"updated_at\": \"2022-02-08T09:03:21.000000Z\",\n        \"created_at\": \"2022-02-08T09:03:21.000000Z\",\n        \"id\": 1\n    },\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Filter reports",
+          "id": "b148a0f7-ad49-4411-9224-4ba6328f1cbb",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}api/v2/reports/filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Search for reports",
+          "id": "09ae2200-9810-43e5-bc06-c0b89da86739",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"q\": \"Blood Needed\"\n}"
+            },
+            "url": "{{baseUrl}}api/v2/reports/search"
+          },
+          "response": [
+            {
+              "id": "0f903f61-ddd4-4851-9948-5dd7ca64d46b",
+              "name": "Search for reports",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"q\": \"Blood Needed\"\n}"
+                },
+                "url": "{{baseUrl}}api/v2/reports/search"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 17:27:58 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "57"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Your search results have been retrieved successfully\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"state\": \"NA\",\n            \"lga\": \"LGA\",\n            \"category\": \"MEDICAL\",\n            \"title\": \"Blood Needed\",\n            \"media\": \"reports/1644311001.png\",\n            \"message\": null,\n            \"is_anonymous\": \"YES\",\n            \"status\": \"PENDING_VERIFICATION\",\n            \"view_count\": 0,\n            \"is_free\": \"NO\",\n            \"deleted_at\": null,\n            \"created_at\": \"2022-02-08T09:03:21.000000Z\",\n            \"updated_at\": \"2022-02-08T09:03:21.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"state\": \"NA\",\n            \"lga\": \"LGA\",\n            \"category\": \"MEDICAL\",\n            \"title\": \"Blood Needed\",\n            \"media\": \"reports/1644331399.png\",\n            \"message\": null,\n            \"is_anonymous\": \"YES\",\n            \"status\": \"PENDING_VERIFICATION\",\n            \"view_count\": 0,\n            \"is_free\": \"NO\",\n            \"deleted_at\": null,\n            \"created_at\": \"2022-02-08T14:43:19.000000Z\",\n            \"updated_at\": \"2022-02-08T14:43:19.000000Z\"\n        }\n    ],\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get a single report",
+          "id": "cca2201b-9778-4092-8dfb-169c2b78ee93",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{baseUrl}}api/v2/reports/list/:id",
+              "host": [
+                "{{baseUrl}}api"
+              ],
+              "path": [
+                "v2",
+                "reports",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "4",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc126a3b-94b3-4742-a6a4-ed6f68de7316",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{baseUrl}}api/v2/reports/list/:id",
+                  "host": [
+                    "{{baseUrl}}api"
+                  ],
+                  "path": [
+                    "v2",
+                    "reports",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "4",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "code": 401,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Unauthenticated.\"}"
+            },
+            {
+              "id": "7e4f985c-10e0-47ca-838e-b03c7baef579",
+              "name": "Get a single report",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}api/v2/reports/list/:id",
+                  "host": [
+                    "{{baseUrl}}api"
+                  ],
+                  "path": [
+                    "v2",
+                    "reports",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 17:29:22 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "58"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully retrieved a single report\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"state\": \"NA\",\n        \"lga\": \"LGA\",\n        \"category\": \"MEDICAL\",\n        \"title\": \"Blood Needed\",\n        \"media\": \"reports/1644311001.png\",\n        \"message\": null,\n        \"is_anonymous\": \"YES\",\n        \"status\": \"PENDING_VERIFICATION\",\n        \"view_count\": 0,\n        \"is_free\": \"NO\",\n        \"deleted_at\": null,\n        \"created_at\": \"2022-02-08T09:03:21.000000Z\",\n        \"updated_at\": \"2022-02-08T09:03:21.000000Z\"\n    },\n    \"meta\": \"success\"\n}"
+            },
+            {
+              "id": "2d3ed4a2-0ecf-4253-b311-e490b6fa7eaf",
+              "name": "Get a single report",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{baseUrl}}api/v2/reports/list/:id",
+                  "host": [
+                    "{{baseUrl}}api"
+                  ],
+                  "path": [
+                    "v2",
+                    "reports",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "4",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 17:59:08 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "58"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully retrieved a single report\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": {\n        \"id\": 4,\n        \"user_id\": 1,\n        \"state\": \"NA\",\n        \"lga\": \"LGA\",\n        \"category\": \"MEDICAL\",\n        \"title\": \"Blood Needed here\",\n        \"media\": \"reports/1644341463.png\",\n        \"message\": null,\n        \"is_anonymous\": \"YES\",\n        \"status\": \"PENDING_VERIFICATION\",\n        \"view_count\": 0,\n        \"is_free\": \"NO\",\n        \"deleted_at\": null,\n        \"created_at\": \"2022-02-08T17:31:03.000000Z\",\n        \"updated_at\": \"2022-02-08T17:58:47.000000Z\"\n    },\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete a report",
+          "id": "d8de6fec-dd10-4405-b906-69376e43afbf",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}api/v2/reports/list/:id",
+              "host": [
+                "{{baseUrl}}api"
+              ],
+              "path": [
+                "v2",
+                "reports",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2132ce15-dfb9-4fb8-8d2b-c6251f4ae145",
+              "name": "Delete a report",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}api/v2/reports/list/:id",
+                  "host": [
+                    "{{baseUrl}}api"
+                  ],
+                  "path": [
+                    "v2",
+                    "reports",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 17:30:26 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "57"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully deleted a report\",\n    \"errors\": [\n        \"\"\n    ],\n    \"data\": [\n        \"\"\n    ],\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update a report",
+          "id": "abc61b15-40ef-4787-9b1b-5b7f06661611",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "state",
+                  "value": "NA",
+                  "type": "text"
+                },
+                {
+                  "key": "lga",
+                  "value": "LGA",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "MEDICAL",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Blood Needed here",
+                  "type": "text"
+                },
+                {
+                  "key": "is_anonymous",
+                  "value": "YES",
+                  "type": "text"
+                },
+                {
+                  "key": "media",
+                  "type": "file",
+                  "src": "/home/master/old/Videos/contact.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}api/v2/reports/list/:id",
+              "host": [
+                "{{baseUrl}}api"
+              ],
+              "path": [
+                "v2",
+                "reports",
+                "list",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "4",
+                  "description": "The ID of the list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "416497e1-7a3d-4aee-ad52-9ab0f64368e2",
+              "name": "Update a report",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "state",
+                      "value": "NA",
+                      "type": "text"
+                    },
+                    {
+                      "key": "lga",
+                      "value": "LGA",
+                      "type": "text"
+                    },
+                    {
+                      "key": "category",
+                      "value": "MEDICAL",
+                      "type": "text"
+                    },
+                    {
+                      "key": "title",
+                      "value": "Blood Needed here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_anonymous",
+                      "value": "YES",
+                      "type": "text"
+                    },
+                    {
+                      "key": "media",
+                      "type": "file",
+                      "src": "/home/master/old/Videos/contact.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}api/v2/reports/list/:id",
+                  "host": [
+                    "{{baseUrl}}api"
+                  ],
+                  "path": [
+                    "v2",
+                    "reports",
+                    "list",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "4",
+                      "description": "The ID of the list."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.18.0 (Ubuntu)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Feb 2022 17:58:47 GMT"
+                },
+                {
+                  "key": "X-RateLimit-Limit",
+                  "value": "60"
+                },
+                {
+                  "key": "X-RateLimit-Remaining",
+                  "value": "59"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"You have successfully updated a report\",\n    \"errors\": 1,\n    \"data\": {\n        \"state\": \"NA\",\n        \"lga\": \"LGA\",\n        \"category\": \"MEDICAL\",\n        \"title\": \"Blood Needed here\",\n        \"is_anonymous\": \"YES\"\n    },\n    \"meta\": \"success\"\n}"
+            }
+          ]
+        }
+      ],
+      "id": "ba776cce-57f1-44ac-a705-89bafb85e906",
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "{{USER_TOKEN}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "dd534e80-53db-4d6f-958a-bac6198e05c9",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "47c77719-f48f-4656-8c21-4a3d0b83adbe",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "id": "526e8b2b-cade-4574-8b1f-675aabb227ee",
+      "key": "baseUrl",
+      "value": "localhost",
+      "type": "string"
+    }
+  ]
+}

@@ -3,8 +3,8 @@ package com.loud9ja.loud9ja.di
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.loud9ja.loud9ja.network.AuthInterceptor
-import com.loud9ja.loud9ja.network.LoudAPI
+import com.loud9ja.loud9ja.domain.network.AuthInterceptor
+import com.loud9ja.loud9ja.domain.network.LoudAPI
 import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.Constants.BASE_URL
 import dagger.Module
@@ -27,7 +27,7 @@ class AppModule {
     @Provides
     fun provideGsonBuilder(): Gson {
         return GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation()
+            //.excludeFieldsWithoutExposeAnnotation()
             .create()
     }
 
@@ -37,7 +37,6 @@ class AppModule {
         return Retrofit.Builder()
             .client(provideInterceptor(context))
             .baseUrl(BASE_URL)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
 
     }

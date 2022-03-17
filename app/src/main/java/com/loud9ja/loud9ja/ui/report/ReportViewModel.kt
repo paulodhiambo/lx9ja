@@ -2,7 +2,7 @@ package com.loud9ja.loud9ja.ui.report
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.loud9ja.loud9ja.repository.ReportRepository
+import com.loud9ja.loud9ja.domain.repository.ReportRepository
 import com.loud9ja.loud9ja.utils.BaseViewModel
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,13 +29,13 @@ class ReportViewModel @Inject constructor(private val reportRepository: ReportRe
         message: RequestBody,
         media: MultipartBody.Part?
     ) {
-        compositeDisposable.add(
-            reportRepository.createReport(state, lga, category, title, is_anonymous, message, media)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { data -> _createReportDataState.value = DataState.Success(data) },
-                    { e -> _createReportDataState.value = DataState.Error(e as Exception) })
-        )
+//        compositeDisposable.add(
+//            reportRepository.createReport(state, lga, category, title, is_anonymous, message, media)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                    { data -> _createReportDataState.value = DataState.Success(data) },
+//                    { e -> _createReportDataState.value = DataState.Error(e as Exception) })
+//        )
     }
 }

@@ -25,7 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.data.Platform
 import com.loud9ja.loud9ja.databinding.ActivityLoginBinding
-import com.loud9ja.loud9ja.network.api.request.LoginRequest
+import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
 import com.loud9ja.loud9ja.ui.home.MainActivity
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -136,8 +136,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is DataState.Error -> {
                     binding.loadingBar.visibility = View.GONE
-                    Log.e(TAG, "observeLoginRequest: ", data.exception)
-                    data.exception.message?.let { showMessageToast(it) }
+                    Log.d(TAG, "observeLoginRequest: data.exception")
+                    //data.exception.message?.let { showMessageToast(it) }
                 }
             }
         })
