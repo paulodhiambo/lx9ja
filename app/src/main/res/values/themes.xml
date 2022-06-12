@@ -1,109 +1,109 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Loud9ja" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.App2" parent="Theme.MaterialComponents">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/appbarColor</item>
+        <item name="colorPrimary">@color/blue_1</item>
+        <item name="colorPrimaryVariant">@color/blue_0</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/primary_blue</item>
+        <item name="colorSecondary">@color/primary_blue</item>
+        <item name="colorSecondaryVariant">@color/blue_3</item>
+        <item name="colorOnSecondary">@color/white</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
+        <!-- Cards, Background etc -->
+        <item name="colorSurface">@color/blue_3</item>
+
+        <!-- Overflow Menu -->
+        <item name="android:itemBackground">@color/blue_3</item>
+
+        <!-- Default Background Color -->
+        <item name="android:colorBackground">@color/blue_0</item>
+
+        <item name="colorOnSurface">@android:color/white</item>
+        <item name="colorOnBackground">@android:color/white</item>
+        <item name="colorOnPrimarySurface">@android:color/white</item>
+
+        <item name="fontFamily">@font/clan_pro_news</item>
     </style>
 
-    <style name="Theme.Loud9ja.NoActionBar">
+    <style name="Theme.App2.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/blue_4</item>
+        <item name="android:textColorHint">@color/white_faded_30</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="endIconMode">clear_text</item>
+    </style>
+
     <style name="Theme.Loud9ja.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Loud9ja.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="Menu.Icon.Title" parent="Theme.Loud9ja">
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">12sp</item>
-        <item name="layout_constraintVertical_chainStyle">packed</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
+    <style name="AutoCompleteTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="hintEnabled">true</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/blue_4</item>
+        <item name="android:textColorHint">@color/white_faded_30</item>
+        <item name="hintTextColor">@color/white</item>
     </style>
 
-    <style name="Menu.Icon.Image" parent="Theme.Loud9ja">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
-        <item name="android:layout_marginTop">3dp</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="layout_constraintVertical_chainStyle">packed</item>
+    <style name="MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/clan_pro_medium</item>
     </style>
 
-    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/black</item>
-        <item name="boxStrokeErrorColor">@color/googleButtonColor</item>
-        <item name="boxStrokeWidth">1dp</item>
+    <style name="MaterialTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="fontFamily">@font/clan_pro_medium</item>
     </style>
 
-    <style name="InputStyle" parent="Widget.AppCompat.EditText">
-        <item name="helperTextTextColor">@color/black</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:editTextColor">@color/black</item>
-        <item name="fontFamily">@font/roboto_regular</item>
-        <item name="hintTextColor">@color/black</item>
+    <style name="MaterialTextViewHeading" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/clan_pro_medium</item>
     </style>
 
-    <style name="ButtonTheme" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@color/black</item>
+    <style name="MaterialSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="thumbTint">@color/white</item>
     </style>
 
-    <style name="viewParent">
+    <style name="MaterialImageButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:inset">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@color/white</item>
     </style>
 
-    <style name="viewParent.headerText">
-        <item name="android:textColor">@color/contentTextColor</item>
-        <item name="android:textSize">@dimen/headerTextSize</item>
-        <item name="android:textStyle">bold</item>
+    <style name="RoleChangeAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
     </style>
 
-    <style name="viewParent.headerText.NoMode">
-        <item name="android:textColor">@color/darkTextColor</item>
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#ffff</item>
     </style>
 
-    <style name="parent" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#ffff</item>
     </style>
-
-    <style name="modifiedEditText" parent="parent">
-        <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="loginButton" parent="viewParent">
-        <item name="android:background">@drawable/button_background_blue</item>
-        <item name="android:textColor">@color/whiteTextColor</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="spinnerHintText" parent="parent">
-        <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:paddingLeft">5dp</item>
-    </style>
-
-    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/AppModalStyle</item>
-    </style>
-
-    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/bottom_sheet_shape</item>
-    </style>
-
 </resources>

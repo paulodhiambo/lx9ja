@@ -1,12 +1,11 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="headerTextSize">25sp</dimen>
-    <dimen name="newsMoreTextSize">12sp</dimen>
+
+    <dimen name="video_list_size">120dp</dimen>
+    <dimen name="audio_item_size">120dp</dimen>
+    <dimen name="bottom_meeting_control_size">64dp</dimen>
+    <dimen name="headerTextSize">20sp</dimen>
+    <dimen name="newsMoreTextSize">16sp</dimen>
+
     <dimen name="loginViewsMargin">20dp</dimen>
-
-    <!--start activity-->
-
-    <!--shimmer dimes-->
-
 </resources>

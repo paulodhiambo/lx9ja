@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <include
+        android:id="@+id/progress_bar"
+        layout="@layout/progress_bar" />
+
+    <include
+        android:id="@+id/role_spinner"
+        layout="@layout/layout_role_spinner" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_meeting_control_size"
+        android:layout_above="@id/bottom_controls"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/bottom_controls"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:animateLayoutChanges="true"
+        android:background="@color/blue_3"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_toggle_video"
+            style="@style/MaterialImageButton"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/toggle_video"
+            app:icon="@drawable/ic_videocam_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_toggle_audio"
+            style="@style/MaterialImageButton"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/toggle_audio"
+            app:icon="@drawable/ic_mic_24" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_open_chat"
+                style="@style/MaterialImageButton"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/open_chat"
+                app:icon="@drawable/ic_assignment_24" />
+
+            <TextView
+                android:id="@+id/unread_message_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/button_open_chat"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/badge_circle_20"
+                android:gravity="center"
+                android:text="@string/_8"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_end_call"
+            style="@style/MaterialImageButton"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/end_call"
+            app:icon="@drawable/ic_call_end_24"
+            app:iconTint="@color/red" />
+
+    </LinearLayout>
+
+</RelativeLayout>

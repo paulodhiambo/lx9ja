@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityLandingBinding
-import com.loud9ja.loud9ja.ui.home.MainActivity
+import com.loud9ja.loud9ja.ui.home.HomeActivity
 
 class LandingActivity : AppCompatActivity() {
     lateinit var binding: ActivityLandingBinding
@@ -76,7 +76,7 @@ class LandingActivity : AppCompatActivity() {
     }
 
     private fun onLoginSuccess() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.apply {
             this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

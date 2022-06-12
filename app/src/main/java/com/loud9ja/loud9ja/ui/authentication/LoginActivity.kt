@@ -26,7 +26,7 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.data.Platform
 import com.loud9ja.loud9ja.databinding.ActivityLoginBinding
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
-import com.loud9ja.loud9ja.ui.home.MainActivity
+import com.loud9ja.loud9ja.ui.home.HomeActivity
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -153,7 +153,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onLoginSuccess() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.apply {
             this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

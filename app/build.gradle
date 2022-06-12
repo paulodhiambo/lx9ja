@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -19,6 +20,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "boolean", "INTERNAL", INTERNAL
+        buildConfigField "String", "TOKEN_ENDPOINT", TOKEN_ENDPOINT
+        buildConfigField "String", "BUG_REPORT_EMAIL_TO", BUG_REPORT_EMAIL_TO
+        buildConfigField "String", "BUG_REPORT_EMAIL_CC", BUG_REPORT_EMAIL_CC
+        buildConfigField "String", "RTMP_INJEST_URL", project.findProperty('RTMP_INJEST_URL') ? RTMP_INJEST_URL : "\"\""
     }
     kapt {
         javacOptions {
@@ -48,14 +54,13 @@ android {
 }
 
 dependencies {
-    implementation project(":streaming")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //circle imageview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
@@ -72,6 +77,7 @@ dependencies {
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.39.1"
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.10'
     kapt "com.google.dagger:hilt-android-compiler:2.37"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
@@ -116,9 +122,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     //Google auth
-    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation 'com.github.100mslive.android-sdk:lib:2.3.6'
 
     //facebook auth
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
@@ -136,5 +144,35 @@ dependencies {
     //volley
     implementation 'com.android.volley:volley:1.2.1'
 
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //100ms.live SDK
+    implementation 'com.github.100mslive.android-sdk:lib:2.3.6'
+    implementation 'com.github.100mslive.android-sdk:virtualBackground:2.3.2'
+
+    // Get Permissions easily
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    // Firebase Crashlytics
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'io.grpc:grpc-okhttp:1.44.1'
+    implementation 'io.grpc:grpc-protobuf-lite:1.44.1'
+    implementation 'io.grpc:grpc-stub:1.44.1'
+
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
+    // Life Cycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
 
 }

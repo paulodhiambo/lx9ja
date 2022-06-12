@@ -14,7 +14,7 @@ class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Trending, TrendingIt
         holder: Companion.BaseViewHolder<TrendingItemBinding>,
         position: Int
     ) {
-        holder.binding.trending = items[position]
+        holder.binding.model = items[position]
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

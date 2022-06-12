@@ -2,11 +2,10 @@ package com.loud9ja.loud9ja.ui.about
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.loud9ja.loud9ja.R
+import androidx.appcompat.app.AppCompatActivity
 import com.loud9ja.loud9ja.databinding.ActivityAboutUsBinding
-import com.loud9ja.loud9ja.ui.home.MainActivity
+import com.loud9ja.loud9ja.ui.home.HomeActivity
 
 class AboutUsActivity : AppCompatActivity() {
     lateinit var binding: ActivityAboutUsBinding
@@ -16,7 +15,7 @@ class AboutUsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.backArrow.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             intent.apply {
                 this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                 this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

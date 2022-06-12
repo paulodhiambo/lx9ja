@@ -1,24 +1,42 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services' // Google Services Gradle plugin
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "boolean", "INTERNAL", INTERNAL
+        buildConfigField "String", "TOKEN_ENDPOINT", TOKEN_ENDPOINT
+        buildConfigField "String", "BUG_REPORT_EMAIL_TO", BUG_REPORT_EMAIL_TO
+        buildConfigField "String", "BUG_REPORT_EMAIL_CC", BUG_REPORT_EMAIL_CC
+        buildConfigField "String", "RTMP_INJEST_URL", project.findProperty('RTMP_INJEST_URL') ? RTMP_INJEST_URL : "\"\""
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+//            firebaseCrashlytics {
+//                mappingFileUploadEnabled true
+//            }
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -30,12 +48,60 @@ android {
 }
 
 dependencies {
-
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    //100ms.live SDK
+    implementation 'com.github.100mslive.android-sdk:lib:2.3.6'
+    implementation 'com.github.100mslive.android-sdk:virtualBackground:2.3.2'
+
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
+
+    // Life Cycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+
+    // Get Permissions easily
+    implementation 'pub.devrel:easypermissions:1.1.3'
+
+    // Firebase Crashlytics
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'io.grpc:grpc-okhttp:1.44.1'
+    implementation 'io.grpc:grpc-protobuf-lite:1.44.1'
+    implementation 'io.grpc:grpc-stub:1.44.1'
+
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.17.1'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.17.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.17.1'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }

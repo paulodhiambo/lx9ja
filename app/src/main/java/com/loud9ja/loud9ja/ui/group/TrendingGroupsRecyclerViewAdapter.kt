@@ -21,7 +21,7 @@ class TrendingGroupsRecyclerViewAdapter :
         images.add(R.drawable.two)
 
         holder.binding.stackProfiles.setImageLists(images)
-        holder.binding.trending = items[position]
+        holder.binding.trendinggroups = items[position]
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

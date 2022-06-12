@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="trending"
+            name="trendinggroups"
             type="com.loud9ja.loud9ja.domain.TrendingGroups" />
     </data>
 
