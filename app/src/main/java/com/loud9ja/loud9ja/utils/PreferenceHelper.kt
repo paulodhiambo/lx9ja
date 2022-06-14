@@ -2,8 +2,8 @@ package com.loud9ja.loud9ja.utils
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import com.loud9ja.loud9ja.R
+import com.loud9ja.loud9ja.data.AuthUser
 
 class PreferenceHelper(val activity: Activity) {
     private val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
@@ -28,6 +28,27 @@ class PreferenceHelper(val activity: Activity) {
 
     fun getFlow(): Int {
         return sharedPref.getInt(activity.resources.getString(R.string.opned_key), 1)
+    }
+
+    fun saveUser(name: String, email: String, token: String) {
+        with(sharedPref.edit()) {
+            putString("name", name)
+            putString("password", email)
+            putString("token", token)
+            apply()
+        }
+    }
+
+    fun getUser(): AuthUser? {
+        val user = sharedPref.getString("name", null)
+        val token = sharedPref.getString("token", null)
+        val email = sharedPref.getString("email", null)
+        return if (user != null && token != null && email != null) {
+            AuthUser(user, email, token)
+        } else {
+            null
+        }
+
     }
 
 }

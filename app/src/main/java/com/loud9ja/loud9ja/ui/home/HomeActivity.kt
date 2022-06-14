@@ -33,6 +33,7 @@ import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
 import com.loud9ja.loud9ja.ui.profile.ProfileActivity
+import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.DataState
 import com.loud9ja.loud9ja.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,14 +75,6 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             .load(mAuth.currentUser?.photoUrl)
             .placeholder(R.drawable.user)
             .into(profile)
-//
-//        themeSwitch.isChecked = theme != 1
-//
-//        if (theme == 0) {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//        } else {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//        }
 
         themeSwitch.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
@@ -145,7 +138,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         name: TextView,
         location: TextView
     ) {
-        homeViewModel.profileDataState.observe(this, { data ->
+        homeViewModel.profileDataState.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
                     Glide.with(this)
@@ -160,7 +153,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 is DataState.Error -> {
                 }
             }
-        })
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -274,7 +267,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     override fun onStart() {
         super.onStart()
-        val user = mAuth.currentUser
+        val user = AuthPreference(this).getAuthDetails()
         if (user == null) {
             val intent = Intent(this, LoginActivity::class.java)
             intent.apply {

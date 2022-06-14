@@ -1,15 +1,14 @@
 package com.loud9ja.loud9ja.ui.authentication
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.loud9ja.loud9ja.data.User
+import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
 import com.loud9ja.loud9ja.domain.network.api.response.LoginResponse
-import com.loud9ja.loud9ja.domain.network.api.response.RegistrationResponse
 import com.loud9ja.loud9ja.domain.usecase.LoginUseCase
 import com.loud9ja.loud9ja.domain.usecase.RegisterUseCase
 import com.loud9ja.loud9ja.utils.BaseViewModel
@@ -35,7 +34,6 @@ class AuthViewModel @Inject constructor(
         get() = _loginResponse
 
     fun registerUser(user: User) {
-        Log.d("Result=====>", "registerUser: ${user}")
         registerUseCase(user).onEach { result ->
             when (result) {
                 is DataState.Success -> {

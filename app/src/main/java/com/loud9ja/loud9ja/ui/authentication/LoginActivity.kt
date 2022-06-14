@@ -27,7 +27,9 @@ import com.loud9ja.loud9ja.data.Platform
 import com.loud9ja.loud9ja.databinding.ActivityLoginBinding
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
 import com.loud9ja.loud9ja.ui.home.HomeActivity
+import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.DataState
+import com.loud9ja.loud9ja.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -99,37 +101,21 @@ class LoginActivity : AppCompatActivity() {
 
     private fun observeLoginRequest() {
         binding.loadingBar.visibility = View.VISIBLE
-        authViewModel.loginResponse.observe(this, { data ->
+        authViewModel.loginResponse.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
-                    mAuth.signInWithEmailAndPassword(
-                        binding.editTextEmail.text.toString().trim(),
-                        binding.editTextPassword.text.toString().trim(),
-                    ).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            binding.loadingBar.visibility = View.GONE
-                            onLoginSuccess()
-                        } else {
-                            mAuth.createUserWithEmailAndPassword(
-                                binding.editTextEmail.text.toString().trim(),
-                                binding.editTextPassword.text.toString().trim(),
-                            ).addOnCompleteListener { t ->
-                                if (t.isSuccessful) {
-                                    onLoginSuccess()
-                                } else {
-                                    Log.e(TAG, "observeLoginRequest: ", t.exception)
-                                    Toast.makeText(
-                                        this,
-                                        "${t.exception?.message}",
-                                        Toast.LENGTH_LONG
-                                    )
-                                        .show()
-                                }
-                            }
-
-                        }
-                    }
-
+                    AuthPreference(this).saveData(
+                        data.data.data.name,
+                        data.data.data.email,
+                        data.data.token
+                    )
+                    PreferenceHelper(this).saveUser(
+                        data.data.data.name,
+                        data.data.data.email,
+                        data.data.token
+                    )
+                    onLoginSuccess()
+                    Log.d(TAG, "observeLoginRequest: $data")
                 }
                 is DataState.Loading -> {
                     binding.loadingBar.visibility = View.VISIBLE
@@ -137,10 +123,9 @@ class LoginActivity : AppCompatActivity() {
                 is DataState.Error -> {
                     binding.loadingBar.visibility = View.GONE
                     Log.d(TAG, "observeLoginRequest: data.exception")
-                    //data.exception.message?.let { showMessageToast(it) }
                 }
             }
-        })
+        }
     }
 
     private fun showMessageToast(message: String) {

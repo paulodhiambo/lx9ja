@@ -3,8 +3,6 @@ package com.loud9ja.loud9ja.ui.authentication
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.PatternMatcher
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ArrayAdapter
@@ -60,19 +58,8 @@ class RegisterActivity : AppCompatActivity() {
         authViewModel.registrationResponse.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
-                    mAuth.createUserWithEmailAndPassword(
-                        binding.editTextEmail.text.toString().trim(),
-                        binding.editTextPassword.text.toString().trim(),
-                    ).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            loadingBar.dismiss()
-                            onSignUpSuccess()
-                        } else {
-                            Toast.makeText(this, "${task.exception?.message}", Toast.LENGTH_LONG)
-                                .show()
-                        }
-                    }
-
+                    loadingBar.dismiss()
+                    onSignUpSuccess()
                 }
                 is DataState.Loading -> {
                 }
