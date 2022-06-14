@@ -3,10 +3,11 @@ package com.loud9ja.loud9ja.ui.group
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.TrendingGroupItemBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
+import com.loud9ja.loud9ja.domain.network.api.groups.Group
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
 
 class TrendingGroupsRecyclerViewAdapter :
-    BaseRecyclerViewAdapter<TrendingGroups, TrendingGroupItemBinding>() {
+    BaseRecyclerViewAdapter<Group, TrendingGroupItemBinding>() {
     override fun getLayout(): Int {
         return R.layout.trending_group_item
     }

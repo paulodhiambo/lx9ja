@@ -2,10 +2,10 @@ package com.loud9ja.loud9ja.ui.discusion
 
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.TrendingItemBinding
-import com.loud9ja.loud9ja.domain.Trending
+import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
 
-class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Trending, TrendingItemBinding>() {
+class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, TrendingItemBinding>() {
     override fun getLayout(): Int {
         return R.layout.trending_item
     }
@@ -15,6 +15,9 @@ class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Trending, TrendingIt
         position: Int
     ) {
         holder.binding.model = items[position]
+        holder.binding.textView24.text = items[position].comments.toString()
+        holder.binding.textView23.text = items[position].totalDislikes.toString()
+        holder.binding.textView22.text = items[position].totalLikes.toString()
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

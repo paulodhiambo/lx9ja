@@ -15,9 +15,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.loud9ja.loud9ja.BuildConfig
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentHomeBinding
-import com.loud9ja.loud9ja.BuildConfig
 import com.loud9ja.loud9ja.stream.api.Status
 import com.loud9ja.loud9ja.stream.model.RoomDetails
 import com.loud9ja.loud9ja.stream.ui.meeting.LEAVE_INFORMATION_PERSON
@@ -243,7 +243,8 @@ class HomeFragment : Fragment() {
 
         binding.buttonJoinMeeting.setOnClickListener {
             try {
-                val input = binding.editTextMeetingUrl.text.toString()
+                val input = "xpr-hfy-uzl"
+                binding.editTextMeetingUrl.text.toString()
                 if (saveTokenEndpointUrlIfValid(input) && isValidUserName(
                         binding.containerName,
                         binding.editTextName
@@ -264,10 +265,12 @@ class HomeFragment : Fragment() {
                         }
                         subdomain = "$env.100ms.live"
                     }
-                    val url = "https://$subdomain/meeting/$input"
+                   // val url = "https://$subdomain/meeting/$input"
+                    val url = "https://$subdomain/meeting/xpr-hfy-uzl"
                     saveTokenEndpointUrlIfValid(url)
                     joinRoom()
                 } else {
+                    Log.d(TAG, "initConnectButton: ${input}")
                     binding.containerMeetingUrl.error = "Invalid Meeting URL"
                 }
             } catch (e: Exception) {

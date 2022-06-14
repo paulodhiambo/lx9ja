@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionBinding
 import com.loud9ja.loud9ja.domain.Trending
 import com.loud9ja.loud9ja.utils.BindingFragment
+import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -17,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
+    private val viewModel: DiscussionViewModel by viewModels()
     private val trendingAdapter by lazy {
         TrendingRecyclerViewAdapter()
     }
@@ -31,27 +34,9 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.trendingRecyclerview.apply {
-            hasFixedSize()
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = trendingAdapter
-            trendingAdapter.addItems(
-                mutableListOf(
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", "")
-                )
-            )
-            trendingAdapter.listener = { _, _, _ ->
-                val fragment = DiscussionDetailFragment()
-                val fragmentManager = fragmentManager
-                val fragmentTransaction = fragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
-                fragmentTransaction?.commit()
-            }
-        }
+        viewModel.getPosts()
+        observeTrending()
+
         binding.recentRecyclerview.apply {
             hasFixedSize()
             isNestedScrollingEnabled = false
@@ -81,6 +66,39 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
             val fragmentTransaction = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
+        }
+    }
+
+    private fun observeTrending() {
+        viewModel.postsResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Success -> {
+                    binding.trendingRecyclerview.apply {
+                        hasFixedSize()
+                        layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        adapter = trendingAdapter
+                        trendingAdapter.addItems(result.data.data)
+                        trendingAdapter.listener = { _, _, _ ->
+                            val fragment = DiscussionDetailFragment()
+                            val fragmentManager = fragmentManager
+                            val fragmentTransaction = fragmentManager?.beginTransaction()
+                            fragmentTransaction?.replace(
+                                R.id.nav_host_fragment_content_main,
+                                fragment
+                            )
+                            fragmentTransaction?.commit()
+                        }
+                    }
+                }
+                is DataState.Loading -> {}
+                is DataState.Error -> {}
+            }
+
         }
     }
 }

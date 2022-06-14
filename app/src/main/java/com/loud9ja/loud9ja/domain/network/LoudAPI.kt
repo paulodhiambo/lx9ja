@@ -1,12 +1,15 @@
 package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
+import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.PollsResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
+import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
 import com.loud9ja.loud9ja.domain.network.api.response.LoginResponse
 import com.loud9ja.loud9ja.domain.network.api.response.ProfileResponse
+import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -23,7 +26,20 @@ interface LoudAPI {
         const val CREATE_REPORT = "api/v2/reports"
         const val GET_POSTS = "api/v2/posts/list"
         const val GET_POLLS = "api/v2/polls/list"
+        const val GET_GROUP = "api/v2/groups/list"
+        const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
+        const val TRENDING_POST = "api/v2/posts/trending"
+
     }
+
+    @GET(TRENDING_POST)
+    suspend fun getTrendingPosts():TrendingPostResponse
+
+    @GET(GET_ALL_REPORTS)
+    suspend fun getReports(): ReportResponse
+
+    @GET(GET_GROUP)
+    suspend fun getGroups(): GroupResponse
 
     @GET(GET_POLLS)
     suspend fun getPolls(): PollsResponse

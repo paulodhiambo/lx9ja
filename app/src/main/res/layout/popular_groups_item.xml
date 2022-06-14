@@ -6,7 +6,7 @@
 
         <variable
             name="groups"
-            type="com.loud9ja.loud9ja.domain.TrendingGroups" />
+            type="com.loud9ja.loud9ja.domain.network.api.groups.Group" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -37,8 +37,8 @@
                 style="@style/parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ikeja Elites Group"
-                android:textSize="18sp"
+                android:text="@{groups.name}"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.11"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim."
+                android:text="@{groups.description}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

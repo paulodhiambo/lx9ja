@@ -1,10 +1,7 @@
 package com.loud9ja.loud9ja.di
 
 import com.loud9ja.loud9ja.domain.network.LoudAPI
-import com.loud9ja.loud9ja.domain.repository.AuthRepository
-import com.loud9ja.loud9ja.domain.repository.AuthRepositoryImpl
-import com.loud9ja.loud9ja.domain.repository.ProfileRepository
-import com.loud9ja.loud9ja.domain.repository.ReportRepository
+import com.loud9ja.loud9ja.domain.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,4 +29,12 @@ class RepositoryModule {
     fun provideReportRepository(api: LoudAPI): ReportRepository {
         return ReportRepository(api)
     }
+
+    @Singleton
+    @Provides
+    fun provideGroupRepository(api: LoudAPI): GroupRepository = GroupRepository(api)
+
+    @Singleton
+    @Provides
+    fun providePostRepository(api: LoudAPI): PostsRepository = PostsRepositoryImpl(api)
 }

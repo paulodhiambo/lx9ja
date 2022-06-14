@@ -4,8 +4,10 @@
     package="com.loud9ja.loud9ja">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -29,7 +31,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity
-            android:name=".MainActivity"
+            android:name=".stream.ui.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
@@ -39,11 +41,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App2.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <intent-filter android:label="Join Meeting">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -58,7 +55,7 @@
         </activity>
 
         <activity
-            android:name=".ui.meeting.MeetingActivity"
+            android:name=".stream.ui.meeting.MeetingActivity"
             android:label="@string/meeting"
             android:launchMode="singleTask"
             android:theme="@style/Theme.App2.NoActionBar"
@@ -101,10 +98,10 @@
         <activity
             android:name=".ui.about.AboutUsActivity"
             android:exported="true"
-            android:parentActivityName=".ui.home.MainActivity" />
+            android:parentActivityName=".stream.ui.home.HomeActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
-            android:parentActivityName=".ui.home.MainActivity" />
+            android:parentActivityName=".stream.ui.home.HomeActivity" />
         <activity android:name=".ui.livestream.LiveStreamActivity" />
         <activity android:name=".ui.authentication.EmailRegistrationActivity" />
         <activity android:name=".ui.onboarding.GettingStartedActivity" />
@@ -119,9 +116,6 @@
         </activity>
         <activity android:name=".ui.authentication.RegisterActivity" />
         <activity android:name=".ui.authentication.LoginActivity" />
-
-        <activity
-            android:name=".ui.home.MainActivity" />
     </application>
 
 </manifest>

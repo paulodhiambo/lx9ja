@@ -5,7 +5,7 @@
 
         <variable
             name="report"
-            type="com.loud9ja.loud9ja.domain.Report" />
+            type="com.loud9ja.loud9ja.domain.network.api.reports.Data" />
     </data>
 
     <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Violence at Ikorodu Garage, Lagos."
+                android:text="@{report.title}"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView27"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+                android:text="@{report.message}"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/button6"
                 app:layout_constraintStart_toStartOf="parent"

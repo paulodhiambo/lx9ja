@@ -29,6 +29,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
+import com.loud9ja.loud9ja.stream.ui.home.HomeActivity
 import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
 import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
@@ -122,6 +123,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
 
         binding.root.findViewById<FloatingActionButton>(R.id.live_fab).setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
             showBottomDialog()
         }
 

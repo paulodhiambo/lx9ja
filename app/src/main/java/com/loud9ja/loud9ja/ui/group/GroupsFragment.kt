@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentGroupsBinding
 import com.loud9ja.loud9ja.domain.TrendingGroups
 import com.loud9ja.loud9ja.utils.BindingFragment
+import com.loud9ja.loud9ja.utils.UIstate
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -20,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
+    private val viewModel: GroupViewModel by viewModels()
     private val trendingGroupsAdapter by lazy {
         TrendingGroupsRecyclerViewAdapter()
     }
@@ -33,39 +36,8 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.trendingRecyclerview.apply {
-            hasFixedSize()
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = trendingGroupsAdapter
-            trendingGroupsAdapter.addItems(
-                mutableListOf(
-                    TrendingGroups(""),
-                    TrendingGroups(""),
-                    TrendingGroups(""),
-                    TrendingGroups("")
-                )
-            )
-
-        }
-        binding.popularRecyclerview.apply {
-            hasFixedSize()
-            layoutManager =
-                LinearLayoutManager(requireContext())
-            adapter = popularGroupsAdapter
-            isNestedScrollingEnabled = false
-            popularGroupsAdapter.addItems(
-                mutableListOf(
-                    TrendingGroups(""),
-                    TrendingGroups(""),
-                    TrendingGroups(""),
-                    TrendingGroups("")
-                )
-            )
-
-        }
-
+        viewModel.getGroup()
+        observeGroups()
         binding.btnNewGroup.setOnClickListener {
             val fragment = NewGroupFragment()
             val fragmentManager = fragmentManager
@@ -75,5 +47,40 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
         }
 
 
+    }
+
+    fun observeGroups() {
+        viewModel.groupResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is UIstate.Success -> {
+                    binding.trendingRecyclerview.apply {
+                        hasFixedSize()
+                        layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        adapter = trendingGroupsAdapter
+                        trendingGroupsAdapter.addItems(result.data!!.data.data)
+
+                    }
+
+                    binding.popularRecyclerview.apply {
+                        hasFixedSize()
+                        layoutManager =
+                            LinearLayoutManager(requireContext())
+                        adapter = popularGroupsAdapter
+                        isNestedScrollingEnabled = false
+                        popularGroupsAdapter.addItems(result.data!!.data.data)
+
+                    }
+
+                }
+                is UIstate.Loading -> {}
+                is UIstate.Error -> {}
+            }
+
+        }
     }
 }

@@ -2,23 +2,34 @@ package com.loud9ja.loud9ja.ui.report
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
 import com.loud9ja.loud9ja.domain.repository.ReportRepository
+import com.loud9ja.loud9ja.domain.usecase.GetReportUsecase
 import com.loud9ja.loud9ja.utils.BaseViewModel
 import com.loud9ja.loud9ja.utils.DataState
+import com.loud9ja.loud9ja.utils.NetworkState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import javax.inject.Inject
 
 @HiltViewModel
-class ReportViewModel @Inject constructor(private val reportRepository: ReportRepository) :
+class ReportViewModel @Inject constructor(
+    private val reportRepository: ReportRepository,
+    private val getReportUsecase: GetReportUsecase
+) :
     BaseViewModel() {
     private var _createReportDataState: MutableLiveData<DataState<ResponseBody>> = MutableLiveData()
     val createReportDataState: LiveData<DataState<ResponseBody>>
         get() = _createReportDataState
+
+    private var _getReportState: MutableLiveData<DataState<ReportResponse>> = MutableLiveData()
+    val getReportState: LiveData<DataState<ReportResponse>>
+        get() = _getReportState
 
     fun createReport(
         state: RequestBody,
@@ -29,13 +40,23 @@ class ReportViewModel @Inject constructor(private val reportRepository: ReportRe
         message: RequestBody,
         media: MultipartBody.Part?
     ) {
-//        compositeDisposable.add(
-//            reportRepository.createReport(state, lga, category, title, is_anonymous, message, media)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                    { data -> _createReportDataState.value = DataState.Success(data) },
-//                    { e -> _createReportDataState.value = DataState.Error(e as Exception) })
+
 //        )
+    }
+
+    fun getReports() {
+        getReportUsecase().onEach { result ->
+            when (result) {
+                is NetworkState.Success -> {
+                    _getReportState.value = DataState.Success(result.data!!)
+                }
+                is NetworkState.Loading -> {
+
+                }
+                is NetworkState.Error -> {
+                    _getReportState.value = DataState.Error(result.message!!)
+                }
+            }
+        }.launchIn(viewModelScope)
     }
 }

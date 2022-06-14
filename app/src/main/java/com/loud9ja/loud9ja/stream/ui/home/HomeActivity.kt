@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
     menuInflater.inflate(R.menu.menu_home, menu)
 
     if (menu is MenuBuilder) {
-      menu.setOptionalIconsVisible(true)
+      menu.setOptionalIconsVisible(false)
     }
 
     return true
