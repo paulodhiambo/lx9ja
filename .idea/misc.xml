@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_register_hero.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/drawable/round.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/activity_calculator.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/activity_getting_started.xml" value="0.2463768115942029" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_landing.xml" value="0.31927083333333334" />

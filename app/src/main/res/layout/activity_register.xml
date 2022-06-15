@@ -30,9 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_bold"
             android:text="@string/register"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.102"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="6dp"
-            android:fontFamily="@font/roboto_bold"
             android:text="@string/no_long_process_it_will_only_take_a_minute"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.102"
@@ -238,7 +236,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/roboto_black"
                 android:text="Registered? Login here"
                 android:textSize="12sp" />
         </RelativeLayout>

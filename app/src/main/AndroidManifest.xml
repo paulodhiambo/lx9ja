@@ -74,6 +74,9 @@
         <activity
             android:name=".ui.authentication.LandingActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.calculator.CalculatorActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

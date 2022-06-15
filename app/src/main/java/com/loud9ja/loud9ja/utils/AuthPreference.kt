@@ -33,4 +33,16 @@ class AuthPreference @Inject constructor(val context: Context) {
         prefs.edit().remove("password").apply()
         prefs.edit().remove("token").apply()
     }
+
+    fun savePin(pin: String) {
+        val editor: SharedPreferences.Editor =
+            context.getSharedPreferences("auth", Context.MODE_PRIVATE).edit()
+        editor.putString("pin", pin)
+        editor.apply()
+    }
+
+    fun getPin(): String? {
+        val prefs: SharedPreferences = context.getSharedPreferences("auth", Context.MODE_PRIVATE)
+        return prefs.getString("pin", null)
+    }
 }
