@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
+import com.loud9ja.loud9ja.domain.usecase.PostCommentsUseCase
 import com.loud9ja.loud9ja.domain.usecase.TrendingPostUseCase
 import com.loud9ja.loud9ja.utils.DataState
 import com.loud9ja.loud9ja.utils.NetworkState
@@ -14,14 +16,18 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class DiscussionViewModel @Inject constructor(private val postUseCase: TrendingPostUseCase) :
+class DiscussionViewModel @Inject constructor(
+    private val trendingPostUseCase: TrendingPostUseCase,
+    private val postCommentsUseCase: PostCommentsUseCase
+) :
     ViewModel() {
     private var _postsResponse = MutableLiveData<DataState<TrendingPostResponse>>()
+
     val postsResponse: LiveData<DataState<TrendingPostResponse>>
         get() = _postsResponse
 
-    fun getPosts() {
-        postUseCase().onEach { result ->
+    fun getTrendingPosts() {
+        trendingPostUseCase().onEach { result ->
             when (result) {
                 is NetworkState.Success -> {
                     _postsResponse.value = DataState.Success(result.data!!)
@@ -30,6 +36,27 @@ class DiscussionViewModel @Inject constructor(private val postUseCase: TrendingP
                 }
                 is NetworkState.Error -> {
                     _postsResponse.value = DataState.Error(result.message!!)
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private var _postCommentsResponse = MutableLiveData<DataState<PostCommentsResponse>>()
+    val postCommentsResponse: LiveData<DataState<PostCommentsResponse>>
+        get() = _postCommentsResponse
+
+    fun getPostComments(id:Int){
+        postCommentsUseCase(id).onEach { result->
+            when(result){
+                is NetworkState.Success ->{
+                    _postCommentsResponse.value = DataState.Success(result.data!!)
+                }
+
+                is NetworkState.Error -> {
+                    _postCommentsResponse.value = DataState.Error(result.message!!)
+                }
+                is NetworkState.Loading -> {
+
                 }
             }
         }.launchIn(viewModelScope)

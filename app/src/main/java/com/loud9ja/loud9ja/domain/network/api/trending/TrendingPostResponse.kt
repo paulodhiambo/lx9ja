@@ -3,6 +3,7 @@ package com.loud9ja.loud9ja.domain.network.api.trending
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 data class TrendingPostResponse(
     @SerializedName("data")
@@ -20,4 +21,4 @@ data class TrendingPostResponse(
     @SerializedName("success")
     @Expose
     val success: Boolean // true
-)
+): Serializable

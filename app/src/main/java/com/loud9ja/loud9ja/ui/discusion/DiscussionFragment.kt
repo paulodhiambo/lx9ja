@@ -10,6 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionBinding
 import com.loud9ja.loud9ja.domain.Trending
+import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,8 +35,8 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getPosts()
-        observeTrending()
+        viewModel.getTrendingPosts()
+        observeTrending(binding)
 
         binding.btnNewPost.setOnClickListener {
             val fragment = PostFragment()
@@ -46,22 +47,22 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
         }
     }
 
-    private fun observeTrending() {
+    private fun observeTrending(binding: FragmentDiscussionBinding) {
         viewModel.postsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
+                    trendingAdapter.items = result.data.data as MutableList<Data>
                     binding.trendingRecyclerview.apply {
                         hasFixedSize()
                         layoutManager =
-                            LinearLayoutManager(
-                                requireContext(),
-                                LinearLayoutManager.HORIZONTAL,
-                                false
+                            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false
                             )
                         adapter = trendingAdapter
-                        trendingAdapter.addItems(result.data.data)
-                        trendingAdapter.listener = { _, _, _ ->
+                        trendingAdapter.listener = { _, item, _ ->
+                            val bundle = Bundle()
+                            bundle.putSerializable("post", item)
                             val fragment = DiscussionDetailFragment()
+                            fragment.arguments = bundle
                             val fragmentManager = fragmentManager
                             val fragmentTransaction = fragmentManager?.beginTransaction()
                             fragmentTransaction?.replace(
