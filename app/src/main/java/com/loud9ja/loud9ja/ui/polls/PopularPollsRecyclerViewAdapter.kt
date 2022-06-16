@@ -3,14 +3,13 @@ package com.loud9ja.loud9ja.ui.polls
 import android.view.View
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.PopularPollItemBinding
-import com.loud9ja.loud9ja.domain.Trending
+import com.loud9ja.loud9ja.domain.network.api.polls.Poll
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
 import com.loud9ja.loud9ja.utils.VoteListener
-import java.util.*
 
 
 class PopularPollsRecyclerViewAdapter :
-    BaseRecyclerViewAdapter<Trending, PopularPollItemBinding>() {
+    BaseRecyclerViewAdapter<Poll, PopularPollItemBinding>() {
     override fun getLayout(): Int {
         return R.layout.popular_poll_item
     }
@@ -21,11 +20,13 @@ class PopularPollsRecyclerViewAdapter :
     ) {
         val voteView = holder.binding.voteView
         val voteData = LinkedHashMap<String, Int>()
-        voteData["Less than 1 cup"] = 0
-        voteData["1-4 cups of coffee"] = 75
-        voteData["5 cups of coffee or more"] = 25
+        items[position].options.forEach {
+            voteData[it.option] = 20 * position
+        }
         voteView.initVote(voteData);
         voteView.setAnimationRate(600);
+        holder.binding.textView35.text = items[position].question
+        holder.binding.textView18.text = items[position].createdBy
 
         voteView.setVoteListener(object : VoteListener {
             override fun onItemClick(view: View?, index: Int, status: Boolean): Boolean {

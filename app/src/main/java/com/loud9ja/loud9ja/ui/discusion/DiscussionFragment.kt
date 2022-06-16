@@ -37,29 +37,6 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
         viewModel.getPosts()
         observeTrending()
 
-        binding.recentRecyclerview.apply {
-            hasFixedSize()
-            isNestedScrollingEnabled = false
-            layoutManager =
-                LinearLayoutManager(requireContext())
-            adapter = recentAdapter
-            recentAdapter.addItems(
-                mutableListOf(
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", "")
-                )
-            )
-            recentAdapter.listener = { _, _, _ ->
-                val fragment = DiscussionDetailFragment()
-                val fragmentManager = fragmentManager
-                val fragmentTransaction = fragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
-                fragmentTransaction?.commit()
-            }
-        }
-
         binding.btnNewPost.setOnClickListener {
             val fragment = PostFragment()
             val fragmentManager = fragmentManager
@@ -94,6 +71,23 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
                             fragmentTransaction?.commit()
                         }
                     }
+
+                    binding.recentRecyclerview.apply {
+                        hasFixedSize()
+                        isNestedScrollingEnabled = false
+                        layoutManager =
+                            LinearLayoutManager(requireContext())
+                        adapter = recentAdapter
+                        recentAdapter.addItems(result.data.data)
+                        recentAdapter.listener = { _, _, _ ->
+                            val fragment = DiscussionDetailFragment()
+                            val fragmentManager = fragmentManager
+                            val fragmentTransaction = fragmentManager?.beginTransaction()
+                            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+                            fragmentTransaction?.commit()
+                        }
+                    }
+
                 }
                 is DataState.Loading -> {}
                 is DataState.Error -> {}

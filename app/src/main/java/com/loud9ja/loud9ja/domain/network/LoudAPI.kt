@@ -2,7 +2,7 @@ package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
-import com.loud9ja.loud9ja.domain.network.api.polls.PollsResponse
+import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
@@ -42,7 +42,7 @@ interface LoudAPI {
     suspend fun getGroups(): GroupResponse
 
     @GET(GET_POLLS)
-    suspend fun getPolls(): PollsResponse
+    suspend fun getPolls(): PollResponse
 
     @GET(GET_POSTS)
     suspend fun getPosts(): PostResponse

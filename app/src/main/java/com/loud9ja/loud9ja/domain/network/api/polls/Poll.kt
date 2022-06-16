@@ -2,36 +2,55 @@ package com.loud9ja.loud9ja.domain.network.api.polls
 
 
 import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
 data class Poll(
     @SerializedName("created_at")
-    val createdAt: String,
+    @Expose
+    val createdAt: String, // 2022-06-12T19:16:30.000000Z
     @SerializedName("created_by")
-    val createdBy: String,
+    @Expose
+    val createdBy: String, // Anna Kude
     @SerializedName("deleted_at")
-    val deletedAt: Any,
-    @SerializedName("end_date")
-    val endDate: String,
+    @Expose
+    val deletedAt: Any, // null
+    @SerializedName("ending_at")
+    @Expose
+    val endingAt: String, // 2022-06-13 19:16:30
     @SerializedName("ends_in")
-    val endsIn: Int,
+    @Expose
+    val endsIn: Int, // 1
     @SerializedName("hide_creator_detail")
-    val hideCreatorDetail: Int,
+    @Expose
+    val hideCreatorDetail: Int, // 1
     @SerializedName("id")
-    val id: Int,
+    @Expose
+    val id: Int, // 14
     @SerializedName("is_free")
-    val isFree: String,
+    @Expose
+    val isFree: String, // NO
     @SerializedName("is_people_share")
-    val isPeopleShare: Int,
+    @Expose
+    val isPeopleShare: Int, // 0
     @SerializedName("options")
+    @Expose
     val options: List<Option>,
     @SerializedName("profile_picture")
-    val profilePicture: Any,
+    @Expose
+    val profilePicture: String, // profile/default.png
     @SerializedName("question")
-    val question: String,
+    @Expose
+    val question: String, // What is your favourite meal?
+    @SerializedName("selected_answers")
+    @Expose
+    val selectedAnswers: List<Any>,
     @SerializedName("updated_at")
-    val updatedAt: String,
+    @Expose
+    val updatedAt: String, // 2022-06-12T19:16:30.000000Z
     @SerializedName("user_id")
-    val userId: Int,
+    @Expose
+    val userId: Int, // 29
     @SerializedName("view_count")
-    val viewCount: Int
+    @Expose
+    val viewCount: Int // 0
 )

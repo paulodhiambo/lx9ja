@@ -6,7 +6,7 @@
 
         <variable
             name="recent"
-            type="com.loud9ja.loud9ja.domain.Trending" />
+            type="com.loud9ja.loud9ja.domain.network.api.trending.Data" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

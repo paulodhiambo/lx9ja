@@ -2,18 +2,25 @@ package com.loud9ja.loud9ja.domain.network.api.polls
 
 
 import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
 data class Option(
     @SerializedName("created_at")
-    val createdAt: String,
+    @Expose
+    val createdAt: String, // 2022-06-12T19:16:30.000000Z
     @SerializedName("deleted_at")
-    val deletedAt: Any,
+    @Expose
+    val deletedAt: Any, // null
     @SerializedName("id")
-    val id: Int,
+    @Expose
+    val id: Int, // 40
     @SerializedName("option")
-    val option: String,
+    @Expose
+    val option: String, // Pizza
     @SerializedName("poll_id")
-    val pollId: Int,
+    @Expose
+    val pollId: Int, // 14
     @SerializedName("updated_at")
-    val updatedAt: String
+    @Expose
+    val updatedAt: String // 2022-06-12T19:16:30.000000Z
 )
