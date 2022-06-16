@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="model"
+            name="post"
             type="com.loud9ja.loud9ja.domain.network.api.trending.Data" />
     </data>
 
@@ -41,7 +41,7 @@
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:text="@{model.user.name}"
+                android:text="@{post.user.name}"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@{model.title}"
+                android:text="@{post.title}"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@{model.description}"
+                android:text="@{post.description}"
                 android:textAlignment="center"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"

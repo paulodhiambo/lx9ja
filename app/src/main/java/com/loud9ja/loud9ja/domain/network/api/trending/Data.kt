@@ -3,6 +3,7 @@ package com.loud9ja.loud9ja.domain.network.api.trending
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 data class Data(
     @SerializedName("comments")
@@ -62,4 +63,4 @@ data class Data(
     @SerializedName("view_count")
     @Expose
     val viewCount: Int // 0
-)
+):Serializable

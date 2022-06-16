@@ -14,7 +14,7 @@ class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, TrendingItemBi
         holder: Companion.BaseViewHolder<TrendingItemBinding>,
         position: Int
     ) {
-        holder.binding.model = items[position]
+        holder.binding.post = items[position]
         holder.binding.textView24.text = items[position].comments.toString()
         holder.binding.textView23.text = items[position].totalDislikes.toString()
         holder.binding.textView22.text = items[position].totalLikes.toString()
