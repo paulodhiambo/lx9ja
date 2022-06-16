@@ -7,8 +7,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.loud9ja.loud9ja.databinding.ActivityCalculatorBinding
+import com.loud9ja.loud9ja.ui.SplashActivity
 import com.loud9ja.loud9ja.utils.AuthPreference
-import com.loud9ja.loud9ja.ui.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -83,10 +83,10 @@ class CalculatorActivity : AppCompatActivity() {
             Log.d("COmp======>", "onCreate: $pin ${binding.text.text.toString()}")
             if (pin == null || binding.text.toString().length > 2) {
                 authPreference.savePin(binding.text.text.toString())
-                startActivity(Intent(this, HomeActivity::class.java))
+                startActivity(Intent(this, SplashActivity::class.java))
                 finish()
             } else if (pin == binding.text.text.toString()) {
-                startActivity(Intent(this, HomeActivity::class.java))
+                startActivity(Intent(this, SplashActivity::class.java))
                 finish()
             }
         }

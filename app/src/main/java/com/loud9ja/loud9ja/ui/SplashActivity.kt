@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.loud9ja.loud9ja.databinding.ActivitySpashBinding
 import com.loud9ja.loud9ja.ui.calculator.CalculatorActivity
+import com.loud9ja.loud9ja.ui.home.HomeActivity
 import com.loud9ja.loud9ja.ui.onboarding.GettingStartedActivity
 import com.loud9ja.loud9ja.utils.AuthPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val intent = Intent(this, CalculatorActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 intent.apply {
                     this.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
