@@ -27,7 +27,7 @@
         <entry key="app/src/main/res/layout/ending_poll_item.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_discussion.xml" value="0.2554347826086957" />
-        <entry key="app/src/main/res/layout/fragment_discussion_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_discussion_detail.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_new_group.xml" value="0.26313405797101447" />
@@ -36,12 +36,8 @@
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.26313405797101447" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/fragment_sos.xml" value="0.22760416666666666" />
-<<<<<<< HEAD
         <entry key="app/src/main/res/layout/go_live_bottom_sheet.xml" value="0.2598958333333333" />
-=======
-        <entry key="app/src/main/res/layout/list_item_chat.xml" value="0.22056159420289856" />
-        <entry key="app/src/main/res/layout/list_item_comment.xml" value="0.1" />
->>>>>>> 4dbfa097084e515f52bf7f641ff56e4c6a7686d2
+        <entry key="app/src/main/res/layout/list_item_comment.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2463768115942029" />
         <entry key="app/src/main/res/layout/onboarding_item.xml" value="0.24909420289855072" />
         <entry key="app/src/main/res/layout/police_bottom_sheet_dialog.xml" value="0.22760416666666666" />

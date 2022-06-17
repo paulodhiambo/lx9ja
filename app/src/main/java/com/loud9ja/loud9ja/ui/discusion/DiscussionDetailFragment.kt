@@ -8,11 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionDetailBinding
-import com.loud9ja.loud9ja.domain.network.api.comments.Comment
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
+import org.w3c.dom.Comment
 
 @AndroidEntryPoint
 class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding>() {
@@ -42,9 +42,9 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
         discussionViewModel.postCommentsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
-                    val comments = result.data.data.data
+                    val comments = result.data.result.data
                     Log.d("COMMENTS=========>", "observerGetPostComments: $comments")
-                    commentsAdapter.items = comments as MutableList<Comment>
+                    commentsAdapter.items = comments as MutableList<com.loud9ja.loud9ja.domain.network.api.comments.Data>
                     binding.rvComments.apply {
                         hasFixedSize()
                         layoutManager =

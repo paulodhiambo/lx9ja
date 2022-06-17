@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
+import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
 import com.loud9ja.loud9ja.domain.usecase.PostCommentsUseCase
 import com.loud9ja.loud9ja.domain.usecase.TrendingPostUseCase
@@ -41,8 +41,8 @@ class DiscussionViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    private var _postCommentsResponse = MutableLiveData<DataState<PostCommentsResponse>>()
-    val postCommentsResponse: LiveData<DataState<PostCommentsResponse>>
+    private var _postCommentsResponse = MutableLiveData<DataState<PostCommentResponse>>()
+    val postCommentsResponse: LiveData<DataState<PostCommentResponse>>
         get() = _postCommentsResponse
 
     fun getPostComments(id:Int){

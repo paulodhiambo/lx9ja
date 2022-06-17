@@ -1,7 +1,7 @@
 package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
-import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
+import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
@@ -26,7 +26,7 @@ interface LoudAPI {
         const val USER_PROFILE = "api/v2/me"
         const val CREATE_REPORT = "api/v2/reports"
         const val GET_POSTS = "api/v2/posts/list"
-        const val GET_POST_COMMENTS = "api/v2/posts/list-comments/:{id}"
+        const val GET_POST_COMMENTS = "api/v2/posts/list-comments/{id}"
         const val GET_POLLS = "api/v2/polls/list"
         const val GET_GROUP = "api/v2/groups/list"
         const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
@@ -35,7 +35,7 @@ interface LoudAPI {
     }
 
     @GET(TRENDING_POST)
-    suspend fun getTrendingPosts():TrendingPostResponse
+    suspend fun getTrendingPosts(): TrendingPostResponse
 
     @GET(GET_ALL_REPORTS)
     suspend fun getReports(): ReportResponse
@@ -50,7 +50,7 @@ interface LoudAPI {
     suspend fun getPosts(): PostResponse
 
     @GET(GET_POST_COMMENTS)
-    suspend fun getPostComments(@Path("id") id:Int): PostCommentsResponse
+    suspend fun getPostComments(@Path("id") id: Int): PostCommentResponse
 
     @POST(REGISTER_API)
     suspend fun registerUser(@Body user: User): RegistrationResponse

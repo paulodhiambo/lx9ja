@@ -2,10 +2,11 @@ package com.loud9ja.loud9ja.ui.discusion
 
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ListItemCommentBinding
-import com.loud9ja.loud9ja.domain.network.api.comments.Comment
+import com.loud9ja.loud9ja.domain.network.api.comments.Data
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
+import org.w3c.dom.Comment
 
-class CommentRecyclerViewAdapter : BaseRecyclerViewAdapter<Comment, ListItemCommentBinding>() {
+class CommentRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, ListItemCommentBinding>() {
     override fun getLayout(): Int {
         return R.layout.list_item_comment
     }
