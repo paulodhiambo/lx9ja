@@ -5,7 +5,7 @@
 
         <variable
             name="comment"
-            type="com.loud9ja.loud9ja.domain.network.api.comments.Data" />
+            type="com.loud9ja.loud9ja.domain.network.api.comments.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

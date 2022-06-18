@@ -4,7 +4,6 @@ import com.loud9ja.loud9ja.domain.network.LoudAPI
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
-import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
 import javax.inject.Inject
@@ -15,5 +14,4 @@ class PostsRepository @Inject constructor(private val api: LoudAPI) {
     suspend fun getPostComments(id: Int): PostCommentsResponse = api.getPostComments(id)
     suspend fun addPostComment(addCommentRequest: AddCommentRequest): AddCommentResponse =
         api.addPostComments(addCommentRequest)
-    suspend fun getPostComments(id: Int): PostCommentResponse = api.getPostComments(id)
 }
