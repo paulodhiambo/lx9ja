@@ -70,8 +70,11 @@ class NewGroupFragment : BindingFragment<FragmentNewGroupBinding>() {
             val description = binding.txtDescription.text.toString().trim()
             val visibilityStatus = binding.visibilityTextView.text.toString().trim()
             val accessType = binding.visibilityTextView.text.toString().trim()
-            Log.d("============>", "onViewCreated: $groupName, $description, $visibilityStatus, $accessType")
-//            createGroup(groupName, description, visibilityStatus)
+            Log.d(
+                "============>",
+                "onViewCreated: $groupName, $description, $visibilityStatus, $accessType"
+            )
+            createGroup(groupName, description, visibilityStatus)
         }
 
         binding.selectImage.setOnClickListener {
@@ -87,10 +90,10 @@ class NewGroupFragment : BindingFragment<FragmentNewGroupBinding>() {
         loadingBar?.show()
         val file = File(photo.value!!)
         val groupName =
-            "guvjbbvj".toRequestBody("multipart/form-data".toMediaTypeOrNull())
+            name.toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val groupDescription =
-            "vbjhnbjhnb".toRequestBody("multipart/form-data".toMediaTypeOrNull())
-        val groupStatus = "PUBLIC".toRequestBody("multipart/form-data".toMediaTypeOrNull())
+            description.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val groupStatus = status.toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val people = "[3]".toRequestBody("multipart/form-data".toMediaTypeOrNull())
         viewModel.createGroup(
             groupName,
@@ -121,7 +124,7 @@ class NewGroupFragment : BindingFragment<FragmentNewGroupBinding>() {
                 is UIstate.Error -> {
                     loadingBar?.dismiss()
                     Log.d("Error===>", "observeResponse: ${result.message}")
-                    requireActivity().showMessage("An error occurred")
+                    requireActivity().showMessage(result.message!!)
                 }
             }
         }

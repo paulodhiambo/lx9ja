@@ -1,10 +1,12 @@
 package com.loud9ja.loud9ja.ui.polls
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.PopularPollItemBinding
 import com.loud9ja.loud9ja.domain.network.api.polls.Poll
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
+import com.loud9ja.loud9ja.utils.Constants.IMAGE_PATH
 import com.loud9ja.loud9ja.utils.VoteListener
 
 
@@ -27,7 +29,8 @@ class PopularPollsRecyclerViewAdapter :
         voteView.setAnimationRate(600);
         holder.binding.textView35.text = items[position].question
         holder.binding.textView18.text = items[position].createdBy
-
+        Glide.with(holder.itemView).load("${IMAGE_PATH}${items[position].profilePicture}")
+            .error(R.drawable.profile_image).into(holder.binding.profileImage)
         voteView.setVoteListener(object : VoteListener {
             override fun onItemClick(view: View?, index: Int, status: Boolean): Boolean {
                 if (!status) {

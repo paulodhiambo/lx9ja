@@ -57,7 +57,7 @@ class CreateGroupUseCase @Inject constructor(private val repository: GroupReposi
         } catch (e: IOException) {
             emit(NetworkState.Error(e.message.toString()))
         } catch (e: HttpException) {
-            emit(NetworkState.Error(e.message()))
+            emit(NetworkState.Error("Group with similar name exists"))
         }
     }
 }

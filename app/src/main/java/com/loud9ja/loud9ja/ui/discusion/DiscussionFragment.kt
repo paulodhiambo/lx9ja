@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionBinding
-import com.loud9ja.loud9ja.domain.Trending
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.DataState
@@ -55,7 +54,8 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
                     binding.trendingRecyclerview.apply {
                         hasFixedSize()
                         layoutManager =
-                            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false
+                            LinearLayoutManager(
+                                requireContext(), LinearLayoutManager.HORIZONTAL, false
                             )
                         adapter = trendingAdapter
                         trendingAdapter.listener = { _, item, _ ->
@@ -80,11 +80,17 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
                             LinearLayoutManager(requireContext())
                         adapter = recentAdapter
                         recentAdapter.addItems(result.data.data)
-                        recentAdapter.listener = { _, _, _ ->
+                        recentAdapter.listener = { _, item, _ ->
+                            val bundle = Bundle()
+                            bundle.putSerializable("post", item)
                             val fragment = DiscussionDetailFragment()
+                            fragment.arguments = bundle
                             val fragmentManager = fragmentManager
                             val fragmentTransaction = fragmentManager?.beginTransaction()
-                            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+                            fragmentTransaction?.replace(
+                                R.id.nav_host_fragment_content_main,
+                                fragment
+                            )
                             fragmentTransaction?.commit()
                         }
                     }

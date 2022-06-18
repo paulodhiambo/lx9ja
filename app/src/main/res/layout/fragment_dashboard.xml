@@ -2,25 +2,24 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/ic_back_image"
     android:layout_height="wrap_content"
+    android:background="@drawable/ic_back_image"
     android:scrollbars="none">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.dashboard.DashboardFragment">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:letterSpacing="0.05"
             android:layout_marginStart="20dp"
-            android:lineSpacingExtra="2sp"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/roboto_bold"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="2sp"
             android:text="Welcome back,\n Kindly check in here."
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
-            android:lineHeight="22sp"
             android:fontFamily="@font/roboto_bold"
+            android:lineHeight="22sp"
             android:text="What do you want to do?"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,6 +113,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:nestedScrollingEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />

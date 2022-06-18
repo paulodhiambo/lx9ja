@@ -7,11 +7,14 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
+import com.bumptech.glide.Glide
+import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionDetailBinding
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.Comment
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
+import com.loud9ja.loud9ja.utils.Constants.IMAGE_PATH
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +37,7 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
         binding.tvPotsCreatedBy.text = post.createdBy.plus(" | ").plus(post.createdAt)
         binding.textViewLikeCount.text = post.likes.toString()
         binding.textViewDislikeCount.text = post.totalDislikes.toString()
+        Glide.with(this).load("${IMAGE_PATH}${post.profilePicture}").error(R.drawable.banner1).into(binding.profile)
         binding.btnSendComment.setOnClickListener {
             val comment = binding.textInputComment.text.toString().trim()
             val addCommentRequest = AddCommentRequest(comment, post.id)
@@ -45,10 +49,14 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
     }
 
     private fun observerAddComment(binding: FragmentDiscussionDetailBinding) {
-        discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner){result->
+        discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
-                    Toast.makeText(requireContext(), "Comment added successfully", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Comment added successfully",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 is DataState.Loading -> {}
                 is DataState.Error -> {}

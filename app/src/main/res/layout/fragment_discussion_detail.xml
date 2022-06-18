@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.discusion.DiscussionDetailFragment">
 
@@ -266,7 +266,7 @@
                             android:letterSpacing="0.05"
                             android:lineSpacingExtra="3sp"
                             android:paddingTop="5dp"
-                            android:text=" Comments (20) "
+                            android:text=" Comments  "
                             android:textSize="13sp" />
 
                     </LinearLayout>
@@ -287,8 +287,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:padding="5dp"
                         android:nestedScrollingEnabled="false"
+                        android:padding="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"

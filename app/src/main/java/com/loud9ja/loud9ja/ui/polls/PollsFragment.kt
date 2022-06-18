@@ -31,7 +31,7 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
         observePollResponse()
     }
 
-    fun observePollResponse() {
+    private fun observePollResponse() {
         viewModel.pollResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is UIstate.Success -> {

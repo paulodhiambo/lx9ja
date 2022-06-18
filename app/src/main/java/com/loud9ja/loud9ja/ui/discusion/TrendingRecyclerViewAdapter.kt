@@ -1,9 +1,11 @@
 package com.loud9ja.loud9ja.ui.discusion
 
+import com.bumptech.glide.Glide
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.TrendingItemBinding
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
+import com.loud9ja.loud9ja.utils.Constants.IMAGE_PATH
 
 class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, TrendingItemBinding>() {
     override fun getLayout(): Int {
@@ -22,6 +24,8 @@ class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, TrendingItemBi
         holder.binding.textViewCreateAt.text = items[position].createdAt
         holder.binding.textViewPostContent.text = items[position].description
         holder.binding.textViewPostTitle.text = items[position].title
+        Glide.with(holder.itemView).load("${IMAGE_PATH}${items[position].profilePicture}")
+            .error(R.drawable.profile_image).into(holder.binding.profileImage)
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

@@ -79,11 +79,4 @@ class GroupViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-
-    suspend fun Context.saveBitmap(fileName: String, bitmap: Bitmap) = withContext(Dispatchers.IO) {
-        val file = File(filesDir, fileName)
-        file.outputStream().use {
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
-        }
-    }
 }
