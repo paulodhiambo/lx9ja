@@ -49,7 +49,7 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
 
     }
 
-    fun observeGroups() {
+    private fun observeGroups() {
         viewModel.groupResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is UIstate.Success -> {

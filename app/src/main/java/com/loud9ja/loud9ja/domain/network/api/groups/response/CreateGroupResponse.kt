@@ -1,10 +1,10 @@
-package com.loud9ja.loud9ja.domain.network.api.groups
+package com.loud9ja.loud9ja.domain.network.api.groups.response
 
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
-data class GroupResponse(
+data class CreateGroupResponse(
     @SerializedName("data")
     @Expose
     val `data`: Data,
@@ -13,7 +13,7 @@ data class GroupResponse(
     val errors: List<Any>,
     @SerializedName("message")
     @Expose
-    val message: String, // Groups retrieved successfully
+    val message: String, // Group updated successfully.
     @SerializedName("meta")
     @Expose
     val meta: String, // success
