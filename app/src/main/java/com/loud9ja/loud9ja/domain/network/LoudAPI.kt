@@ -1,6 +1,9 @@
 package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
+import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
+import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
+import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.response.CreateGroupResponse
@@ -28,6 +31,8 @@ interface LoudAPI {
         const val CREATE_REPORT = "api/v2/reports"
         const val GET_POSTS = "api/v2/posts/list"
         const val GET_POST_COMMENTS = "api/v2/posts/list-comments/{id}"
+        const val ADD_POST_COMMENTS = "api/v2/posts/comment"
+
         const val GET_POLLS = "api/v2/polls/list"
         const val GET_GROUP = "api/v2/groups/list"
         const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
@@ -53,6 +58,9 @@ interface LoudAPI {
 
     @GET(GET_POST_COMMENTS)
     suspend fun getPostComments(@Path("id") id: Int): PostCommentResponse
+
+    @POST(ADD_POST_COMMENTS)
+    suspend fun addPostComments(@Body addCommentRequest: AddCommentRequest): AddCommentResponse
 
     @POST(REGISTER_API)
     suspend fun registerUser(@Body user: User): RegistrationResponse

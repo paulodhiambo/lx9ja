@@ -1,221 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:orientation="vertical"
+    tools:context=".ui.discusion.DiscussionDetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
-        tools:context=".ui.discusion.DiscussionDetailFragment">
+        android:layout_margin="20dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/banner_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/banner"
-            android:elevation="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/banner" />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_height="210dp"
+                android:background="@drawable/banner1"
+                android:elevation="150dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/category_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/banner1"
+                    app:riv_corner_radius="10dp" />
+            </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:elevation="20dp"
-            app:cardElevation="2dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintTop_toBottomOf="@+id/banner_image"
-            tools:layout_editor_absoluteX="40dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
+                android:background="@drawable/banner1"
+                android:elevation="150dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView1">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_post_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="2023 Presidential Election."
-                    android:textSize="18sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_author"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Sarah Obasi | 20 Mins ago." />
-
-                <View
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/drawer_button_color" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/text_view_post_content"
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:weightSum="1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_post_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_nedium"
+                                android:letterSpacing="0.05"
+                                android:lineSpacingExtra="3sp"
+                                android:text="2023 Presidential Election."
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_pots_created_by"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:letterSpacing="0.05"
+                                android:lineSpacingExtra="6sp"
+                                android:text="Sarah Obasi | 20 Mins Ago."
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="0.3"
+                            android:gravity="center"
+                            app:backgroundTint="@color/googleButtonColor"
+                            app:icon="@drawable/ic_share_icon"
+                            app:iconGravity="textStart"
+                            app:iconTint="#fff" />
+
+                        <!--                        <ImageButton-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="match_parent"-->
+                        <!--                            android:layout_weight="0.3"-->
+                        <!--                            android:background="@color/googleButtonColor"-->
+                        <!--                            android:src="@drawable/ic_share_icon"-->
+                        <!--                            app:tint="@color/googleButtonColor" />-->
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginVertical="5dp"
+                        android:background="#fff"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    <TextView
+                        android:id="@+id/tv_post_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_nedium"
+                        android:justificationMode="inter_word"
+                        android:letterSpacing="0.05"
+                        android:lineHeight="18sp"
+                        android:padding="10dp"
+                        android:text="@string/lorem_ipsum"
+                        android:textSize="10sp"
+                        app:layout_constraintTop_toBottomOf="@+id/view"
+                        tools:layout_editor_absoluteX="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="10dp"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_post_content">
+
+                        <ImageView
+                            android:id="@+id/imageButton4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="4dp"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView24"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21"
+                            app:srcCompat="@android:drawable/sym_action_chat"
+                            app:tint="@color/drawer_button_color" />
+
+
+                        <TextView
+                            android:id="@+id/text_view_comment_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="9dp"
+                            android:fontFamily="@font/roboto_nedium"
+                            android:text="80"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+                        <ImageView
+                            android:id="@+id/imageButton2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="4dp"
+
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+                            app:layout_constraintEnd_toStartOf="@+id/textView22"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton4"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:srcCompat="@drawable/ic_baseline_thumb_up_24"
+                            app:tint="@color/drawer_button_color" />
+
+                        <TextView
+                            android:id="@+id/text_view_like_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="9dp"
+                            android:fontFamily="@font/roboto_nedium"
+                            android:text="20"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+                        <ImageView
+                            android:id="@+id/imageButton3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="4dp"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                            app:layout_constraintEnd_toStartOf="@+id/textView23"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                            app:srcCompat="@drawable/ic_baseline_thumb_down_24"
+                            app:tint="@color/drawer_button_color" />
+
+                        <TextView
+                            android:id="@+id/text_view_dislike_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_nedium"
+                            android:text="178"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                            app:layout_constraintVertical_bias="0.51" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:elevation="150dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/placeholder_text" />
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:weightSum="1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_nedium"
+                            android:letterSpacing="0.05"
+                            android:lineSpacingExtra="3sp"
+                            android:paddingTop="5dp"
+                            android:text=" Comments (20) "
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginVertical="10dp"
+                        android:background="#fff"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_post_comments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view2"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/list_item_comment" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="150dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="end"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:weightSum="1">
 
-                    <ImageView
-                        android:id="@+id/imageButton4"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="4dp"
-                        android:background="@android:color/transparent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView24"
-                        app:layout_constraintTop_toBottomOf="@+id/textView21"
-                        app:srcCompat="@android:drawable/sym_action_chat"
-                        app:tint="@color/drawer_button_color" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/three"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/text_view_comment_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="9dp"
-                        android:text="20"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-                        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-                        app:layout_constraintTop_toTopOf="@+id/imageButton4"
-                        app:layout_constraintVertical_bias="0.5" />
-
-                    <ImageView
-                        android:id="@+id/imageButton2"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@android:color/transparent"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-                        app:layout_constraintEnd_toStartOf="@+id/textView22"
-                        app:layout_constraintTop_toTopOf="@+id/imageButton4"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_baseline_thumb_up_24"
-                        app:tint="@color/drawer_button_color" />
-
-                    <TextView
-                        android:id="@+id/text_view_like_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="9dp"
-                        android:text="20"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-                        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-                        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
-
-                    <ImageView
-                        android:id="@+id/imageButton3"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="4dp"
-                        android:background="@android:color/transparent"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-                        app:layout_constraintEnd_toStartOf="@+id/textView23"
-                        app:layout_constraintTop_toTopOf="@+id/imageButton2"
-                        app:srcCompat="@drawable/ic_baseline_thumb_down_24"
-                        app:tint="@color/drawer_button_color" />
-
-                    <TextView
-                        android:id="@+id/text_view_dislike_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="0.8"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageButton3"
-                        app:layout_constraintVertical_bias="0.51" />
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_comment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/add_comment" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_send_comment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/ic_send"
+                        app:iconGravity="textStart"
+                        app:iconTint="#fff" />
 
                 </LinearLayout>
-            </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_comments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:listitem="@layout/list_item_comment"
-            tools:itemCount="2"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView9" />
+            </androidx.cardview.widget.CardView>
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_comments">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile"
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/three"
-                    app:civ_border_color="#FF000000"
-                    app:civ_border_width="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputLayoutStyle"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    app:cornerRadius="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableEnd="@drawable/ic_send"
-                        android:hint="@string/add_comment" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
