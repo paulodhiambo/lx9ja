@@ -51,7 +51,10 @@ class ReportFragment : BindingFragment<FragmentReportBinding>() {
                         adapter = reportAdapter
                         reportAdapter.addItems(result.data.data)
                         reportAdapter.listener = { _, item, _ ->
+                            val bundle = Bundle()
+                            bundle.putSerializable("report", item)
                             val fragment = ReportDetailFragment()
+                            fragment.arguments = bundle
                             val fragmentManager = fragmentManager
                             val fragmentTransaction = fragmentManager?.beginTransaction()
                             fragmentTransaction?.replace(
