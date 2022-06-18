@@ -14,6 +14,7 @@ import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
+import org.w3c.dom.Comment
 
 @AndroidEntryPoint
 class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding>() {
@@ -68,6 +69,10 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
                     commentsAdapter.addItems(comments)
                     commentsAdapter.notifyDataSetChanged()
                     binding.rvPostComments.apply {
+                    val comments = result.data.result.data
+                    Log.d("COMMENTS=========>", "observerGetPostComments: $comments")
+                    commentsAdapter.items = comments as MutableList<com.loud9ja.loud9ja.domain.network.api.comments.Data>
+                    binding.rvComments.apply {
                         hasFixedSize()
                         layoutManager = LinearLayoutManager(
                             requireContext(),

@@ -2,7 +2,6 @@ package com.loud9ja.loud9ja.ui.calculator
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
@@ -21,7 +20,7 @@ class CalculatorActivity : AppCompatActivity() {
         setContentView(binding.root)
         val authPreference = AuthPreference(this)
         val pin = authPreference.getPin()
-        Log.d("Pin=========>", "onCreate: $pin")
+
         if (pin == null || pin == "") {
             binding.pin.visibility = View.VISIBLE
         }
@@ -80,7 +79,6 @@ class CalculatorActivity : AppCompatActivity() {
 
         }
         binding.btnEqual.setOnClickListener {
-            Log.d("COmp======>", "onCreate: $pin ${binding.text.text.toString()}")
             if (pin == null || binding.text.toString().length > 2) {
                 authPreference.savePin(binding.text.text.toString())
                 startActivity(Intent(this, SplashActivity::class.java))

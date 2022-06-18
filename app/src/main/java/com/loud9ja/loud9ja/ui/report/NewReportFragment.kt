@@ -15,7 +15,6 @@ import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
 import java.util.*
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class NewReportFragment : BindingFragment<FragmentNewReportBinding>() {

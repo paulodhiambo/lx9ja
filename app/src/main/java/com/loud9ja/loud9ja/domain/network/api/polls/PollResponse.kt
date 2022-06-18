@@ -2,16 +2,22 @@ package com.loud9ja.loud9ja.domain.network.api.polls
 
 
 import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
-data class PollsResponse(
+data class PollResponse(
     @SerializedName("data")
+    @Expose
     val `data`: List<Poll>,
     @SerializedName("errors")
+    @Expose
     val errors: List<String>,
     @SerializedName("message")
-    val message: String,
+    @Expose
+    val message: String, // You have successfully retrieved polls!
     @SerializedName("meta")
-    val meta: String,
+    @Expose
+    val meta: String, // success
     @SerializedName("success")
-    val success: Boolean
+    @Expose
+    val success: Boolean // true
 )

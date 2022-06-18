@@ -4,8 +4,10 @@ import com.loud9ja.loud9ja.data.User
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
+import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
-import com.loud9ja.loud9ja.domain.network.api.polls.PollsResponse
+import com.loud9ja.loud9ja.domain.network.api.groups.response.CreateGroupResponse
+import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
@@ -30,15 +32,17 @@ interface LoudAPI {
         const val GET_POSTS = "api/v2/posts/list"
         const val GET_POST_COMMENTS = "api/v2/posts/list-comments/{id}"
         const val ADD_POST_COMMENTS = "api/v2/posts/comment"
+
         const val GET_POLLS = "api/v2/polls/list"
         const val GET_GROUP = "api/v2/groups/list"
         const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
         const val TRENDING_POST = "api/v2/posts/trending"
+        const val CREATE_GROUP = "api/v2/groups/create"
 
     }
 
     @GET(TRENDING_POST)
-    suspend fun getTrendingPosts():TrendingPostResponse
+    suspend fun getTrendingPosts(): TrendingPostResponse
 
     @GET(GET_ALL_REPORTS)
     suspend fun getReports(): ReportResponse
@@ -47,13 +51,13 @@ interface LoudAPI {
     suspend fun getGroups(): GroupResponse
 
     @GET(GET_POLLS)
-    suspend fun getPolls(): PollsResponse
+    suspend fun getPolls(): PollResponse
 
     @GET(GET_POSTS)
     suspend fun getPosts(): PostResponse
 
     @GET(GET_POST_COMMENTS)
-    suspend fun getPostComments(@Path("id") id:Int): PostCommentsResponse
+    suspend fun getPostComments(@Path("id") id: Int): PostCommentResponse
 
     @POST(ADD_POST_COMMENTS)
     suspend fun addPostComments(@Body addCommentRequest: AddCommentRequest): AddCommentResponse
@@ -85,6 +89,16 @@ interface LoudAPI {
         @Part("title") title: RequestBody,
         @Part("is_anonymous") is_anonymous: RequestBody,
         @Part("message") message: RequestBody,
-        @Part("medial") media: MultipartBody.Part?
+        @Part media: MultipartBody.Part?
     ): ResponseBody
+
+    @Multipart
+    @POST(CREATE_GROUP)
+    suspend fun createGroup(
+        @Part("name") state: RequestBody,
+        @Part("description") lga: RequestBody,
+        @Part("access") category: RequestBody,
+        @Part("invited_people") title: RequestBody,
+        @Part media: MultipartBody.Part?
+    ): CreateGroupResponse
 }

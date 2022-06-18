@@ -3,16 +3,18 @@ package com.loud9ja.loud9ja.ui.polls
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
-import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentPollsBinding
 import com.loud9ja.loud9ja.domain.Trending
-import com.loud9ja.loud9ja.ui.discusion.DiscussionDetailFragment
 import com.loud9ja.loud9ja.utils.BindingFragment
+import com.loud9ja.loud9ja.utils.UIstate
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PollsFragment : BindingFragment<FragmentPollsBinding>() {
+    private val viewModel: PollsViewModel by viewModels()
 
     private val popularPollsAdapter by lazy {
         PopularPollsRecyclerViewAdapter()
@@ -25,34 +27,38 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.trendingRecyclerview.apply {
-            hasFixedSize()
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = popularPollsAdapter
-            popularPollsAdapter.addItems(
-                mutableListOf(
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", "")
-                )
-            )
-        }
+        viewModel.getPolls()
+        observePollResponse()
+    }
 
-        binding.recentRecyclerview.apply {
-            hasFixedSize()
-            layoutManager =
-                LinearLayoutManager(requireContext())
-            adapter = endingPollsAdapter
-            endingPollsAdapter.addItems(
-                mutableListOf(
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", ""),
-                    Trending("", "")
-                )
-            )
+    fun observePollResponse() {
+        viewModel.pollResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is UIstate.Success -> {
+                    binding.trendingRecyclerview.apply {
+                        hasFixedSize()
+                        layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        adapter = popularPollsAdapter
+                        popularPollsAdapter.addItems(result.data!!.data)
+                    }
+
+                    binding.recentRecyclerview.apply {
+                        hasFixedSize()
+                        layoutManager =
+                            LinearLayoutManager(requireContext())
+                        adapter = endingPollsAdapter
+                        endingPollsAdapter.addItems(result.data!!.data)
+                    }
+                }
+                is UIstate.Loading -> {}
+                is UIstate.Error -> {}
+            }
+
         }
     }
 }

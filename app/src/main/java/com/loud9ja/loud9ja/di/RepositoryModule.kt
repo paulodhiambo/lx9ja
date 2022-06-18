@@ -37,4 +37,9 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun providePostRepository(api: LoudAPI): PostsRepository = PostsRepository(api)
+
+    @Singleton
+    @Provides
+    fun providePollRepository(api: LoudAPI): PollRepository = PollRepository(api)
+
 }
