@@ -70,8 +70,8 @@ class NewGroupFragment : BindingFragment<FragmentNewGroupBinding>() {
             val description = binding.txtDescription.text.toString().trim()
             val visibilityStatus = binding.visibilityTextView.text.toString().trim()
             val accessType = binding.visibilityTextView.text.toString().trim()
-            Log.d("=========>", "onViewCreated: $groupName, $description, $visibilityStatus, $accessType")
-            createGroup(groupName, description, visibilityStatus)
+            Log.d("============>", "onViewCreated: $groupName, $description, $visibilityStatus, $accessType")
+//            createGroup(groupName, description, visibilityStatus)
         }
 
         binding.selectImage.setOnClickListener {
