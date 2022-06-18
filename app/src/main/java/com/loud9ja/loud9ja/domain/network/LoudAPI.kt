@@ -8,6 +8,8 @@ import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.response.CreateGroupResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
+import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
+import com.loud9ja.loud9ja.domain.network.api.posts.LikePostResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
@@ -32,12 +34,12 @@ interface LoudAPI {
         const val GET_POSTS = "api/v2/posts/list"
         const val GET_POST_COMMENTS = "api/v2/posts/list-comments/{id}"
         const val ADD_POST_COMMENTS = "api/v2/posts/comment"
-
         const val GET_POLLS = "api/v2/polls/list"
         const val GET_GROUP = "api/v2/groups/list"
         const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
         const val TRENDING_POST = "api/v2/posts/trending"
         const val CREATE_GROUP = "api/v2/groups/create"
+        const val LIKE_POST = "api/v2/posts/like"
 
     }
 
@@ -61,6 +63,9 @@ interface LoudAPI {
 
     @POST(ADD_POST_COMMENTS)
     suspend fun addPostComments(@Body addCommentRequest: AddCommentRequest): AddCommentResponse
+
+    @POST(LIKE_POST)
+    suspend fun likePost(@Body likePostRequest: LikePostRequest): LikePostResponse
 
     @POST(REGISTER_API)
     suspend fun registerUser(@Body user: User): RegistrationResponse

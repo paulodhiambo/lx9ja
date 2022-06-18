@@ -175,7 +175,7 @@
                             app:layout_constraintTop_toTopOf="@+id/imageButton2" />
 
                         <ImageView
-                            android:id="@+id/imageButton2"
+                            android:id="@+id/imageViewLike"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -202,7 +202,7 @@
                             app:layout_constraintTop_toTopOf="@+id/imageButton2" />
 
                         <ImageView
-                            android:id="@+id/imageButton3"
+                            android:id="@+id/imageViewDislike"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
