@@ -57,7 +57,7 @@ interface LoudAPI {
     suspend fun getPosts(): PostResponse
 
     @GET(GET_POST_COMMENTS)
-    suspend fun getPostComments(@Path("id") id: Int): PostCommentResponse
+    suspend fun getPostComments(@Path("id") id: Int): PostCommentsResponse
 
     @POST(ADD_POST_COMMENTS)
     suspend fun addPostComments(@Body addCommentRequest: AddCommentRequest): AddCommentResponse

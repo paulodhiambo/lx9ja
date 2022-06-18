@@ -65,13 +65,13 @@ class NewGroupFragment : BindingFragment<FragmentNewGroupBinding>() {
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, visibility)
         binding.visibilityTextView.setAdapter(adapter)
 
-        val groupName = binding.txtGroupName.text.toString().trim()
-        val description = binding.txtDescription.text.toString().trim()
-        val visibilityStatus = binding.visibilityTextView.text.toString().trim()
-        val accessType = binding.visibilityTextView.text.toString().trim()
-        Log.d("Result============>", "onViewCreated: $groupName $description $visibilityStatus")
         binding.createGroup.setOnClickListener {
-            createGroup(groupName, description, visibilityStatus)
+            val groupName = binding.txtGroupName.text.toString().trim()
+            val description = binding.txtDescription.text.toString().trim()
+            val visibilityStatus = binding.visibilityTextView.text.toString().trim()
+            val accessType = binding.visibilityTextView.text.toString().trim()
+            Log.d("============>", "onViewCreated: $groupName, $description, $visibilityStatus, $accessType")
+//            createGroup(groupName, description, visibilityStatus)
         }
 
         binding.selectImage.setOnClickListener {

@@ -10,7 +10,7 @@ data class Result(
     val currentPage: Int, // 1
     @SerializedName("data")
     @Expose
-    val `data`: List<Data>,
+    val `data`: List<Comment>,
     @SerializedName("first_page_url")
     @Expose
     val firstPageUrl: String, // http://loud9ja.travelinnovators.biz/api/v2/posts/list-comments/1?page=1
