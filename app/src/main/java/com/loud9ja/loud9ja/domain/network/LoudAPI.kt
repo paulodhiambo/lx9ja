@@ -4,7 +4,6 @@ import com.loud9ja.loud9ja.data.User
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
-import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.response.CreateGroupResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
@@ -38,6 +37,7 @@ interface LoudAPI {
         const val GET_ALL_REPORTS = "api/v2/reports/list?id=2"
         const val TRENDING_POST = "api/v2/posts/trending"
         const val CREATE_GROUP = "api/v2/groups/create"
+        const val CREATE_POST = "api/v2/posts/create"
 
     }
 
@@ -101,4 +101,12 @@ interface LoudAPI {
         @Part("invited_people") title: RequestBody,
         @Part media: MultipartBody.Part?
     ): CreateGroupResponse
+
+    @Multipart
+    @POST(CREATE_POST)
+    suspend fun createPost(
+        @Part("title") title: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part media: MultipartBody.Part?
+    ): ResponseBody
 }

@@ -19,7 +19,7 @@
             android:id="@+id/profile_image"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:src="@drawable/two"
+            android:src="@drawable/profile_image"
             app:civ_border_color="#FF000000"
             app:civ_border_width="1dp" />
 
@@ -31,6 +31,7 @@
             android:layout_marginEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/post_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Add title" />
@@ -45,6 +46,7 @@
         android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/post_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Content here"
@@ -53,6 +55,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/attachment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
