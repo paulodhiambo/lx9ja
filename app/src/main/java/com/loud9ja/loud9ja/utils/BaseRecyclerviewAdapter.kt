@@ -18,6 +18,11 @@ abstract class BaseRecyclerViewAdapter<T : Any, VB : ViewDataBinding>
         notifyDataSetChanged()
     }
 
+    fun clearItems(){
+        this.items.clear()
+        notifyDataSetChanged()
+    }
+
     abstract fun getLayout(): Int
 
     override fun getItemCount(): Int {

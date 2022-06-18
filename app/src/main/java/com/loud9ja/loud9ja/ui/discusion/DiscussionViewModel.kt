@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
+import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
+import com.loud9ja.loud9ja.domain.usecase.AddPostCommentUseCase
 import com.loud9ja.loud9ja.domain.usecase.PostCommentsUseCase
 import com.loud9ja.loud9ja.domain.usecase.TrendingPostUseCase
 import com.loud9ja.loud9ja.utils.DataState
@@ -18,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DiscussionViewModel @Inject constructor(
     private val trendingPostUseCase: TrendingPostUseCase,
-    private val postCommentsUseCase: PostCommentsUseCase
+    private val postCommentsUseCase: PostCommentsUseCase,
+    private val addPostCommentUseCase: AddPostCommentUseCase
 ) :
     ViewModel() {
     private var _postsResponse = MutableLiveData<DataState<TrendingPostResponse>>()
@@ -57,6 +61,26 @@ class DiscussionViewModel @Inject constructor(
                 }
                 is NetworkState.Loading -> {
 
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private var _addCommentsResponse = MutableLiveData<DataState<AddCommentResponse>>()
+    val addCommentsResponse: LiveData<DataState<AddCommentResponse>>
+        get() = _addCommentsResponse
+
+    fun addPostComment(addCommentRequest: AddCommentRequest){
+        addPostCommentUseCase(addCommentRequest).onEach { result ->
+            when(result){
+                is NetworkState.Success ->{
+                    _addCommentsResponse.value = DataState.Success(result.data!!)
+                }
+
+                is NetworkState.Error -> {
+                    _addCommentsResponse.value = DataState.Error(result.message!!)
+                }
+                is NetworkState.Loading -> {
                 }
             }
         }.launchIn(viewModelScope)

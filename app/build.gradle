@@ -177,4 +177,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
 
+    //Humanize time
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+
+    //rounded image
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }

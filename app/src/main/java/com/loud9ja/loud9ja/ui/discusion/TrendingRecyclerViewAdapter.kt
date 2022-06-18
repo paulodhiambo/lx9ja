@@ -15,9 +15,13 @@ class TrendingRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, TrendingItemBi
         position: Int
     ) {
         holder.binding.post = items[position]
-        holder.binding.textView24.text = items[position].comments.toString()
-        holder.binding.textView23.text = items[position].totalDislikes.toString()
-        holder.binding.textView22.text = items[position].totalLikes.toString()
+        holder.binding.textViewCommentCount.text = items[position].comments.toString()
+        holder.binding.textViewDislikeCount.text = items[position].totalDislikes.toString()
+        holder.binding.textViewLikeCount.text = items[position].totalLikes.toString()
+        holder.binding.textViewPostAuthor.text = items[position].createdBy
+        holder.binding.textViewCreateAt.text = items[position].createdAt
+        holder.binding.textViewPostContent.text = items[position].description
+        holder.binding.textViewPostTitle.text = items[position].title
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)

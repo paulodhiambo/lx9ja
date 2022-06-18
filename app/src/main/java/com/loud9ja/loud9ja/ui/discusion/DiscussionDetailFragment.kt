@@ -1,13 +1,14 @@
 package com.loud9ja.loud9ja.ui.discusion
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionDetailBinding
+import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.Comment
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
@@ -27,12 +28,32 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
         val post = args?.get("post") as Data
         discussionViewModel.getPostComments(post.id)
         observerGetPostComments(binding)
-        binding.textViewPostTitle.text = post.title
-        binding.textViewPostContent.text = post.description
+        binding.tvPostTitle.text = post.title
+        binding.tvPostContent.text = post.description
         binding.textViewCommentCount.text = post.comments.toString()
-        binding.textViewAuthor.text = post.createdBy.plus(" |").plus(post.createdAt)
+        binding.tvPotsCreatedBy.text = post.createdBy.plus(" | ").plus(post.createdAt)
         binding.textViewLikeCount.text = post.likes.toString()
         binding.textViewDislikeCount.text = post.totalDislikes.toString()
+        binding.btnSendComment.setOnClickListener {
+            val comment = binding.textInputComment.text.toString().trim()
+            val addCommentRequest = AddCommentRequest(comment, post.id)
+            discussionViewModel.addPostComment(addCommentRequest)
+            observerAddComment(binding)
+            discussionViewModel.getPostComments(post.id)
+            observerGetPostComments(binding)
+        }
+    }
+
+    private fun observerAddComment(binding: FragmentDiscussionDetailBinding) {
+        discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner){result->
+            when (result) {
+                is DataState.Success -> {
+                    Toast.makeText(requireContext(), "Comment added successfully", Toast.LENGTH_LONG).show()
+                }
+                is DataState.Loading -> {}
+                is DataState.Error -> {}
+            }
+        }
     }
 
     override val bindingInflater: (LayoutInflater) -> ViewBinding
@@ -43,16 +64,16 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
             when (result) {
                 is DataState.Success -> {
                     val comments = result.data.data.data
-                    Log.d("COMMENTS=========>", "observerGetPostComments: $comments")
-                    commentsAdapter.items = comments as MutableList<Comment>
-                    binding.rvComments.apply {
+                    commentsAdapter.clearItems()
+                    commentsAdapter.addItems(comments)
+                    commentsAdapter.notifyDataSetChanged()
+                    binding.rvPostComments.apply {
                         hasFixedSize()
-                        layoutManager =
-                            LinearLayoutManager(
-                                requireContext(),
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
+                        layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.VERTICAL,
+                            false
+                        )
                         adapter = commentsAdapter
                     }
                 }
