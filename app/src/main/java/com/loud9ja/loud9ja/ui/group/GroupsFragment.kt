@@ -47,7 +47,10 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
 
         trendingGroupsAdapter.listener = { _, item, _ ->
             val fragment = GroupDetailFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("group", item)
             val fragmentManager = fragmentManager
+            fragment.arguments = bundle
             val fragmentTransaction = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
@@ -55,7 +58,10 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
 
         popularGroupsAdapter.listener = { _, item, _ ->
             val fragment = GroupDetailFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("group", item)
             val fragmentManager = fragmentManager
+            fragment.arguments = bundle
             val fragmentTransaction = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
