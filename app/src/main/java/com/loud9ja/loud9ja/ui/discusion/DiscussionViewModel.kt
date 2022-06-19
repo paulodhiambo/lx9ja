@@ -8,8 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
+import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
+import com.loud9ja.loud9ja.domain.network.api.posts.LikePostResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
 import com.loud9ja.loud9ja.domain.usecase.AddPostCommentUseCase
+import com.loud9ja.loud9ja.domain.usecase.LikePostUseCase
 import com.loud9ja.loud9ja.domain.usecase.CreatePostUseCase
 import com.loud9ja.loud9ja.domain.usecase.PostCommentsUseCase
 import com.loud9ja.loud9ja.domain.usecase.TrendingPostUseCase
@@ -29,6 +32,7 @@ class DiscussionViewModel @Inject constructor(
     private val trendingPostUseCase: TrendingPostUseCase,
     private val postCommentsUseCase: PostCommentsUseCase,
     private val addPostCommentUseCase: AddPostCommentUseCase,
+    private val likePostUseCase: LikePostUseCase
     private val createPostUseCase: CreatePostUseCase
 ) :
     ViewModel() {
@@ -97,6 +101,23 @@ class DiscussionViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
+    private var _likePostResponse = MutableLiveData<DataState<LikePostResponse>>()
+    val likePostResponse: LiveData<DataState<LikePostResponse>>
+        get() = _likePostResponse
+
+    fun likePost(likePostRequest: LikePostRequest){
+        likePostUseCase(likePostRequest).onEach { result ->
+            when(result){
+                is NetworkState.Success ->{
+                    _likePostResponse.value = DataState.Success(result.data!!)
+                }
+
+                is NetworkState.Error -> {
+                    _likePostResponse.value = DataState.Error(result.message!!)
+                }
+                is NetworkState.Loading -> {}
+            }
 
     fun createPost(
         groupName: RequestBody,

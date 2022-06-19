@@ -12,6 +12,7 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDiscussionDetailBinding
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.Comment
+import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.Constants.IMAGE_PATH
@@ -46,23 +47,15 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
             discussionViewModel.getPostComments(post.id)
             observerGetPostComments(binding)
         }
+        binding.imageViewLike.setOnClickListener {
+            val likePostRequest = LikePostRequest(post.id, "LIKE")
+            discussionViewModel.likePost(likePostRequest)
+            observerLikePost(binding)
+        }
+
     }
 
-    private fun observerAddComment(binding: FragmentDiscussionDetailBinding) {
-        discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is DataState.Success -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Comment added successfully",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is DataState.Loading -> {}
-                is DataState.Error -> {}
-            }
-        }
-    }
+
 
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = FragmentDiscussionDetailBinding::inflate
@@ -84,6 +77,34 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
                         )
                         adapter = commentsAdapter
                     }
+                }
+                is DataState.Loading -> {}
+                is DataState.Error -> {}
+            }
+        }
+    }
+
+    private fun observerAddComment(binding: FragmentDiscussionDetailBinding) {
+        discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Success -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Comment added successfully",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                is DataState.Loading -> {}
+                is DataState.Error -> {}
+            }
+        }
+    }
+
+    private fun observerLikePost(binding: FragmentDiscussionDetailBinding) {
+        discussionViewModel.likePostResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Success -> {
+                    binding.textViewLikeCount.text = result.data.likePostData.totalLikes.toString()
                 }
                 is DataState.Loading -> {}
                 is DataState.Error -> {}
