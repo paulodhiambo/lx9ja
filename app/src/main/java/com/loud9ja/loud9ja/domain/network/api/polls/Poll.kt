@@ -3,6 +3,7 @@ package com.loud9ja.loud9ja.domain.network.api.polls
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 data class Poll(
     @SerializedName("created_at")
@@ -53,4 +54,4 @@ data class Poll(
     @SerializedName("view_count")
     @Expose
     val viewCount: Int // 0
-)
+): Serializable

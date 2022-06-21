@@ -313,5 +313,10 @@
             android:id="@+id/action_to_DashboardFragment"
             app:destination="@id/DashboardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/pollDetails"
+        android:name="com.loud9ja.loud9ja.ui.polls.PollDetailsFragment"
+        android:label="fragment_poll_details"
+        tools:layout="@layout/fragment_poll_details" />
 
 </navigation>

@@ -11,11 +11,7 @@ import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
-import com.loud9ja.loud9ja.domain.usecase.AddPostCommentUseCase
-import com.loud9ja.loud9ja.domain.usecase.LikePostUseCase
-import com.loud9ja.loud9ja.domain.usecase.CreatePostUseCase
-import com.loud9ja.loud9ja.domain.usecase.PostCommentsUseCase
-import com.loud9ja.loud9ja.domain.usecase.TrendingPostUseCase
+import com.loud9ja.loud9ja.domain.usecase.*
 import com.loud9ja.loud9ja.utils.DataState
 import com.loud9ja.loud9ja.utils.NetworkState
 import com.loud9ja.loud9ja.utils.UIstate
@@ -32,7 +28,7 @@ class DiscussionViewModel @Inject constructor(
     private val trendingPostUseCase: TrendingPostUseCase,
     private val postCommentsUseCase: PostCommentsUseCase,
     private val addPostCommentUseCase: AddPostCommentUseCase,
-    private val likePostUseCase: LikePostUseCase
+    private val likePostUseCase: LikePostUseCase,
     private val createPostUseCase: CreatePostUseCase
 ) :
     ViewModel() {
@@ -106,10 +102,10 @@ class DiscussionViewModel @Inject constructor(
     val likePostResponse: LiveData<DataState<LikePostResponse>>
         get() = _likePostResponse
 
-    fun likePost(likePostRequest: LikePostRequest){
+    fun likePost(likePostRequest: LikePostRequest) {
         likePostUseCase(likePostRequest).onEach { result ->
-            when(result){
-                is NetworkState.Success ->{
+            when (result) {
+                is NetworkState.Success -> {
                     _likePostResponse.value = DataState.Success(result.data!!)
                 }
 
@@ -118,6 +114,9 @@ class DiscussionViewModel @Inject constructor(
                 }
                 is NetworkState.Loading -> {}
             }
+
+        }
+    }
 
     fun createPost(
         groupName: RequestBody,
