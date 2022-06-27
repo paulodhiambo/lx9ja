@@ -19,9 +19,11 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
     private val popularPollsAdapter by lazy {
         PopularPollsRecyclerViewAdapter()
     }
+
     private val endingPollsAdapter by lazy {
         EndingPollsRecyclerViewAdapter()
     }
+
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = FragmentPollsBinding::inflate
 
@@ -34,6 +36,10 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
             val fragment = CreatePollFragment()
             val fragmentManager = fragmentManager
             val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(
+                R.id.nav_host_fragment_content_main,
+                fragment
+            )
             fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
         }
@@ -69,12 +75,24 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
                             LinearLayoutManager(requireContext())
                         adapter = endingPollsAdapter
                         endingPollsAdapter.addItems(result.data!!.data)
+                        popularPollsAdapter.listener = {_, item,  _ ->
+                            val bundle = Bundle()
+                            bundle.putSerializable("poll", item)
+                            val fragment = PollDetailsFragment()
+                            fragment.arguments = bundle
+                            val fragmentManager = fragmentManager
+                            val fragmentTransaction = fragmentManager?.beginTransaction()
+                            fragmentTransaction?.replace(
+                                R.id.nav_host_fragment_content_main,
+                                fragment
+                            )
+                            fragmentTransaction?.commit()
+                        }
                     }
                 }
                 is UIstate.Loading -> {}
                 is UIstate.Error -> {}
             }
-
         }
     }
 }
