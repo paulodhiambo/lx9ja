@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentGroupsBinding
-import com.loud9ja.loud9ja.domain.TrendingGroups
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.UIstate
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,6 +45,27 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
             fragmentTransaction?.commit()
         }
 
+        trendingGroupsAdapter.listener = { _, item, _ ->
+            val fragment = GroupDetailFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("group", item)
+            val fragmentManager = fragmentManager
+            fragment.arguments = bundle
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+            fragmentTransaction?.commit()
+        }
+
+        popularGroupsAdapter.listener = { _, item, _ ->
+            val fragment = GroupDetailFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("group", item)
+            val fragmentManager = fragmentManager
+            fragment.arguments = bundle
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+            fragmentTransaction?.commit()
+        }
 
     }
 

@@ -40,6 +40,15 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
                 R.id.nav_host_fragment_content_main,
                 fragment
             )
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+            fragmentTransaction?.commit()
+        }
+
+        endingPollsAdapter.listener = { _, item, _ ->
+            val fragment = PollDetailFragment()
+            val fragmentManager = fragmentManager
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
         }
     }

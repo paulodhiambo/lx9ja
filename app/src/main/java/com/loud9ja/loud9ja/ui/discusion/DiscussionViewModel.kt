@@ -114,6 +114,8 @@ class DiscussionViewModel @Inject constructor(
                 }
                 is NetworkState.Loading -> {}
             }
+        }
+    }
 
         }
     }
