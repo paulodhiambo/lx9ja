@@ -7,8 +7,10 @@
         <entry key="app/src/main/res/drawable/button_background_blue.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/drawable/ic_back_image.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/drawable/ic_back_img.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/drawable/ic_bars_24.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_login_hero.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/drawable/ic_register_hero.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/drawable/radio_icon.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/round.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/activity_calculator.xml" value="0.31875" />
@@ -24,6 +26,7 @@
         <entry key="app/src/main/res/layout/dashboard_items.xml" value="0.26313405797101447" />
         <entry key="app/src/main/res/layout/discussion_comments.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/layout/edit_profile_dialog.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/fragment_create_poll.xml" value="0.2056159420289855" />
         <entry key="app/src/main/res/layout/ending_poll_item.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_discussion.xml" value="0.2554347826086957" />
@@ -33,6 +36,8 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_new_group.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_new_report.xml" value="0.3111413043478261" />
+        <entry key="app/src/main/res/layout/fragment_poll_details.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_poll_result.xml" value="0.2056159420289855" />
         <entry key="app/src/main/res/layout/fragment_polls.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.26313405797101447" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.28940217391304346" />
@@ -51,6 +56,8 @@
         <entry key="app/src/main/res/layout/trending_dashboard_discussions.xml" value="0.2463768115942029" />
         <entry key="app/src/main/res/layout/trending_group_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/trending_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/vote_option_item.xml" value="0.15217391304347827" />
+        <entry key="app/src/main/res/layout/vote_sub_view.xml" value="0.15217391304347827" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.3302083333333333" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.23333333333333334" />
         <entry key="streaming/src/main/res/layout-land/fragment_active_speaker.xml" value="0.20679012345679013" />

@@ -121,7 +121,6 @@ class PostFragment : BindingFragment<FragmentPostBinding>() {
         }
     }
 
-
     @SuppressLint("SimpleDateFormat")
     @Throws(IOException::class)
     private fun createImageFile(): File {
