@@ -32,7 +32,6 @@ import com.loud9ja.loud9ja.databinding.ActivityMainBinding
 import com.loud9ja.loud9ja.stream.ui.home.HomeActivity
 import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
-import com.loud9ja.loud9ja.ui.livestream.LiveStreamActivity
 import com.loud9ja.loud9ja.ui.profile.ProfileActivity
 import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.DataState
@@ -178,7 +177,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private fun proceedLiveSession() {
         bottomSheetDialog.findViewById<MaterialButton>(R.id.proceed_sheet)
             ?.setOnClickListener {
-                startActivity(Intent(this, LiveStreamActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
                 bottomSheetDialog.dismiss()
             }
     }
@@ -206,7 +205,8 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 true
             }
             R.id.nav_go_live -> {
-                showBottomDialog()
+                startActivity(Intent(this, HomeActivity::class.java))
+                // showBottomDialog()
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
@@ -220,11 +220,11 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
-            R.id.nav_profile -> {
-                startActivity(Intent(this, ProfileActivity::class.java))
-                drawerLayout.closeDrawer(GravityCompat.START)
-                true
-            }
+//            R.id.nav_profile -> {
+//                startActivity(Intent(this, ProfileActivity::class.java))
+//                drawerLayout.closeDrawer(GravityCompat.START)
+//                true
+//            }
             R.id.nav_about_us -> {
                 startActivity(Intent(this, AboutUsActivity::class.java))
                 drawerLayout.closeDrawer(GravityCompat.START)

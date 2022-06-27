@@ -88,27 +88,28 @@
                         style="@style/MaterialButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimary"
                         android:text="@string/start"
                         android:textAllCaps="false" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:layout_marginBottom="5dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="@string/or"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textStyle="bold" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:layout_marginTop="5dp"-->
+                    <!--                        android:layout_marginBottom="5dp"-->
+                    <!--                        android:gravity="center"-->
+                    <!--                        android:text="@string/or"-->
+                    <!--                        android:textAlignment="center"-->
+                    <!--                        android:textStyle="bold" />-->
 
-<!--                    <com.google.android.material.button.MaterialButton-->
-<!--                        android:id="@+id/button_create_meeting"-->
-<!--                        style="@style/MaterialButton"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/create_room"-->
-<!--                        android:textAllCaps="false" />-->
+                    <!--                    <com.google.android.material.button.MaterialButton-->
+                    <!--                        android:id="@+id/button_create_meeting"-->
+                    <!--                        style="@style/MaterialButton"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="@string/create_room"-->
+                    <!--                        android:textAllCaps="false" />-->
 
                 </LinearLayout>
 

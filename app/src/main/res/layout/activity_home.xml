@@ -9,6 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
@@ -22,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:contentDescription="@string/_100ms_logo"
-                android:src="@drawable/logo_text" />
+                android:src="@drawable/logo" />
 
         </androidx.appcompat.widget.Toolbar>
 
