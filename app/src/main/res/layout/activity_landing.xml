@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="51dp"
-        android:fontFamily="@font/roboto_black"
         android:text="Register"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -38,8 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_black"
-        android:text="No long process, it will only take a minute"
+        android:text="No long process, it will only take a minute!"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -65,25 +63,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/choose_where_to_start"
+                android:text="Start Here"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/email_cont"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
                 android:drawableLeft="@drawable/ic_baseline_mail_24"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="@string/continue_with_your_email" />
+                android:text="Register with email" />
 
             <Button
                 android:id="@+id/fab_facebook"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:backgroundTint="@color/facebookButtonColor"
@@ -97,7 +94,7 @@
 
             <Button
                 android:id="@+id/fab_google"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="40dp"
@@ -119,7 +116,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="42dp"
-        android:fontFamily="@font/roboto_bold"
         android:text="Already have an account?"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
@@ -132,7 +128,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
-        android:fontFamily="@font/roboto_bold"
         android:text="Login here"
         android:textColor="@color/authButtonColor"
         android:textSize="16sp"

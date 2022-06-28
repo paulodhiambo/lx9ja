@@ -117,9 +117,6 @@ class DiscussionViewModel @Inject constructor(
         }
     }
 
-        }
-    }
-
     fun createPost(
         groupName: RequestBody,
         groupDescription: RequestBody,

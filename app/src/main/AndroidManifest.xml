@@ -79,7 +79,7 @@
         <activity
             android:name=".ui.calculator.CalculatorActivity"
             android:exported="true"
-            android:theme="@style/Theme.App2">
+            android:theme="@style/Theme.Loud9ja">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -109,7 +109,8 @@
         <activity
             android:name=".ui.about.AboutUsActivity"
             android:exported="true"
-            android:parentActivityName=".stream.ui.home.HomeActivity" />
+            android:parentActivityName=".stream.ui.home.HomeActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:parentActivityName=".stream.ui.home.HomeActivity" />

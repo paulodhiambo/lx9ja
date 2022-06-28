@@ -34,7 +34,7 @@ class PopularPollsRecyclerViewAdapter :
         voteView.setVoteListener(object : VoteListener {
             override fun onItemClick(view: View?, index: Int, status: Boolean): Boolean {
                 if (!status) {
-                    // showDialog(voteView, view) //投票取消 dialog 处理详见 Sample MainActivity
+                    //
                 } else {
                     voteView.notifyUpdateChildren(view, true)
                 }

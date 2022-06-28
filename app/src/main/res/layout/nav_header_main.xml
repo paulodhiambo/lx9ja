@@ -98,8 +98,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
-                android:text=""
                 android:checked="true"
+                android:text=""
+                android:clickable="false"
+                android:allowClickWhenDisabled="false"
                 app:useMaterialThemeColors="true" />
         </RelativeLayout>
     </LinearLayout>

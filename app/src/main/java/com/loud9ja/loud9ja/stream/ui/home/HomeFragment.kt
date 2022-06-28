@@ -265,7 +265,7 @@ class HomeFragment : Fragment() {
                         }
                         subdomain = "$env.100ms.live"
                     }
-                   // val url = "https://$subdomain/meeting/$input"
+                    // val url = "https://$subdomain/meeting/$input"
                     val url = "https://$subdomain/meeting/xpr-hfy-uzl"
                     saveTokenEndpointUrlIfValid(url)
                     joinRoom()

@@ -45,8 +45,11 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
         }
 
         endingPollsAdapter.listener = { _, item, _ ->
-            val fragment = PollDetailFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("poll", item)
+            val fragment = PollDetailsFragment()
             val fragmentManager = fragmentManager
+            fragment.arguments = bundle
             val fragmentTransaction = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
             fragmentTransaction?.commit()
@@ -75,7 +78,7 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
                             LinearLayoutManager(requireContext())
                         adapter = endingPollsAdapter
                         endingPollsAdapter.addItems(result.data!!.data)
-                        popularPollsAdapter.listener = {_, item,  _ ->
+                        popularPollsAdapter.listener = { _, item, _ ->
                             val bundle = Bundle()
                             bundle.putSerializable("poll", item)
                             val fragment = PollDetailsFragment()

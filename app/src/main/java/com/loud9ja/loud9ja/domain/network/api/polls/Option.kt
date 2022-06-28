@@ -1,8 +1,9 @@
 package com.loud9ja.loud9ja.domain.network.api.polls
 
 
-import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Option(
     @SerializedName("created_at")
@@ -23,4 +24,4 @@ data class Option(
     @SerializedName("updated_at")
     @Expose
     val updatedAt: String // 2022-06-12T19:16:30.000000Z
-)
+) : Serializable
