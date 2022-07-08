@@ -68,4 +68,5 @@
     <color name="activeIndicators">#6871d0</color>
     <color name="inactiveIndicator">#84d4dd</color>
     <color name="onboarding_text">#000000</color>
+    <color name="shimmer">#B3B3B3</color>
 </resources>

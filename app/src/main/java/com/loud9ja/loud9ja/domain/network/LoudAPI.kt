@@ -7,6 +7,7 @@ import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.GroupResponse
 import com.loud9ja.loud9ja.domain.network.api.groups.response.CreateGroupResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
+import com.loud9ja.loud9ja.domain.network.api.polls.VoteRequest
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
@@ -40,9 +41,13 @@ interface LoudAPI {
         const val CREATE_GROUP = "api/v2/groups/create"
         const val LIKE_POST = "api/v2/posts/like"
         const val CREATE_POST = "api/v2/posts/create"
+        const val VOTE = "api/v2/polls/vote"
 
 
     }
+
+    @POST(VOTE)
+    suspend fun vote(@Body vote: VoteRequest): ResponseBody
 
     @GET(TRENDING_POST)
     suspend fun getTrendingPosts(): TrendingPostResponse

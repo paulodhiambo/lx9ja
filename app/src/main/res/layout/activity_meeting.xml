@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.meeting.MeetingActivity">
+    tools:context=".stream.ui.meeting.MeetingActivity">
 
     <include
         android:id="@+id/container_toolbar"
+        android:visibility="gone"
         layout="@layout/toolbar_meeting" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

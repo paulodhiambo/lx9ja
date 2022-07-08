@@ -36,7 +36,8 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getTrendingPosts()
         observeTrending(binding)
-
+        binding.trendingPostShimmerLayout.startShimmer()
+        binding.recentPostShimmerLayout.startShimmer()
         binding.btnNewPost.setOnClickListener {
             val fragment = PostFragment()
             val fragmentManager = fragmentManager
@@ -50,6 +51,12 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
         viewModel.postsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
+                    binding.trendingPostShimmerLayout.stopShimmer()
+                    binding.recentPostShimmerLayout.stopShimmer()
+                    binding.trendingRecyclerview.visibility = View.VISIBLE
+                    binding.recentRecyclerview.visibility = View.VISIBLE
+                    binding.trendingPostShimmerLayout.visibility = View.GONE
+                    binding.recentPostShimmerLayout.visibility = View.GONE
                     trendingAdapter.items = result.data.data as MutableList<Data>
                     binding.trendingRecyclerview.apply {
                         hasFixedSize()
@@ -97,7 +104,10 @@ class DiscussionFragment : BindingFragment<FragmentDiscussionBinding>() {
 
                 }
                 is DataState.Loading -> {}
-                is DataState.Error -> {}
+                is DataState.Error -> {
+                    binding.trendingRecyclerview.visibility = View.GONE
+                    binding.trendingPostShimmerLayout.visibility = View.VISIBLE
+                }
             }
 
         }

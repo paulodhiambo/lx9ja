@@ -5,4 +5,5 @@
     <color name="drawer">#fff</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
     <color name="onboarding_text">#ffffff</color>
+    <color name="shimmer">#B3B3B3</color>
 </resources>

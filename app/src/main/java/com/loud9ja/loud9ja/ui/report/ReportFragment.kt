@@ -29,6 +29,7 @@ class ReportFragment : BindingFragment<FragmentReportBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getReports()
+        binding.recentPostShimmerLayout.startShimmer()
         observe()
 
         binding.btnNewReport.setOnClickListener {
@@ -45,6 +46,9 @@ class ReportFragment : BindingFragment<FragmentReportBinding>() {
         viewModel.getReportState.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
+                    binding.recentPostShimmerLayout.stopShimmer()
+                    binding.recentPostShimmerLayout.visibility = View.GONE
+                    binding.reportsRecyclerview.visibility = View.VISIBLE
                     binding.reportsRecyclerview.apply {
                         hasFixedSize()
                         layoutManager = LinearLayoutManager(requireContext())

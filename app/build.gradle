@@ -186,6 +186,7 @@ dependencies {
     //imagepicker
     implementation 'com.github.maayyaannkk:ImagePicker:1.0.13'
     implementation 'id.zelory:compressor:3.0.1'
-
+    //Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 }

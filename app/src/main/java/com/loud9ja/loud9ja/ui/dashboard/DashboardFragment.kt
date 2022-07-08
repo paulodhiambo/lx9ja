@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentDashboardBinding
-import com.loud9ja.loud9ja.databinding.FragmentDiscussionBinding
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.ui.discusion.DiscussionDetailFragment
 import com.loud9ja.loud9ja.ui.discusion.DiscussionViewModel
@@ -43,8 +42,7 @@ class DashboardFragment : BindingFragment<FragmentDashboardBinding>() {
             adapter = itemsAdapter
             itemsAdapter.addItems(items)
         }
-
-
+        binding.recentPostShimmerLayout.startShimmer()
         discussionViewModel.getTrendingPosts()
         observerGetTrendingPosts(binding)
 
@@ -54,11 +52,15 @@ class DashboardFragment : BindingFragment<FragmentDashboardBinding>() {
         discussionViewModel.postsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
+                    binding.recentPostShimmerLayout.stopShimmer()
+                    binding.recentPostShimmerLayout.visibility = View.GONE
+                    binding.trendingRecycler.visibility = View.VISIBLE
                     trendingItemsAdapter.items = result.data.data as MutableList<Data>
                     binding.trendingRecycler.apply {
                         hasFixedSize()
                         layoutManager =
-                            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false
+                            LinearLayoutManager(
+                                requireContext(), LinearLayoutManager.VERTICAL, false
                             )
                         adapter = trendingItemsAdapter
                         trendingItemsAdapter.listener = { _, item, _ ->

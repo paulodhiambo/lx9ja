@@ -36,6 +36,8 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getGroup()
+        binding.popularPostShimmerLayout.startShimmer()
+        binding.recentPostShimmerLayout.startShimmer()
         observeGroups()
         binding.btnNewGroup.setOnClickListener {
             val fragment = NewGroupFragment()
@@ -73,6 +75,12 @@ class GroupsFragment : BindingFragment<FragmentGroupsBinding>() {
         viewModel.groupResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is UIstate.Success -> {
+                    binding.popularPostShimmerLayout.stopShimmer()
+                    binding.recentPostShimmerLayout.stopShimmer()
+                    binding.popularPostShimmerLayout.visibility = View.GONE
+                    binding.recentPostShimmerLayout.visibility = View.GONE
+                    binding.popularRecyclerview.visibility = View.VISIBLE
+                    binding.trendingRecyclerview.visibility = View.VISIBLE
                     binding.trendingRecyclerview.apply {
                         hasFixedSize()
                         layoutManager =
