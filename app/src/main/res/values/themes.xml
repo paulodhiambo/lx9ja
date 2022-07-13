@@ -106,4 +106,9 @@
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">#ffff</item>
     </style>
+
+    <style name="ToolbarColoredBackArrow" parent="Theme.Loud9ja">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
 </resources>

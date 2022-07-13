@@ -8,6 +8,8 @@ plugins {
     id 'com.google.firebase.crashlytics'
     id 'kotlin-parcelize'
 }
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     compileSdkVersion 32
@@ -26,6 +28,8 @@ android {
         buildConfigField "String", "BUG_REPORT_EMAIL_TO", BUG_REPORT_EMAIL_TO
         buildConfigField "String", "BUG_REPORT_EMAIL_CC", BUG_REPORT_EMAIL_CC
         buildConfigField "String", "RTMP_INJEST_URL", project.findProperty('RTMP_INJEST_URL') ? RTMP_INJEST_URL : "\"\""
+        buildConfigField("String", "AUTH_TOKEN", "\"" + localProperties['auth_token'] + "\"")
+        buildConfigField("String", "AUTH_URL", "\"" + "\"")
     }
     kapt {
         javacOptions {
@@ -70,30 +74,30 @@ dependencies {
     implementation 'com.kartik.stackimageview:stackimageview:0.0.2'
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
     // Coroutine Lifecycle Scopes
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.39.1"
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.10'
-    implementation 'androidx.camera:camera-lifecycle:1.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.11'
+    implementation 'androidx.camera:camera-lifecycle:1.1.0'
     kapt "com.google.dagger:hilt-android-compiler:2.37"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     // Navigation Component
-    implementation "androidx.navigation:navigation-fragment-ktx:2.4.1"
-    implementation "androidx.navigation:navigation-ui-ktx:2.4.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
 
     //animated button
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
     //places api
-    implementation 'com.google.android.libraries.places:places:2.5.0'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
 
     //Permissions
     implementation 'com.github.fondesa:kpermissions:3.2.1'
@@ -107,11 +111,11 @@ dependencies {
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
-    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.13.0'
     //OkHttp
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     //RxJava adapter
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
     //RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
     //RxAndroid
@@ -129,15 +133,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
 
-    implementation 'com.github.100mslive.android-sdk:lib:2.3.6'
-
     //facebook auth
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
     //auth buttons
     implementation 'com.shaishavgandhi:login-buttons:1.0.0'
 
     //Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
     //stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
@@ -146,37 +148,25 @@ dependencies {
 
     //volley
     implementation 'com.android.volley:volley:1.2.1'
-
-    implementation 'pub.devrel:easypermissions:3.0.0'
-
-    //100ms.live SDK
-    implementation 'com.github.100mslive.android-sdk:lib:2.3.6'
-    implementation 'com.github.100mslive.android-sdk:virtualBackground:2.3.2'
-
-    // Get Permissions easily
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     // Firebase Crashlytics
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+
 
     // Declare the dependencies for the Crashlytics and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'
-
-    implementation 'io.grpc:grpc-okhttp:1.44.1'
-    implementation 'io.grpc:grpc-protobuf-lite:1.44.1'
-    implementation 'io.grpc:grpc-stub:1.44.1'
-
-    // debugImplementation because LeakCanary should only run in debug builds.
-    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
-
     implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
+
     // Life Cycle
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.0"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.0'
 
     //Humanize time
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
@@ -188,5 +178,10 @@ dependencies {
     implementation 'id.zelory:compressor:3.0.1'
     //Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    //video
+    implementation 'live.videosdk:android-sdk:0.0.21'
+    implementation 'com.nabinbhandari.android:permissions:3.8'
+//    implementation 'org.webrtc:google-webrtc:1.0.+'
+
 
 }

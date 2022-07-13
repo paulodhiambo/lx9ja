@@ -19,9 +19,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
 
     <application
         android:name=".Loud9ja"
@@ -35,9 +40,29 @@
         android:theme="@style/Theme.Loud9ja"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
+        <activity android:name=".video.ChatActivity" />
+        <activity android:name=".video.JoinActivity" />
+
         <activity
-            android:name=".stream.ui.home.HomeActivity"
-            android:exported="false" />
+            android:name=".video.CreateOrJoinActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".video.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true" />
+
+        <meta-data
+            android:name="notificationTitle"
+            android:value="@string/notificationTitle" />
+        <meta-data
+            android:name="notificationContent"
+            android:value="@string/notificationContent" />
+        <meta-data
+            android:name="notificationIcon"
+            android:resource="@mipmap/ic_launcher_round" />
+
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true"
@@ -56,13 +81,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity
-            android:name=".stream.ui.meeting.MeetingActivity"
-            android:label="@string/meeting"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="live.hms.app2.provider"
@@ -106,14 +124,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.about.AboutUsActivity"
-            android:exported="true"
-            android:parentActivityName=".stream.ui.home.HomeActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
-        <activity
-            android:name=".ui.profile.ProfileActivity"
-            android:parentActivityName=".stream.ui.home.HomeActivity" />
         <activity android:name=".ui.livestream.LiveStreamActivity" />
         <activity android:name=".ui.authentication.EmailRegistrationActivity" />
         <activity android:name=".ui.onboarding.GettingStartedActivity" />

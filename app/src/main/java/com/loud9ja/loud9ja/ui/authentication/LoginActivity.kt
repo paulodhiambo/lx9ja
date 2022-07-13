@@ -93,26 +93,30 @@ class LoginActivity : AppCompatActivity() {
             authViewModel.loginUser(loginRequest)
             //authViewModel.login(loginRequest, this)
             observeLoginRequest()
-
         }
 
 
     }
 
     private fun observeLoginRequest() {
-        binding.loadingBar.visibility = View.VISIBLE
+        binding.cirLoginButton.startAnimation()
+        //binding.loadingBar.visibility = View.VISIBLE
         authViewModel.loginResponse.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
                     AuthPreference(this).saveData(
                         data.data.data.name,
                         data.data.data.email,
-                        data.data.token
+                        data.data.token,
+                        data.data.data.id.toString(),
+                        data.data.data.profilePicture.toString()
                     )
                     PreferenceHelper(this).saveUser(
                         data.data.data.name,
                         data.data.data.email,
-                        data.data.token
+                        data.data.token,
+                        data.data.data.id.toString(),
+                        data.data.data.profilePicture.toString()
                     )
                     onLoginSuccess()
                     Log.d(TAG, "observeLoginRequest: $data")
@@ -121,6 +125,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.loadingBar.visibility = View.VISIBLE
                 }
                 is DataState.Error -> {
+                    binding.cirLoginButton.stopAnimation()
                     binding.loadingBar.visibility = View.GONE
                     Log.d(TAG, "observeLoginRequest: data.exception")
                 }

@@ -1,12 +1,17 @@
 package com.loud9ja.loud9ja.ui.home
 
+import android.Manifest
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,25 +24,34 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.loud9ja.loud9ja.BuildConfig
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
-import com.loud9ja.loud9ja.stream.ui.home.HomeActivity
 import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
-import com.loud9ja.loud9ja.ui.profile.ProfileActivity
 import com.loud9ja.loud9ja.utils.AuthPreference
+import com.loud9ja.loud9ja.utils.Constants
 import com.loud9ja.loud9ja.utils.DataState
 import com.loud9ja.loud9ja.utils.PreferenceHelper
+import com.loud9ja.loud9ja.video.JoinActivity
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
+import org.json.JSONException
+import org.json.JSONObject
+import pub.devrel.easypermissions.EasyPermissions
 import kotlin.system.exitProcess
 
 
@@ -52,6 +66,11 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private lateinit var navController: NavController
     private lateinit var mAuth: FirebaseAuth
     private val homeViewModel: HomeViewModel by viewModels()
+    private val AUTH_TOKEN = BuildConfig.AUTH_TOKEN
+    private val AUTH_URL = BuildConfig.AUTH_URL
+    private val MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 679
+    private lateinit var etMeetingId: TextInputEditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +79,6 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         mAuth = FirebaseAuth.getInstance()
         navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-
         navView = binding.navView
         navView.setupWithNavController(navController)
         drawerLayout = binding.drawerLayout
@@ -101,6 +119,11 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         bottomSheetDialog = BottomSheetDialog(this)
         bottomSheetDialog.setContentView(R.layout.go_live_bottom_sheet)
+        val profileImage = bottomSheetDialog.findViewById<ImageView>(R.id.profile_image)
+        val user = AuthPreference(this).getAuthDetails()
+        Glide.with(this).load("${Constants.IMAGE_PATH}${user?.image}")
+            .error(R.drawable.profile_image).into(profileImage!!)
+        etMeetingId = bottomSheetDialog.findViewById(R.id.title)!!
 
         binding.root.findViewById<ConstraintLayout>(R.id.discussion_menuu).setOnClickListener {
             navController.navigate(R.id.action_to_FirstFragment)
@@ -122,7 +145,6 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
 
         binding.root.findViewById<FloatingActionButton>(R.id.live_fab).setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
             showBottomDialog()
         }
 
@@ -177,7 +199,8 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private fun proceedLiveSession() {
         bottomSheetDialog.findViewById<MaterialButton>(R.id.proceed_sheet)
             ?.setOnClickListener {
-                startActivity(Intent(this, HomeActivity::class.java))
+                getToken(null)
+                // startActivity(Intent(this, CreateOrJoinActivity::class.java))
                 bottomSheetDialog.dismiss()
             }
     }
@@ -205,8 +228,10 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 true
             }
             R.id.nav_go_live -> {
-                startActivity(Intent(this, HomeActivity::class.java))
-                // showBottomDialog()
+                ///
+                ///
+                ///
+                showBottomDialog()
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
@@ -280,4 +305,138 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             finish()
         }
     }
+
+    private fun isNetworkAvailable(): Boolean {
+        val manager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = manager.activeNetworkInfo
+        val isAvailable = networkInfo != null && networkInfo.isConnected
+        if (!isAvailable) {
+            Snackbar.make(
+                findViewById(R.id.layout), "No Internet Connection",
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
+        return isAvailable
+    }
+
+    private fun isNullOrEmpty(str: String?): Boolean {
+        return "null" == str || "" == str || null == str
+    }
+
+    private fun getToken(meetingId: String?) {
+        if (!isNetworkAvailable()) {
+            return
+        }
+        if (!isNullOrEmpty(AUTH_TOKEN) && !isNullOrEmpty(AUTH_URL)) {
+            Toast.makeText(
+                this@HomeActivity,
+                "Please Provide only one - either auth_token or auth_url",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+        if (!isNullOrEmpty(AUTH_TOKEN)) {
+            if (meetingId == null) {
+                createMeeting(AUTH_TOKEN)
+            } else {
+                joinMeeting(AUTH_TOKEN, meetingId)
+            }
+            return
+        }
+        if (!isNullOrEmpty(AUTH_URL)) {
+            AndroidNetworking.get("$AUTH_URL/get-token")
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
+                    override fun onResponse(response: JSONObject) {
+                        try {
+                            val token = response.getString("token")
+                            if (meetingId == null) {
+                                createMeeting(token)
+                            } else {
+                                joinMeeting(token, meetingId)
+                            }
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+                    }
+
+                    override fun onError(anError: ANError) {
+                        anError.printStackTrace()
+                        Toast.makeText(
+                            this@HomeActivity,
+                            anError.errorDetail, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+            return
+        }
+        Toast.makeText(
+            this@HomeActivity,
+            "Please Provide auth_token or auth_url", Toast.LENGTH_SHORT
+        ).show()
+    }
+
+
+    private fun createMeeting(token: String) {
+        val perms = arrayOfNulls<String>(2)
+        perms[0] = Manifest.permission.BLUETOOTH
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            perms[1] = Manifest.permission.BLUETOOTH_CONNECT
+        }
+        if (EasyPermissions.hasPermissions(this, *perms)) {
+            AndroidNetworking.post("https://api.videosdk.live/v1/meetings")
+                .addHeaders("Authorization", token)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
+                    override fun onResponse(response: JSONObject) {
+                        try {
+                            val meetingId = response.getString("meetingId")
+                            val intent = Intent(this@HomeActivity, JoinActivity::class.java)
+                            intent.putExtra("token", token)
+                            intent.putExtra("meetingId", meetingId)
+                            startActivity(intent)
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+                    }
+
+                    override fun onError(anError: ANError) {
+                        Toast.makeText(
+                            this@HomeActivity, anError.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        } else {
+            // Ask for both permissions
+            EasyPermissions.requestPermissions(
+                this, getString(R.string.rationale_location_contacts),
+                MY_PERMISSIONS_REQUEST_WRITE_CALENDAR, *perms
+            )
+        }
+    }
+
+    private fun joinMeeting(token: String, meetingId: String) {
+        AndroidNetworking.post("https://api.videosdk.live/v1/meetings/$meetingId")
+            .addHeaders("Authorization", token)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject) {
+                    val intent = Intent(this@HomeActivity, JoinActivity::class.java)
+                    intent.putExtra("token", token)
+                    intent.putExtra("meetingId", meetingId)
+                    startActivity(intent)
+                    etMeetingId.text?.clear()
+                }
+
+                override fun onError(anError: ANError) {
+                    anError.printStackTrace()
+                    Toast.makeText(
+                        this@HomeActivity, anError.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+    }
+
 }

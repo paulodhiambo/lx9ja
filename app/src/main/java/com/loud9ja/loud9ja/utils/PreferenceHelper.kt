@@ -30,11 +30,13 @@ class PreferenceHelper(val activity: Activity) {
         return sharedPref.getInt(activity.resources.getString(R.string.opned_key), 1)
     }
 
-    fun saveUser(name: String, email: String, token: String) {
+    fun saveUser(name: String, email: String, token: String, id: String, image: String) {
         with(sharedPref.edit()) {
             putString("name", name)
             putString("password", email)
             putString("token", token)
+            putString("id", id)
+            putString("image", image)
             apply()
         }
     }
@@ -43,8 +45,10 @@ class PreferenceHelper(val activity: Activity) {
         val user = sharedPref.getString("name", null)
         val token = sharedPref.getString("token", null)
         val email = sharedPref.getString("email", null)
+        val id = sharedPref.getString("id", null)
+        val image = sharedPref.getString("image", null)
         return if (user != null && token != null && email != null) {
-            AuthUser(user, email, token)
+            AuthUser(user, email, token, id, image)
         } else {
             null
         }

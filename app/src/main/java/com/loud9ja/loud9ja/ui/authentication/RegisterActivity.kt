@@ -1,6 +1,5 @@
 package com.loud9ja.loud9ja.ui.authentication
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -52,20 +51,17 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun observeRegistration() {
-        val loadingBar: ProgressDialog = ProgressDialog(this)
-        loadingBar.setTitle("Please wait...")
-        loadingBar.show()
+        binding.cirRegisterButton.startAnimation()
         authViewModel.registrationResponse.observe(this) { data ->
             when (data) {
                 is DataState.Success -> {
-                    loadingBar.dismiss()
+                    binding.cirRegisterButton.stopAnimation()
                     onSignUpSuccess()
                 }
                 is DataState.Loading -> {
                 }
                 is DataState.Error -> {
-                    //  Log.e(TAG, "observeRegistration: ", data.exception)
-                    loadingBar.hide()
+                    binding.cirRegisterButton.stopAnimation()
                 }
             }
         }

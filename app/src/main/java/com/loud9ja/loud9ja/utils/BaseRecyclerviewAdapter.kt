@@ -18,6 +18,11 @@ abstract class BaseRecyclerViewAdapter<T : Any, VB : ViewDataBinding>
         notifyDataSetChanged()
     }
 
+    fun addItem(item: T) {
+        this.items.add(item)
+        notifyDataSetChanged()
+    }
+
     fun clearItems() {
         this.items.clear()
         notifyDataSetChanged()

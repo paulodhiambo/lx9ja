@@ -1,5 +1,6 @@
 package com.loud9ja.loud9ja.ui.discusion
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,23 +39,31 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
         binding.tvPotsCreatedBy.text = post.createdBy.plus(" | ").plus(post.createdAt)
         binding.textViewLikeCount.text = post.likes.toString()
         binding.textViewDislikeCount.text = post.totalDislikes.toString()
-        Glide.with(this).load("${IMAGE_PATH}${post.profilePicture}").error(R.drawable.banner1).into(binding.profile)
+        Glide.with(this).load("${IMAGE_PATH}${post.profilePicture}").error(R.drawable.banner1)
+            .into(binding.profile)
         binding.btnSendComment.setOnClickListener {
             val comment = binding.textInputComment.text.toString().trim()
             val addCommentRequest = AddCommentRequest(comment, post.id)
             discussionViewModel.addPostComment(addCommentRequest)
-            observerAddComment(binding)
-            discussionViewModel.getPostComments(post.id)
-            observerGetPostComments(binding)
+            observerAddComment(binding, post.id)
         }
         binding.imageViewLike.setOnClickListener {
             val likePostRequest = LikePostRequest(post.id, "LIKE")
             discussionViewModel.likePost(likePostRequest)
             observerLikePost(binding)
         }
+        binding.share.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Hey check out Loud9ja discussions at : https://play.google.com/store/apps/details?id=com.loud9ja.loud9ja"
+            )
+            sendIntent.type = "text/plain"
+            startActivity(sendIntent)
+        }
 
     }
-
 
 
     override val bindingInflater: (LayoutInflater) -> ViewBinding
@@ -65,7 +74,7 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
             when (result) {
                 is DataState.Success -> {
                     val comments = result.data.data.data
-                    commentsAdapter.clearItems()
+                    //commentsAdapter.clearItems()
                     commentsAdapter.addItems(comments)
                     commentsAdapter.items = comments as MutableList<Comment>
                     binding.rvPostComments.apply {
@@ -84,7 +93,7 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
         }
     }
 
-    private fun observerAddComment(binding: FragmentDiscussionDetailBinding) {
+    private fun observerAddComment(binding: FragmentDiscussionDetailBinding, id: Int) {
         discussionViewModel.addCommentsResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Success -> {
@@ -93,6 +102,8 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
                         "Comment added successfully",
                         Toast.LENGTH_LONG
                     ).show()
+                    discussionViewModel.getPostComments(id)
+                    observerGetPostComments(binding)
                 }
                 is DataState.Loading -> {}
                 is DataState.Error -> {}
@@ -105,6 +116,7 @@ class DiscussionDetailFragment : BindingFragment<FragmentDiscussionDetailBinding
             when (result) {
                 is DataState.Success -> {
                     binding.textViewLikeCount.text = result.data.likePostData.totalLikes.toString()
+                    Toast.makeText(requireContext(), "Liked", Toast.LENGTH_LONG).show()
                 }
                 is DataState.Loading -> {}
                 is DataState.Error -> {}

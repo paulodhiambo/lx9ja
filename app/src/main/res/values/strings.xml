@@ -174,7 +174,7 @@
     <string name="action_groups">Groups</string>
     <string name="action_report">Report</string>
     <string name="action_discussion">Discussion</string>
-    <string name="welcome_back">Welcome back, Please login here.</string>
+    <string name="welcome_back">Welcome back!\nPlease login here</string>
     <string name="email_address_hint">Email address</string>
     <string name="password_hint">Password</string>
     <string name="choose_where_to_start">Choose where to start</string>
@@ -261,5 +261,23 @@
     <string name="lga">LGA</string>
     <string name="category">Category</string>
     <string name="permission_descriptionn">This permission allows you to share video</string>
+
+    <string name="switch_camera">Switch Camera Mode</string>
+    <string name="leave_meeting">Leave meeting</string>
+    <string name="toggle_mic">Toggle mic</string>
+    <string name="toggle_camera">Toggle camera</string>
+    <string name="webcam_turned_off">Webcam turned off</string>
+    <string name="mic_turned_off">Mic turned off</string>
+    <string name="remove">Remove</string>
+    <string name="content_description_start_icon">TypeWritter Icon</string>
+    <string name="content_copy">Content Copy</string>
+    <string name="create_meeting">Create meeting</string>
+    <string name="enter_meeting_id">Enter meeting id</string>
+    <string name="join_meeting">Join meeting</string>
+    <string name="screenShare">Screen Share</string>
+    <string name="notificationTitle">VideoSDK RTC is sharing your screen</string>
+    <string name="notificationContent">meeting is running</string>
+    <string name="audio_options">Audio Options</string>
+    <string name="rationale_location_contacts">This permission is required to start a conference</string>
 
 </resources>

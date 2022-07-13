@@ -1,5 +1,6 @@
 package com.loud9ja.loud9ja.ui.discusion
 
+import android.content.Intent
 import com.bumptech.glide.Glide
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.RecentItemBinding
@@ -29,6 +30,17 @@ class RecentRecyclerViewAdapter : BaseRecyclerViewAdapter<Data, RecentItemBindin
         //onclick event
         holder.binding.root.setOnClickListener {
             listener?.invoke(it, items[position], position)
+        }
+
+        holder.binding.imageButton.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Hey check out Loud9ja discussions at : https://play.google.com/store/apps/details?id=com.loud9ja.loud9ja"
+            )
+            sendIntent.type = "text/plain"
+            holder.itemView.context.startActivity(sendIntent)
         }
     }
 }

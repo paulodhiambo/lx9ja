@@ -1,8 +1,9 @@
 package com.loud9ja.loud9ja.domain.network.api.trending
 
 
-import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
     @SerializedName("age")
@@ -68,4 +69,4 @@ data class User(
     @SerializedName("verified")
     @Expose
     val verified: Int // 0
-)
+) : Serializable

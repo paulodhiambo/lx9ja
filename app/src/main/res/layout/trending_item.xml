@@ -11,10 +11,10 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:background="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:background="#fff"
         android:elevation="20dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="2dp"
@@ -75,7 +75,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:layout_marginTop="6dp"
-                        android:fontFamily="@font/roboto_regular"
                         android:text="30/03/2022 | 02:34 PM"
                         android:textSize="10sp" />
                 </LinearLayout>
@@ -123,7 +122,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto_bold"
                 android:text="2023 Election"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -132,12 +130,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/textViewPostContent"
                 style="@style/viewParent"
-                android:fontFamily="@font/roboto_nedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:justificationMode="inter_word"
                 android:letterSpacing="0.05"
                 android:lineHeight="17sp"
@@ -183,7 +180,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="9dp"
-                    android:fontFamily="@font/roboto_nedium"
                     android:text="80"
                     app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
                     app:layout_constraintEnd_toStartOf="@+id/imageButton3"
@@ -210,7 +206,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="9dp"
-                    android:fontFamily="@font/roboto_nedium"
                     android:text="20"
                     app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
                     app:layout_constraintEnd_toStartOf="@+id/imageButton3"
@@ -234,7 +229,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto_nedium"
                     android:text="178"
                     app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
                     app:layout_constraintEnd_toEndOf="parent"
