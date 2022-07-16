@@ -1,6 +1,7 @@
 package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
+import com.loud9ja.loud9ja.domain.firebase.poll.CreatePollRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
@@ -11,6 +12,7 @@ import com.loud9ja.loud9ja.domain.network.api.polls.VoteRequest
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostRequest
 import com.loud9ja.loud9ja.domain.network.api.posts.LikePostResponse
 import com.loud9ja.loud9ja.domain.network.api.posts.PostResponse
+import com.loud9ja.loud9ja.domain.network.api.profile.UserProfileResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
@@ -42,9 +44,17 @@ interface LoudAPI {
         const val LIKE_POST = "api/v2/posts/like"
         const val CREATE_POST = "api/v2/posts/create"
         const val VOTE = "api/v2/polls/vote"
+        const val MY_PROFILE = "api/v2/users/my-profile"
+        const val CREATE_POLL = "api/v2/polls/create"
 
 
     }
+
+    @POST(CREATE_POLL)
+    suspend fun createPoll(@Body poll: CreatePollRequest): ResponseBody
+
+    @GET(MY_PROFILE)
+    suspend fun profile(): UserProfileResponse
 
     @POST(VOTE)
     suspend fun vote(@Body vote: VoteRequest): ResponseBody

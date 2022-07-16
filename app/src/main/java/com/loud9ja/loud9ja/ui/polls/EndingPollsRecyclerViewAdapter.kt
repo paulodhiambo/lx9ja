@@ -19,6 +19,7 @@ class EndingPollsRecyclerViewAdapter : BaseRecyclerViewAdapter<Poll, EndingPollI
         holder.binding.polls = items[position]
         holder.binding.textView18.text = items[position].createdBy
         holder.binding.textView35.text = items[position].question
+        holder.binding.textView34.text = "Ends in ${items[position].endsIn} hours"
         Glide.with(holder.itemView).load("${Constants.IMAGE_PATH}${items[position].profilePicture}")
             .error(R.drawable.profile_image).into(holder.binding.profileImage)
         //onclick event

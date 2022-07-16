@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.database.*
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentGroupDetailBinding
-import com.loud9ja.loud9ja.domain.firebase.GroupPost
+import com.loud9ja.loud9ja.domain.firebase.group.GroupPost
 import com.loud9ja.loud9ja.domain.network.api.groups.Group
 import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.BindingFragment

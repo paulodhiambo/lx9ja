@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/poll_quiz"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
@@ -53,11 +54,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:elevation="5dp"
-        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
+        android:elevation="5dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -73,16 +74,18 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/options_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 tools:itemCount="3"
                 tools:listitem="@layout/vote_option_item" />
 
             <LinearLayout
-                android:layout_marginHorizontal="10dp"
+                android:id="@+id/create_poll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -98,7 +101,6 @@
                     android:textColor="@color/googleButtonColor"
                     android:textSize="12sp" />
             </LinearLayout>
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -142,7 +144,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnVote"
+            android:id="@+id/btnCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/googleButtonColor"
@@ -157,6 +159,17 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.loud9ja.loud9ja.ui.group
 import com.bumptech.glide.Glide
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.GroupPostItemBinding
-import com.loud9ja.loud9ja.domain.firebase.GroupPost
+import com.loud9ja.loud9ja.domain.firebase.group.GroupPost
 import com.loud9ja.loud9ja.utils.BaseRecyclerViewAdapter
 import com.loud9ja.loud9ja.utils.Constants
 

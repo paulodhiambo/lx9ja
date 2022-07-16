@@ -94,6 +94,8 @@
         <activity
             android:name=".ui.authentication.LandingActivity"
             android:exported="true" />
+        <activity android:name=".ui.profile.ProfileActivity"
+            android:exported="true"/>
         <activity
             android:name=".ui.calculator.CalculatorActivity"
             android:exported="true"

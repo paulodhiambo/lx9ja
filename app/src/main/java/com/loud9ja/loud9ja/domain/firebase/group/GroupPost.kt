@@ -1,4 +1,4 @@
-package com.loud9ja.loud9ja.domain.firebase
+package com.loud9ja.loud9ja.domain.firebase.group
 
 import com.google.firebase.database.IgnoreExtraProperties
 

@@ -33,6 +33,7 @@ class PopularPollsRecyclerViewAdapter :
         voteView.setAnimationRate(600);
         holder.binding.textView35.text = items[position].question
         holder.binding.textView18.text = items[position].createdBy
+        holder.binding.textView34.text = "End in ${items[position].endsIn} hours"
         Glide.with(holder.itemView).load("${IMAGE_PATH}${items[position].profilePicture}")
             .error(R.drawable.profile_image).into(holder.binding.profileImage)
         voteView.setVoteListener(object : VoteListener {

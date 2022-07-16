@@ -1,5 +1,6 @@
 package com.loud9ja.loud9ja.domain.repository
 
+import com.loud9ja.loud9ja.domain.firebase.poll.CreatePollRequest
 import com.loud9ja.loud9ja.domain.network.LoudAPI
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.VoteRequest
@@ -11,4 +12,6 @@ class PollRepository @Inject constructor(private val api: LoudAPI) {
     suspend fun getPolls(): PollResponse = api.getPolls()
 
     suspend fun vote(voteRequest: VoteRequest): ResponseBody = api.vote(voteRequest)
+
+    suspend fun createPoll(poll: CreatePollRequest): ResponseBody = api.createPoll(poll)
 }

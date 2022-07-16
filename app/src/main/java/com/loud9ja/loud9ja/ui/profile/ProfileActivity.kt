@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Window
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityProfileBinding
+import com.loud9ja.loud9ja.ui.home.HomeActivity
+import com.loud9ja.loud9ja.utils.UIstate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,10 +29,13 @@ class ProfileActivity : AppCompatActivity() {
     private var TAG = "ProfileActivity"
     private lateinit var dialog: Dialog
     private lateinit var mAuth: FirebaseAuth
+    private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
+        viewModel.getUserProfile()
+        observe()
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
@@ -41,8 +46,36 @@ class ProfileActivity : AppCompatActivity() {
             Places.initialize(this, apiKey)
         }
         binding.logoView.bringToFront()
-        binding.btnEditProfile.setOnClickListener {
-            showDialog("+266 255 225", "Ikeja", "william@gmail.com")
+        binding.backArrow.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
+    }
+
+    private fun observe() {
+        viewModel.profileState.observe(this) { result ->
+            when (result) {
+                is UIstate.Success -> {
+                    binding.profileName.text = "${result.data?.data?.name}"
+                    binding.profileEmail.text = "${result.data?.data?.email}"
+                    binding.profileGender.text = "${result.data?.data?.gender}"
+                    binding.profileAge.text = "${result.data?.data?.age}"
+                    binding.profileCountry.text = "${result.data?.data?.country}"
+                    binding.profileCountr.text = "${result.data?.data?.country}"
+                    binding.profilePhone.text = "${result.data?.data?.phone}"
+                    binding.profileLocation.text = "${result.data?.data?.city}"
+                    binding.btnEditProfile.setOnClickListener {
+                        showDialog(
+                            "${result.data?.data?.phone}",
+                            "${result.data?.data?.city}",
+                            "${result.data?.data?.email}"
+                        )
+                    }
+                }
+                is UIstate.Loading -> {}
+                is UIstate.Error -> {
+                    Log.d(TAG, "observe: ${result.message}")
+                }
+            }
         }
     }
 
@@ -57,12 +90,12 @@ class ProfileActivity : AppCompatActivity() {
         address.setText(locationText)
         val saveButton = dialog.findViewById(R.id.save_btn) as Button
         val cancelButton = dialog.findViewById(R.id.cancel_btn) as Button
-        Glide.with(this)
-            .load(mAuth.currentUser?.photoUrl)
-            .into(binding.profileImage)
-        binding.profileName.text = mAuth.currentUser?.displayName
-        binding.profileEmail.text = mAuth.currentUser?.email
-        binding.profilePhone.text = mAuth.currentUser?.phoneNumber
+//        Glide.with(this)
+//            .load(mAuth.currentUser?.photoUrl)
+//            .into(binding.profileImage)
+//        binding.profileName.text = mAuth.currentUser?.displayName
+//        binding.profileEmail.text = mAuth.currentUser?.email
+//        binding.profilePhone.text = mAuth.currentUser?.phoneNumber
 
         address.setOnClickListener {
             onPlaceSearched()
@@ -89,6 +122,7 @@ class ProfileActivity : AppCompatActivity() {
         startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

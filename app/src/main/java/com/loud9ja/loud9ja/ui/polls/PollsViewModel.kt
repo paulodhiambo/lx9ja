@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.loud9ja.loud9ja.domain.firebase.poll.CreatePollRequest
 import com.loud9ja.loud9ja.domain.network.api.polls.PollResponse
 import com.loud9ja.loud9ja.domain.network.api.polls.VoteRequest
+import com.loud9ja.loud9ja.domain.usecase.CreatePollUseCase
 import com.loud9ja.loud9ja.domain.usecase.PollUseCase
 import com.loud9ja.loud9ja.domain.usecase.VoteUseCase
 import com.loud9ja.loud9ja.utils.NetworkState
@@ -18,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PollsViewModel @Inject constructor(
     private val pollUseCase: PollUseCase,
-    private val voteUseCase: VoteUseCase
+    private val voteUseCase: VoteUseCase,
+    private val createPollUseCase: CreatePollUseCase
 ) : ViewModel() {
     private var _pollResponse = MutableLiveData<UIstate<PollResponse>>()
     val pollResponse: LiveData<UIstate<PollResponse>>
@@ -27,6 +30,10 @@ class PollsViewModel @Inject constructor(
     private var _voteResponse = MutableLiveData<UIstate<String>>()
     val voteResponse: LiveData<UIstate<String>>
         get() = _voteResponse
+
+    private var _createPollResponse = MutableLiveData<UIstate<String>>()
+    val createPollResponse: LiveData<UIstate<String>>
+        get() = _createPollResponse
 
     fun getPolls() {
         pollUseCase().onEach { result ->
@@ -53,6 +60,20 @@ class PollsViewModel @Inject constructor(
                 is NetworkState.Loading -> {}
                 is NetworkState.Error -> {
                     _voteResponse.value = UIstate.Error(result.message!!)
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    fun createVote(createPollRequest: CreatePollRequest) {
+        createPollUseCase(createPollRequest).onEach { result ->
+            when (result) {
+                is NetworkState.Success -> {
+                    _createPollResponse.value = UIstate.Success("success")
+                }
+                is NetworkState.Loading -> {}
+                is NetworkState.Error -> {
+                    _createPollResponse.value = UIstate.Error(result.message!!)
                 }
             }
         }.launchIn(viewModelScope)

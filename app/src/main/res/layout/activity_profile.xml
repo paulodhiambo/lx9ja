@@ -19,12 +19,21 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                app:tint="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="45dp"
-                android:src="@drawable/p" />
+                android:layout_marginTop="15dp"
+                android:src="@drawable/profile_image" />
 
             <TextView
                 android:id="@+id/profile_name"
@@ -32,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Wiliam Doe"
+                android:text="-"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -73,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="Male"
+                        android:text="-"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -94,10 +103,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/profile_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="30"
+                        android:text="-"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -118,10 +128,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/profile_country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="Nigeria"
+                        android:text="-"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -167,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Wiliam@gmail.com"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -186,12 +197,11 @@
 
                 <TextView
                     android:id="@+id/profile_phone"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="+266 225 225"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -209,12 +219,12 @@
                     android:src="@drawable/ic_location" />
 
                 <TextView
+                    android:id="@+id/profile_location"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Ikeja"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -233,11 +243,12 @@
                     app:tint="@color/black" />
 
                 <TextView
+                    android:id="@+id/profile_countr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Ikeja"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>

@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.loud9ja.loud9ja.domain.firebase.GroupPost" />
+            type="com.loud9ja.loud9ja.domain.firebase.group.GroupPost" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

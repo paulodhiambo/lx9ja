@@ -42,6 +42,7 @@ import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityMainBinding
 import com.loud9ja.loud9ja.ui.about.AboutUsActivity
 import com.loud9ja.loud9ja.ui.authentication.LoginActivity
+import com.loud9ja.loud9ja.ui.profile.ProfileActivity
 import com.loud9ja.loud9ja.utils.AuthPreference
 import com.loud9ja.loud9ja.utils.Constants
 import com.loud9ja.loud9ja.utils.DataState
@@ -245,11 +246,11 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
-//            R.id.nav_profile -> {
-//                startActivity(Intent(this, ProfileActivity::class.java))
-//                drawerLayout.closeDrawer(GravityCompat.START)
-//                true
-//            }
+            R.id.nav_profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
+                drawerLayout.closeDrawer(GravityCompat.START)
+                true
+            }
             R.id.nav_about_us -> {
                 startActivity(Intent(this, AboutUsActivity::class.java))
                 drawerLayout.closeDrawer(GravityCompat.START)
