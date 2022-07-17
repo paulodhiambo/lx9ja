@@ -11,6 +11,7 @@ import com.loud9ja.loud9ja.databinding.FragmentDashboardBinding
 import com.loud9ja.loud9ja.domain.network.api.trending.Data
 import com.loud9ja.loud9ja.ui.discusion.DiscussionDetailFragment
 import com.loud9ja.loud9ja.ui.discusion.DiscussionViewModel
+import com.loud9ja.loud9ja.ui.livestream.StreamsFragment
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +42,16 @@ class DashboardFragment : BindingFragment<FragmentDashboardBinding>() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = itemsAdapter
             itemsAdapter.addItems(items)
+        }
+
+        itemsAdapter.listener = { _, _, p ->
+            if (p == 0) {
+                val fragment = StreamsFragment()
+                val fragmentManager = fragmentManager
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.replace(R.id.nav_host_fragment_content_main, fragment)
+                fragmentTransaction?.commit()
+            }
         }
         binding.recentPostShimmerLayout.startShimmer()
         discussionViewModel.getTrendingPosts()

@@ -54,9 +54,11 @@
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/fragment_report_detail.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/fragment_sos.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/layout/fragment_streams.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/go_live_bottom_sheet.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/group_post_item.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/item_message_list.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/item_remote_peer.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/layout_role_spinner.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/layout_rtmp_url_item.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/list_item_comment.xml" value="0.26666666666666666" />
@@ -68,6 +70,7 @@
         <entry key="app/src/main/res/layout/recent_item.xml" value="0.24365942028985507" />
         <entry key="app/src/main/res/layout/recent_item_shimmer.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/report_item.xml" value="0.27291666666666664" />
+        <entry key="app/src/main/res/layout/stream_item.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/test.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/layout/toolbar_meeting.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/trending_dashboard_discussions.xml" value="0.2463768115942029" />

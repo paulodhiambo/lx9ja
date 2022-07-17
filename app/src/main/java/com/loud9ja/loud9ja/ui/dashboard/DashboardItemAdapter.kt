@@ -16,5 +16,8 @@ class DashboardItemAdapter :
         position: Int
     ) {
         holder.binding.items = items[position]
+        holder.itemView.setOnClickListener {
+            listener?.invoke(holder.itemView, items[position], position)
+        }
     }
 }

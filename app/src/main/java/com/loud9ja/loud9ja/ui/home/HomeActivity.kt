@@ -200,9 +200,14 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private fun proceedLiveSession() {
         bottomSheetDialog.findViewById<MaterialButton>(R.id.proceed_sheet)
             ?.setOnClickListener {
-                getToken(null)
-                // startActivity(Intent(this, CreateOrJoinActivity::class.java))
-                bottomSheetDialog.dismiss()
+                val title = bottomSheetDialog.findViewById<TextInputEditText>(R.id.title)
+                if (title?.text.isNullOrBlank()) {
+                    Toast.makeText(this, "Please input meeting title", Toast.LENGTH_LONG).show()
+                } else {
+                    getToken(null, title?.text.toString())
+                    // startActivity(Intent(this, CreateOrJoinActivity::class.java))
+                    bottomSheetDialog.dismiss()
+                }
             }
     }
 
@@ -229,10 +234,6 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 true
             }
             R.id.nav_go_live -> {
-                ///
-                ///
-                ///
-                showBottomDialog()
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
@@ -280,7 +281,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     private fun exitByBackKey() {
-        val alertBox = AlertDialog.Builder(this)
+        AlertDialog.Builder(this)
             .setMessage("Do you want to exit application?")
             .setPositiveButton("Yes") { _, _ ->
                 finishAffinity()
@@ -324,7 +325,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return "null" == str || "" == str || null == str
     }
 
-    private fun getToken(meetingId: String?) {
+    private fun getToken(meetingId: String?, meetingTitle: String) {
         if (!isNetworkAvailable()) {
             return
         }
@@ -338,7 +339,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         if (!isNullOrEmpty(AUTH_TOKEN)) {
             if (meetingId == null) {
-                createMeeting(AUTH_TOKEN)
+                createMeeting(AUTH_TOKEN, meetingTitle)
             } else {
                 joinMeeting(AUTH_TOKEN, meetingId)
             }
@@ -352,7 +353,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         try {
                             val token = response.getString("token")
                             if (meetingId == null) {
-                                createMeeting(token)
+                                createMeeting(token, meetingTitle)
                             } else {
                                 joinMeeting(token, meetingId)
                             }
@@ -378,7 +379,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
 
-    private fun createMeeting(token: String) {
+    private fun createMeeting(token: String, meetingTitle: String) {
         val perms = arrayOfNulls<String>(2)
         perms[0] = Manifest.permission.BLUETOOTH
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -395,6 +396,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                             val intent = Intent(this@HomeActivity, JoinActivity::class.java)
                             intent.putExtra("token", token)
                             intent.putExtra("meetingId", meetingId)
+                            intent.putExtra("title", meetingTitle)
                             startActivity(intent)
                         } catch (e: JSONException) {
                             e.printStackTrace()
@@ -426,6 +428,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     val intent = Intent(this@HomeActivity, JoinActivity::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("meetingId", meetingId)
+                    intent.putExtra("title", meetingId)
                     startActivity(intent)
                     etMeetingId.text?.clear()
                 }

@@ -1,7 +1,7 @@
 package com.loud9ja.loud9ja.ui.livestream
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.ActivityLiveStreamBinding
 import dagger.hilt.android.AndroidEntryPoint

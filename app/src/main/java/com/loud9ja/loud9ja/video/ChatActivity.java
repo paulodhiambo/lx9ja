@@ -5,7 +5,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,10 +37,10 @@ public class ChatActivity extends AppCompatActivity {
         meeting = ((Loud9ja) this.getApplication()).getMeeting();
 
         //
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Chat");
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> finish());
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setTitle("Chat");
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationOnClickListener(v -> finish());
 
         //
         RecyclerView messageRecyclerView = findViewById(R.id.messageRcv);

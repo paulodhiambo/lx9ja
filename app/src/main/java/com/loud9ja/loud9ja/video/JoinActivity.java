@@ -15,8 +15,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.loud9ja.loud9ja.R;
+import com.loud9ja.loud9ja.data.AuthUser;
+import com.loud9ja.loud9ja.domain.firebase.stream.LiveStream;
+import com.loud9ja.loud9ja.utils.AuthPreference;
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 
@@ -29,19 +36,22 @@ import org.webrtc.VideoSource;
 import org.webrtc.VideoTrack;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import live.videosdk.rtc.android.lib.PeerConnectionUtils;
 
 @AndroidEntryPoint
 public class JoinActivity extends AppCompatActivity {
-
     private boolean micEnabled = false;
     private boolean webcamEnabled = false;
+    private DatabaseReference databaseReference;
 
     private FloatingActionButton btnMic, btnWebcam;
     private SurfaceViewRenderer svrJoin;
     private EditText etName;
+    private String streamTitle;
 
     VideoTrack videoTrack;
     VideoCapturer videoCapturer;
@@ -87,7 +97,7 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         final Button btnJoin = findViewById(R.id.btnJoin);
         btnMic = findViewById(R.id.btnMic);
         btnWebcam = findViewById(R.id.btnWebcam);
@@ -118,20 +128,39 @@ public class JoinActivity extends AppCompatActivity {
 
         final String token = getIntent().getStringExtra("token");
         final String meetingId = getIntent().getStringExtra("meetingId");
+        streamTitle = getIntent().getStringExtra("title");
 
         btnJoin.setOnClickListener(v -> {
-            if ("".equals(etName.getText().toString())) {
-                Toast.makeText(JoinActivity.this, "Please Enter Name", Toast.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(JoinActivity.this, MainActivity.class);
-                intent.putExtra("token", token);
-                intent.putExtra("meetingId", meetingId);
-                intent.putExtra("micEnabled", micEnabled);
-                intent.putExtra("webcamEnabled", webcamEnabled);
-                intent.putExtra("paticipantName", etName.getText().toString().trim());
-                startActivity(intent);
-                finish();
+            AuthUser user = new AuthPreference(this).getAuthDetails();
+            assert user != null;
+            if (!Objects.equals(streamTitle, "")) {
+                //pass
+                if (user.getImage() == null) {
+                    LiveStream stream = new LiveStream("", user.getUserName(), meetingId, streamTitle, Calendar.getInstance().getTime().toString(), false);
+                    databaseReference.child("streams").child(meetingId).setValue(stream);
+                } else {
+                    LiveStream stream = new LiveStream(user.getImage(), user.getUserName(), meetingId, streamTitle, Calendar.getInstance().getTime().toString(), false);
+                    databaseReference.child("streams").child(meetingId).setValue(stream);
+                }
             }
+            databaseReference.child("streams").child(getIntent().getStringExtra("meetingId")).get().addOnSuccessListener(dataSnapshot -> {
+                if (dataSnapshot.exists()) {
+                    LiveStream stream = dataSnapshot.getValue(LiveStream.class);
+                    assert stream != null;
+                    if (stream.getEnded()) {
+                        Toast.makeText(JoinActivity.this, "Meeting already ended", Toast.LENGTH_LONG).show();
+                    } else {
+                        Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+                        intent.putExtra("token", token);
+                        intent.putExtra("meetingId", meetingId);
+                        intent.putExtra("micEnabled", micEnabled);
+                        intent.putExtra("webcamEnabled", webcamEnabled);
+                        intent.putExtra("paticipantName", user.getUserName());
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            });
         });
 
     }
@@ -205,6 +234,7 @@ public class JoinActivity extends AppCompatActivity {
 
             // create VideoCapturer
             videoCapturer = createCameraCapturer();
+            assert videoCapturer != null;
             videoSource = peerConnectionFactory.createVideoSource(videoCapturer.isScreencast());
             videoCapturer.initialize(surfaceTextureHelper, getApplicationContext(), videoSource.getCapturerObserver());
             videoCapturer.startCapture(480, 640, 30);

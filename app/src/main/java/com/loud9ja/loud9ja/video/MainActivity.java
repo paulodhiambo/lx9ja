@@ -29,6 +29,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.loud9ja.loud9ja.Loud9ja;
 import com.loud9ja.loud9ja.R;
 import com.nabinbhandari.android.permissions.PermissionHandler;
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton btnMic, btnWebcam, btnScreenShare;
     private FloatingActionButton btnLeave, btnChat, btnSwitchCameraMode, btnMore;
     private ImageButton btnAudioSelection;
+    private DatabaseReference databaseReference;
+
 
     private boolean micEnabled = true;
     private boolean webcamEnabled = true;
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_video);
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         //
         btnLeave = findViewById(R.id.btnLeave);
         btnChat = findViewById(R.id.btnChat);
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         btnSwitchCameraMode = findViewById(R.id.btnSwitchCameraMode);
         btnScreenShare = findViewById(R.id.btnScreenShare);
 
-        btnAudioSelection = (ImageButton) findViewById(R.id.btnAudioSelection);
+        btnAudioSelection = findViewById(R.id.btnAudioSelection);
         btnAudioSelection.setEnabled(false);
 
         svrShare = findViewById(R.id.svrShare);
@@ -584,6 +588,7 @@ public class MainActivity extends AppCompatActivity {
                     meeting.leave();
                 })
                 .setNegativeButton("End", (dialog, which) -> {
+                    databaseReference.child("streams").child(getIntent().getStringExtra("meetingId")).child("ended").setValue(true);
                     meeting.end();
                 })
                 .show();

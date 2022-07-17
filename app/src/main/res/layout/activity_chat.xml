@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:visibility="gone"
         app:navigationIcon="@drawable/ic_baseline_close_24"
         app:popupTheme="@style/Theme.Loud9ja"
         app:titleTextColor="@color/white" />

@@ -38,7 +38,8 @@ class GroupDetailFragment : BindingFragment<FragmentGroupDetailBinding>() {
         val group = args?.get("group") as Group
         Glide.with(requireContext()).load("${IMAGE_PATH}${group.media}").error(R.drawable.banner1)
             .into(binding.profileImage)
-        Glide.with(requireContext()).load("${IMAGE_PATH}${user?.image}").error(R.drawable.profile_image)
+        Glide.with(requireContext()).load("${IMAGE_PATH}${user?.image}")
+            .error(R.drawable.profile_image)
             .into(binding.ghImage)
         binding.textViewPostAuthor.text = group.name
         binding.textViewPostContent.text = group.description

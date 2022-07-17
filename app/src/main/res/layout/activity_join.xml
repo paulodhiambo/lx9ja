@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:visibility="gone"
         app:popupTheme="@style/Theme.Loud9ja"
         app:theme="@style/ToolbarColoredBackArrow"
         app:titleTextColor="@color/white" />
@@ -80,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Name"
                 android:textColorHint="@color/white"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/text_input_layout_stroke_color"
                 app:startIconDrawable="@drawable/ic_typewritter"
                 app:startIconTint="@color/white">

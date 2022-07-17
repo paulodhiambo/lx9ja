@@ -319,4 +319,38 @@
         android:label="fragment_poll_details"
         tools:layout="@layout/fragment_poll_details" />
 
+    <fragment
+        android:id="@+id/streams"
+        android:name="com.loud9ja.loud9ja.ui.livestream.StreamsFragment"
+        android:label="@string/action_new_group"
+        tools:layout="@layout/fragment_streams">
+        <action
+            android:id="@+id/action_to_NewGroupFragment"
+            app:destination="@id/NewGroupFragment" />
+        <action
+            android:id="@+id/action_to_PostFragment"
+            app:destination="@id/PostFragment" />
+        <action
+            android:id="@+id/action_to_SOSFragment"
+            app:destination="@id/SOSFragment" />
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_to_GroupFragment"
+            app:destination="@id/GroupFragment" />
+        <action
+            android:id="@+id/action_to_ReportDetail"
+            app:destination="@id/ReportDetail" />
+        <action
+            android:id="@+id/action_to_PollsFragment"
+            app:destination="@id/PollsFragment" />
+        <action
+            android:id="@+id/action_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+    </fragment>
+
 </navigation>

@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="items"
-            type="com.loud9ja.loud9ja.domain.network.api.trending.Data" />
+            name="stream"
+            type="com.loud9ja.loud9ja.domain.firebase.stream.LiveStream" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
