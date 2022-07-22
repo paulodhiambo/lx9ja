@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.loud9ja.loud9ja.data.User
+import com.loud9ja.loud9ja.domain.network.api.auth.LoginResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
-import com.loud9ja.loud9ja.domain.network.api.response.LoginResponse
 import com.loud9ja.loud9ja.domain.usecase.LoginUseCase
 import com.loud9ja.loud9ja.domain.usecase.RegisterUseCase
 import com.loud9ja.loud9ja.utils.BaseViewModel
@@ -48,6 +48,7 @@ class AuthViewModel @Inject constructor(
     }
 
     fun loginUser(loginRequest: LoginRequest) {
+
         loginUseCase(loginRequest).onEach { result ->
             when (result) {
                 is DataState.Success -> {

@@ -1,7 +1,7 @@
 package com.loud9ja.loud9ja.domain.usecase
 
+import com.loud9ja.loud9ja.domain.network.api.auth.LoginResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
-import com.loud9ja.loud9ja.domain.network.api.response.LoginResponse
 import com.loud9ja.loud9ja.domain.repository.AuthRepository
 import com.loud9ja.loud9ja.utils.DataState
 import kotlinx.coroutines.flow.Flow

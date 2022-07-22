@@ -66,7 +66,7 @@ class DashboardFragment : BindingFragment<FragmentDashboardBinding>() {
                     binding.recentPostShimmerLayout.stopShimmer()
                     binding.recentPostShimmerLayout.visibility = View.GONE
                     binding.trendingRecycler.visibility = View.VISIBLE
-                    trendingItemsAdapter.items = result.data.data as MutableList<Data>
+                  //  trendingItemsAdapter.items = result.data.data as MutableList<Data>
                     binding.trendingRecycler.apply {
                         hasFixedSize()
                         layoutManager =

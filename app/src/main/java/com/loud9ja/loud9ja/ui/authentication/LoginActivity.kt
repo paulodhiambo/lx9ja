@@ -105,18 +105,18 @@ class LoginActivity : AppCompatActivity() {
             when (data) {
                 is DataState.Success -> {
                     AuthPreference(this).saveData(
-                        data.data.data.name,
-                        data.data.data.email,
-                        data.data.token,
-                        data.data.data.id.toString(),
-                        data.data.data.profilePicture.toString()
+                        data.data.data!![0]!!.name!!,
+                        data.data.data[0]!!.email!!,
+                        data.data.token!!,
+                        data.data.data[0]!!.id.toString(),
+                        data.data.data[0]!!.profilePicture.toString()
                     )
                     PreferenceHelper(this).saveUser(
-                        data.data.data.name,
-                        data.data.data.email,
+                        data.data.data[0]!!.name!!,
+                        data.data.data[0]!!.email!!,
                         data.data.token,
-                        data.data.data.id.toString(),
-                        data.data.data.profilePicture.toString()
+                        data.data.data[0]!!.id.toString(),
+                        data.data.data[0]!!.profilePicture.toString()
                     )
                     onLoginSuccess()
                     Log.d(TAG, "observeLoginRequest: $data")

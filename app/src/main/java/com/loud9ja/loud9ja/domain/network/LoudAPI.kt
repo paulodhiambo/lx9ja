@@ -2,6 +2,7 @@ package com.loud9ja.loud9ja.domain.network
 
 import com.loud9ja.loud9ja.data.User
 import com.loud9ja.loud9ja.domain.firebase.poll.CreatePollRequest
+import com.loud9ja.loud9ja.domain.network.api.auth.LoginResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentRequest
 import com.loud9ja.loud9ja.domain.network.api.comments.AddCommentResponse
 import com.loud9ja.loud9ja.domain.network.api.comments.PostCommentsResponse
@@ -16,7 +17,6 @@ import com.loud9ja.loud9ja.domain.network.api.profile.UserProfileResponse
 import com.loud9ja.loud9ja.domain.network.api.registration.RegistrationResponse
 import com.loud9ja.loud9ja.domain.network.api.reports.ReportResponse
 import com.loud9ja.loud9ja.domain.network.api.request.LoginRequest
-import com.loud9ja.loud9ja.domain.network.api.response.LoginResponse
 import com.loud9ja.loud9ja.domain.network.api.response.ProfileResponse
 import com.loud9ja.loud9ja.domain.network.api.trending.TrendingPostResponse
 import okhttp3.MultipartBody
@@ -59,7 +59,7 @@ interface LoudAPI {
     @POST(VOTE)
     suspend fun vote(@Body vote: VoteRequest): ResponseBody
 
-    @GET(TRENDING_POST)
+    @POST(TRENDING_POST)
     suspend fun getTrendingPosts(): TrendingPostResponse
 
     @GET(GET_ALL_REPORTS)

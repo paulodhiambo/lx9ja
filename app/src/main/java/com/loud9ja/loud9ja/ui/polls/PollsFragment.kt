@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.loud9ja.loud9ja.R
 import com.loud9ja.loud9ja.databinding.FragmentPollsBinding
+import com.loud9ja.loud9ja.domain.network.api.polls.PollResponseItem
 import com.loud9ja.loud9ja.domain.network.api.polls.VoteRequest
 import com.loud9ja.loud9ja.utils.BindingFragment
 import com.loud9ja.loud9ja.utils.UIstate
@@ -99,7 +100,7 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
                                 false
                             )
                         adapter = popularPollsAdapter
-                        popularPollsAdapter.addItems(result.data!!.data)
+                        popularPollsAdapter.addItems(result.data as List<PollResponseItem>)
                     }
 
                     binding.recentRecyclerview.apply {
@@ -107,7 +108,7 @@ class PollsFragment : BindingFragment<FragmentPollsBinding>() {
                         layoutManager =
                             LinearLayoutManager(requireContext())
                         adapter = endingPollsAdapter
-                        endingPollsAdapter.addItems(result.data!!.data)
+                        endingPollsAdapter.addItems(result.data as List<PollResponseItem>)
                         popularPollsAdapter.listener = { _, item, _ ->
                             val bundle = Bundle()
                             bundle.putSerializable("poll", item)

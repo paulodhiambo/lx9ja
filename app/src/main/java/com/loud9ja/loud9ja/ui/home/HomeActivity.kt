@@ -404,6 +404,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     }
 
                     override fun onError(anError: ANError) {
+                        Log.d("Error==========>", "onError: ${anError.printStackTrace()}")
                         Toast.makeText(
                             this@HomeActivity, anError.message,
                             Toast.LENGTH_SHORT
